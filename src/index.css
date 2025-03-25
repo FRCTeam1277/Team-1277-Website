@@ -9,31 +9,28 @@
   border: none;
   outline: none;
   font-family: "Helvetica", sans-serif;
+  text-decoration: none;
+  list-style: none;
 }
 
 /* Define Theme Colors */
-:root {
-  :root[data-theme="light"] {
-    --text: #1d070d;
-    --background: #fbeff2;
-    --primary: #bc0b23;
-    --secondary: #e3a296;
-    --accent: #d78e6a;
-  }
-  :root[data-theme="dark"] {
-    --text: #f8e2e8;
-    --background: #100407;
-    --primary: #f4435b;
-    --secondary: #69271c;
-    --accent: #954c28;
-  }
+:root[data-theme="light"] {
+  --text: #1d070d;
+  --background: #fbeff2;
+  --primary: #bc0b23;
+  --secondary: #960008;
+  --accent: #d78e6a;
+}
+
+:root[data-theme="dark"] {
+  --text: #f8e2e8;
+  --background: #100407;
+  --primary: #fe0322;
+  --secondary: #960008;
+  --accent: #954c28;
 }
 
 body {
-  /* Default Colors */
-  background: var(--background);
-  color: var(--text);
-
   /* Default Fonts */
   font-family: "Inter";
   font-weight: 400;
