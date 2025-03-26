@@ -44,6 +44,7 @@ function Navbar(): JSX.Element {
   // Function to toggle sidebar
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
+    console.log("Sidebar state:", !sidebarOpen); // Debugging log
   };
 
   return (

@@ -36,17 +36,21 @@
 .navbar__sidebar {
   position: fixed;
   top: 0;
-  right: -100%;
+  right: -100%; /* Sidebar hidden by default */
   width: 250px;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  z-index: 999; /* Ensure sidebar is above other elements */
+  z-index: 1001; /* Ensure sidebar is above other elements */
   background-color: var(--primary);
   color: var(--text);
   transition: right 0.3s ease; /* Smooth slide-in effect for sidebar */
+}
+
+.navbar__sidebar.open {
+  right: 0; /* Slide sidebar into view */
 }
 
 .navbar__links li a,
