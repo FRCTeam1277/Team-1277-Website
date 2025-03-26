@@ -29,9 +29,31 @@
 .content-section p {
   margin-bottom: 2rem;
   line-height: 1.5;
-  font-size: 1.125rem;
+  font-size: 13pt;
   color: var(--text);
   width: 70%;
+}
+
+.content-section h2 {
+  font-size: 16pt;
+  font-weight: 700;
+  color: var(--text);
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.content-section img {
+  margin-bottom: 0.35rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.content-section img + figcaption {
+  font-size: 12pt;
+  font-style: italic;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 1.75rem;
 }
 
 @media (max-width: 900px) {

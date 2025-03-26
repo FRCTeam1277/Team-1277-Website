@@ -16,7 +16,7 @@ import "./Navbar.css";
  *
  * @returns {JSX.Element} The rendered `Navbar` component.
  */
-function Navbar(): JSX.Element {
+export default function Navbar(): JSX.Element {
   // State to manage sidebar open/close
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 770);
@@ -108,5 +108,3 @@ function Navbar(): JSX.Element {
     </>
   );
 }
-
-export default Navbar;
