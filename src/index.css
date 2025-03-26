@@ -17,9 +17,11 @@
 :root[data-theme="light"] {
   --text: #1d070d;
   --background: #fbeff2;
+  --page-background: #e2d9db;
   --primary: #e60024;
-  --secondary: #c40000;
+  --secondary: #9c0404;
   --accent: #cccccc;
+  --inverse-primary: #fbeff2;
 }
 
 :root[data-theme="dark"] {
@@ -28,12 +30,23 @@
   --primary: #fe0322;
   --secondary: #960008;
   --accent: #c0bbb9;
+  --inverse-primary: #fbeff2;
+}
+
+:root {
+  display: flex;
+  justify-content: center;
+  background: var(--background);
 }
 
 body {
   /* Default Fonts */
   font-family: "Inter";
   font-weight: 400;
+
+  background: var(--page-background);
+
+  max-width: 1100px;
 }
 
 /* Fonts Configuration */
