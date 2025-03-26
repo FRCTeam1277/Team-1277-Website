@@ -62,13 +62,23 @@ function Navbar(): JSX.Element {
             <Link to="/" className={isActive("/") ? "active" : ""}>
               Home
             </Link>
+          </li>
+          <li>
             <Link to="/2025-Dive" className={isActive("/2025-Dive") ? "active" : ""}>
-              2025 - Dive
+              2025: Dive
             </Link>
-            {/* TODO Make dropdown menus, also make them dropdown menus in sidebar */}
+          </li>
+          {/* TODO Make dropdown menus, also make them dropdown menus in sidebar */}
+          <li>
             <Link to="/">Past Seasons</Link>
+          </li>
+          <li>
             <Link to="/">Members</Link>
+          </li>
+          <li>
             <Link to="/">Shop</Link>
+          </li>
+          <li>
             <Link to="/About" className={isActive("/About") ? "active" : ""}>
               About
             </Link>

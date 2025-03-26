@@ -17,9 +17,9 @@
 :root[data-theme="light"] {
   --text: #1d070d;
   --background: #fbeff2;
-  --primary: #bc0b23;
-  --secondary: #960008;
-  --accent: #d78e6a;
+  --primary: #e60024;
+  --secondary: #c40000;
+  --accent: #cccccc;
 }
 
 :root[data-theme="dark"] {
@@ -27,7 +27,7 @@
   --background: #100407;
   --primary: #fe0322;
   --secondary: #960008;
-  --accent: #954c28;
+  --accent: #c0bbb9;
 }
 
 body {
