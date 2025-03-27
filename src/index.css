@@ -27,6 +27,7 @@
 :root[data-theme="dark"] {
   --text: #f8e2e8;
   --background: #100407;
+  --page-background: #161213;
   --primary: #fe0322;
   --secondary: #960008;
   --accent: #c0bbb9;

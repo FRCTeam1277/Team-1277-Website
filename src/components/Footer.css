@@ -36,3 +36,27 @@ footer p {
   background-color: var(--primary);
   border-radius: 50px;
 }
+
+.footer__theme-toggle {
+  margin-top: 2rem;
+  background-color: var(--secondary);
+  color: var(--inverse-primary);
+  padding: 0.5rem 0.5rem;
+  border-radius: 50px;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.footer__theme-toggle button {
+  background-color: var(--secondary);
+  color: var(--inverse-primary);
+  padding: 0.5rem 0.5rem;
+  border-radius: 50px;
+  display: flex;
+  gap: 0.5rem;
+  transition: all 0.15s ease;
+}
+
+.footer__theme-toggle button:hover {
+  filter: brightness(0.8);
+}
