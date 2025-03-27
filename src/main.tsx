@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route, useLocation, useNavigate } from "react-ro
 
 import "./index.css";
 import HomePage from "./pages/HomePage";
+import SupportPage from "./pages/SupportPage";
 
 /**
  * A React component that automatically scrolls the window to the top
@@ -43,6 +44,7 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/support" element={<SupportPage />} />
       </Routes>
     </>
   );

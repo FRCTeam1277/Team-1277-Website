@@ -80,6 +80,9 @@ export default function Navbar(): JSX.Element {
             <Link to="/">Shop</Link>
           </li>
           <li>
+            <Link to="/support">Support</Link>
+          </li>
+          <li>
             <Link to="/About" className={isActive("/About") ? "active" : ""}>
               About
             </Link>
