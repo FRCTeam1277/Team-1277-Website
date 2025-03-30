@@ -112,8 +112,37 @@
   font-size: 24px;
 }
 
+.navbar__sidebar-links {
+  width: 100%;
+}
+
 .navbar__sidebar-links li {
   margin: 10px 0;
+  background-color: var(--sidebar-background);
+  opacity: 0.9;
+  width: 100%;
+  padding: 15px;
+  border-radius: 20px;
+}
+
+.navbar__sidebar-links li a.active {
+  font-weight: 800;
+  opacity: 1;
+  border-bottom: 1px solid var(--primary);
+}
+
+.navbar__sidebar header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.navbar__sidebar header h2 {
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--primary);
 }
 
 /* Layout */

@@ -108,13 +108,33 @@ export default function Navbar(): JSX.Element {
 
       {/* Sidebar opened when navbar is collapsed */}
       <div className={`navbar__sidebar ${sidebarOpen ? "open" : ""}`}>
-        {/* The [x] button to close the sidebar */}
-        <img src="/icons/closeIcon.png" alt="x" className="navbar__close-button" onClick={toggleSidebar} />
-        <p className="navbar__sidebar-title">Menu</p>
+        <header>
+          <h2 className="navbar__sidebar-title">Menu</h2>
+          <img src="/icons/closeIcon.png" alt="X" className="navbar__close-button" onClick={toggleSidebar} />
+        </header>
         <ul className="navbar__sidebar-links">
           <li>
             <Link to="/" className={isActive("/") ? "active" : ""}>
               Home
+            </Link>
+          </li>
+          <li>
+            <Link to="/2025-Dive" className={isActive("/2025-Dive") ? "active" : ""}>
+              2025: Dive
+            </Link>
+          </li>
+          <li>
+            <Link to="/">Past Seasons</Link>
+          </li>
+          <li>
+            <Link to="/">Members</Link>
+          </li>
+          <li>
+            <Link to="/">Shop</Link>
+          </li>
+          <li>
+            <Link to="/support" className={isActive("/support") ? "active" : ""}>
+              Support
             </Link>
           </li>
         </ul>

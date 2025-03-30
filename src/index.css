@@ -8,7 +8,7 @@
   box-sizing: border-box;
   border: none;
   outline: none;
-  font-family: "Rubik", sans-serif;
+  font-family: "Inter", sans-serif;
   text-decoration: none;
   list-style: none;
   max-width: 100%; /* Prevent child elements from exceeding parent width */
@@ -19,9 +19,11 @@
   --text: #1d070d;
   --background: #fbeff2;
   --page-background: #e2d9db;
+  --shadow-light: #f3eaec;
+  --shadow-dark: #cec7c8;
   --primary: #e60024;
   --secondary: #9c0404;
-  --accent: #cccccc;
+  --accent: #da503e;
   --inverse-primary: #fbeff2;
   --navbar-background: rgba(226, 217, 219, 0.65); /* Light mode navbar */
   --sidebar-background: rgba(226, 217, 219, 0.65); /* Light mode sidebar */
@@ -29,14 +31,16 @@
 
 :root[data-theme="dark"] {
   --text: #dde2e9;
-  --page-background: #0c1019;
   --background: #101721;
-  --primary: #c31220;
+  --page-background: #0c1019;
+  --shadow-light: #192030;
+  --shadow-dark: #080b13;
+  --primary: #e60024;
   --secondary: #881c2c;
-  --accent: #dc2108;
+  --accent: #da3e3e;
   --inverse-primary: #fbeff2;
-  --navbar-background: rgba(0, 0, 0, 0.65); /* Dark mode navbar */
-  --sidebar-background: rgba(0, 0, 0, 0.65); /* Dark mode sidebar */
+  --navbar-background: rgba(0, 0, 0, 0.55); /* Dark mode navbar */
+  --sidebar-background: rgba(0, 0, 0, 0.55); /* Dark mode sidebar */
 }
 
 :root {
@@ -90,4 +94,10 @@ h5 {
 }
 small {
   font-size: 7.2pt;
+}
+
+.neuromorphic {
+  box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+  border-radius: 10px;
+  background: var(--background);
 }
