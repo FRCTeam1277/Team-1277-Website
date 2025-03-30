@@ -48,7 +48,7 @@ export default function Navbar(): JSX.Element {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      setIsScrollingDown(currentScrollY > lastScrollY);
+      setIsScrollingDown(currentScrollY > 0);
       lastScrollY = currentScrollY;
     };
 
@@ -65,51 +65,49 @@ export default function Navbar(): JSX.Element {
 
   return (
     <>
-      <div className={"navbar-container"}>
-        <nav className={`navbar ${isScrollingDown ? "scrolled" : ""}`}>
-          {/* Left-aligned Logo Image */}
-          <div className="navbar__logo">
-            <Link to="/">
-              <img src="/RobotomiesLogo.png" alt="Logo" />
+      <nav className={`navbar ${isScrollingDown ? "scrolled" : ""}`}>
+        {/* Left-aligned Logo Image */}
+        <div className="navbar__logo">
+          <Link to="/">
+            <img src="/RobotomiesLogo.png" alt="Logo" />
+          </Link>
+        </div>
+        {/* Navigation Links */}
+        <ul className="navbar__links">
+          <li>
+            <Link to="/" className={isActive("/") ? "active" : ""}>
+              Home
             </Link>
-          </div>
-          {/* Navigation Links */}
-          <ul className="navbar__links">
-            <li>
-              <Link to="/" className={isActive("/") ? "active" : ""}>
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/2025-Dive" className={isActive("/2025-Dive") ? "active" : ""}>
-                2025: Dive
-              </Link>
-            </li>
-            {/* TODO Make dropdown menus, also make them dropdown menus in sidebar */}
-            <li>
-              <Link to="/">Past Seasons</Link>
-            </li>
-            <li>
-              <Link to="/">Members</Link>
-            </li>
-            <li>
-              <Link to="/">Shop</Link>
-            </li>
-            <li>
-              <Link to="/support">Support</Link>
-            </li>
-            <li>
-              <Link to="/About" className={isActive("/About") ? "active" : ""}>
-                About
-              </Link>
-            </li>
-          </ul>
-          {/* Hamburger Icon for Mobile */}
-          <div className="navbar__hamburger" onClick={toggleSidebar}>
-            <img src="/icons/MenuIcon.png" alt="Menu" />
-          </div>
-        </nav>
-      </div>
+          </li>
+          <li>
+            <Link to="/2025-Dive" className={isActive("/2025-Dive") ? "active" : ""}>
+              2025: Dive
+            </Link>
+          </li>
+          {/* TODO Make dropdown menus, also make them dropdown menus in sidebar */}
+          <li>
+            <Link to="/">Past Seasons</Link>
+          </li>
+          <li>
+            <Link to="/">Members</Link>
+          </li>
+          <li>
+            <Link to="/">Shop</Link>
+          </li>
+          <li>
+            <Link to="/support">Support</Link>
+          </li>
+          <li>
+            <Link to="/About" className={isActive("/About") ? "active" : ""}>
+              About
+            </Link>
+          </li>
+        </ul>
+        {/* Hamburger Icon for Mobile */}
+        <div className="navbar__hamburger" onClick={toggleSidebar}>
+          <img src="/icons/MenuIcon.png" alt="Menu" />
+        </div>
+      </nav>
 
       {/* Sidebar opened when navbar is collapsed */}
       <div className={`navbar__sidebar ${sidebarOpen ? "open" : ""}`}>

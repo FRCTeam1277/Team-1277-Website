@@ -48,6 +48,7 @@ body {
   background: var(--page-background);
 
   max-width: 1100px;
+  padding-top: 8rem;
 }
 
 /* Fonts Configuration */
