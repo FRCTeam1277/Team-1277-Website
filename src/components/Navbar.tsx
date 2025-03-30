@@ -13,6 +13,7 @@ import "./Navbar.css";
  * - Highlights the active link based on the current URL.
  * - Toggles a sidebar menu for mobile devices with a hamburger icon.
  * - Dynamically adjusts to mobile or desktop view based on window width.
+ * - Adds a `scrolled` class to the navbar when scrolling down.
  *
  * @returns {JSX.Element} The rendered `Navbar` component.
  */
@@ -20,6 +21,8 @@ export default function Navbar(): JSX.Element {
   // State to manage sidebar open/close
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 770);
+  const [isScrollingDown, setIsScrollingDown] = useState(false);
+  let lastScrollY = window.scrollY;
 
   // Function to check if a link is active
   const isActive = (path: string) => {
@@ -41,59 +44,72 @@ export default function Navbar(): JSX.Element {
     };
   }, [isMobile]);
 
+  // Event listener to detect scroll direction
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setIsScrollingDown(currentScrollY > lastScrollY);
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   // Function to toggle sidebar
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
-    console.log("Sidebar state:", !sidebarOpen); // Debugging log
   };
 
   return (
     <>
-      <nav className={"navbar"}>
-        {/* Left-aligned Logo Image */}
-        <div className="navbar__logo">
-          <Link to="/">
-            <img src="/RobotomiesLogo.png" alt="Logo" />
-          </Link>
-        </div>
-
-        {/* Navigation Links */}
-        <ul className="navbar__links">
-          <li>
-            <Link to="/" className={isActive("/") ? "active" : ""}>
-              Home
+      <div className={"navbar-container"}>
+        <nav className={`navbar ${isScrollingDown ? "scrolled" : ""}`}>
+          {/* Left-aligned Logo Image */}
+          <div className="navbar__logo">
+            <Link to="/">
+              <img src="/RobotomiesLogo.png" alt="Logo" />
             </Link>
-          </li>
-          <li>
-            <Link to="/2025-Dive" className={isActive("/2025-Dive") ? "active" : ""}>
-              2025: Dive
-            </Link>
-          </li>
-          {/* TODO Make dropdown menus, also make them dropdown menus in sidebar */}
-          <li>
-            <Link to="/">Past Seasons</Link>
-          </li>
-          <li>
-            <Link to="/">Members</Link>
-          </li>
-          <li>
-            <Link to="/">Shop</Link>
-          </li>
-          <li>
-            <Link to="/support">Support</Link>
-          </li>
-          <li>
-            <Link to="/About" className={isActive("/About") ? "active" : ""}>
-              About
-            </Link>
-          </li>
-        </ul>
-
-        {/* Hamburger Icon for Mobile */}
-        <div className="navbar__hamburger" onClick={toggleSidebar}>
-          <img src="/icons/MenuIcon.png" alt="Menu" />
-        </div>
-      </nav>
+          </div>
+          {/* Navigation Links */}
+          <ul className="navbar__links">
+            <li>
+              <Link to="/" className={isActive("/") ? "active" : ""}>
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/2025-Dive" className={isActive("/2025-Dive") ? "active" : ""}>
+                2025: Dive
+              </Link>
+            </li>
+            {/* TODO Make dropdown menus, also make them dropdown menus in sidebar */}
+            <li>
+              <Link to="/">Past Seasons</Link>
+            </li>
+            <li>
+              <Link to="/">Members</Link>
+            </li>
+            <li>
+              <Link to="/">Shop</Link>
+            </li>
+            <li>
+              <Link to="/support">Support</Link>
+            </li>
+            <li>
+              <Link to="/About" className={isActive("/About") ? "active" : ""}>
+                About
+              </Link>
+            </li>
+          </ul>
+          {/* Hamburger Icon for Mobile */}
+          <div className="navbar__hamburger" onClick={toggleSidebar}>
+            <img src="/icons/MenuIcon.png" alt="Menu" />
+          </div>
+        </nav>
+      </div>
 
       {/* Sidebar opened when navbar is collapsed */}
       <div className={`navbar__sidebar ${sidebarOpen ? "open" : ""}`}>

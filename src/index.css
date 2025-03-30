@@ -1,5 +1,5 @@
 /* Import Fonts from Google Fonts */
-@import url("https://fonts.googleapis.com/css?family=Inter:700|Inter:400");
+@import url("https://fonts.googleapis.com/css?family=Inter:400|Rubik:400,500,700,900");
 
 /* Reset Default CSS Properties */
 * {
@@ -8,7 +8,7 @@
   box-sizing: border-box;
   border: none;
   outline: none;
-  font-family: "Helvetica", sans-serif;
+  font-family: "Rubik", sans-serif;
   text-decoration: none;
   list-style: none;
 }
@@ -25,12 +25,12 @@
 }
 
 :root[data-theme="dark"] {
-  --text: #f8e2e8;
-  --background: #100407;
-  --page-background: #161213;
-  --primary: #fe0322;
-  --secondary: #960008;
-  --accent: #c0bbb9;
+  --text: #dde2e9;
+  --page-background: #0c1019;
+  --background: #101721;
+  --primary: #ee0216;
+  --secondary: #881c2c;
+  --accent: #dc2108;
   --inverse-primary: #fbeff2;
 }
 
@@ -56,7 +56,7 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: "Inter";
+  font-family: "Rubik";
   font-weight: 700;
 }
 html {

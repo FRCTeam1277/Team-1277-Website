@@ -1,9 +1,7 @@
 .banner__image {
   margin-top: 1rem;
-  margin-bottom: -5rem;
   width: 100%;
   height: auto;
-  clip-path: ellipse(95% 90% at center top);
 }
 
 @media (max-width: 900px) {
