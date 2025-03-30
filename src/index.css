@@ -22,6 +22,8 @@
   --secondary: #9c0404;
   --accent: #cccccc;
   --inverse-primary: #fbeff2;
+  --navbar-background: rgba(226, 217, 219, 0.65); /* Light mode navbar */
+  --sidebar-background: rgba(226, 217, 219, 0.65); /* Light mode sidebar */
 }
 
 :root[data-theme="dark"] {
@@ -32,6 +34,8 @@
   --secondary: #881c2c;
   --accent: #dc2108;
   --inverse-primary: #fbeff2;
+  --navbar-background: rgba(0, 0, 0, 0.65); /* Dark mode navbar */
+  --sidebar-background: rgba(20, 20, 20, 0.65); /* Dark mode sidebar */
 }
 
 :root {
