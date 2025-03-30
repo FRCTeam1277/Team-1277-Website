@@ -1,3 +1,5 @@
+![Website Banner](./public/pictures/CenterBanner.png)
+
 # The Robotomies Website
 
 Website for [FRC Team 1277](https://github.com/FRCTeam1277), from [Groton-Dunstable Regional High School](https://www.gdrsd.org/o/gdrhs).

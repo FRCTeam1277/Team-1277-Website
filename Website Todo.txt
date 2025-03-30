@@ -1,0 +1,9 @@
+DropDown menus in navbar and sidebar for more links.
+
+Add all website pages.
+
+Add GoFundMe Link.
+
+Add social media links: Instagram, Facebook, Github
+
+Add images and content.
