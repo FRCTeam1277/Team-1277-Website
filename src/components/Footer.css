@@ -1,5 +1,6 @@
 footer {
   background-color: var(--primary);
+  margin-top: 5rem;
   min-height: 10rem;
   padding: 2rem;
   display: flex;

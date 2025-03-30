@@ -2,6 +2,8 @@ import BannerImage from "../components/BannerImage";
 import ContentSection from "../components/ContentSection";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import PhotoGrid from "../components/PhotoGrid";
+import SponsorGrid from "../components/SponsorGrid";
 
 export default function HomePage() {
   return (
@@ -25,6 +27,8 @@ export default function HomePage() {
               We are a non-profit, student-led organization that relies on funding from companies like you to bring
               valuable robotics experience to our team and help build the next generation of engineers.
             </p>
+            <img src="/pictures/2025_WPI-Team-Picture.jpg" alt="" />
+            <figcaption>Team picture taken after the 2025 WPI Competition.</figcaption>
           </>
         }
       />
@@ -58,27 +62,39 @@ export default function HomePage() {
         title={"Volunteer"}
         subtitle={"Mentor, Coach, Inspire"}
         content={
-          <ul>
-            <li>
-              <h3>Bring Your Knowledge to the Team</h3>
-              <p>
-                We are always in search of adult mentors that have a passion for robotics with or without technical
-                backgrounds
-              </p>
-            </li>
-            <li>
-              <h3>Empower Young Leaders</h3>
-              <p>Your skill and input will inspire and shape future engineers</p>
-            </li>
-            <li>
-              <h3>Community Outreach</h3>
-              <p>
-                Your financial support enables students to have access to technology and gives them the opportunity to
-                participate in competitions where they can showcase their hard work.
-              </p>
-            </li>
-          </ul>
+          <>
+            <ul>
+              <li>
+                <h3>Bring Your Knowledge to the Team</h3>
+                <p>
+                  We are always in search of adult mentors that have a passion for robotics with or without technical
+                  backgrounds
+                </p>
+              </li>
+              <li>
+                <h3>Empower Young Leaders</h3>
+                <p>Your skill and input will inspire and shape future engineers</p>
+              </li>
+              <li>
+                <h3>Community Outreach</h3>
+                <p>
+                  Your financial support enables students to have access to technology and gives them the opportunity to
+                  participate in competitions where they can showcase their hard work.
+                </p>
+              </li>
+            </ul>
+          </>
         }
+      />
+      <PhotoGrid imagePaths={["/pictures/2025_Mentors-Group-Picture.jpg", "/pictures/2023_WPI-Team-Picture.jpg"]} />
+      <SponsorGrid
+        imagePaths={[
+          "/sponsors/BAE_Logo.webp",
+          "/sponsors/GDEF_Logo.webp",
+          "/sponsors/HPE_Logo.webp",
+          "/sponsors/national-carpet-flooring-logo.webp",
+          "/sponsors/RTX_Raytheon_Technologies_logo.webp",
+        ]}
       />
       <Footer />
     </div>

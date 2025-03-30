@@ -1,0 +1,45 @@
+.photo-grid,
+.sponsor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  justify-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 0 4rem;
+  margin-bottom: 3rem;
+}
+
+.photo-grid img,
+.sponsor-grid img {
+  margin: 0;
+  margin-top: 0.5rem;
+  margin-bottom: 0.35rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  background: red;
+}
+
+.sponsor-grid {
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+}
+
+.sponsor-grid img {
+  box-shadow: none;
+  background-color: transparent;
+}
+
+@media (max-width: 950px) {
+  .photo-grid,
+  .sponsor-grid {
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .photo-grid,
+  .sponsor-grid {
+    grid-template-columns: 1fr;
+  }
+}
