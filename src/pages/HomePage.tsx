@@ -7,7 +7,7 @@ export default function HomePage() {
   return (
     <div>
       <Navbar />
-      <BannerImage imagePath={"/pictures/ModernBanner.png"} />
+      <BannerImage imagePath={"/pictures/ModernBanner-2.png"} />
       <ContentSection
         title={"Robotomies"}
         subtitle={"Celebrating 20 years of competition!"}
