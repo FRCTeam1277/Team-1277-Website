@@ -54,15 +54,19 @@
   position: fixed;
   top: 0;
   right: -100%; /* Sidebar hidden by default */
-  width: 250px;
+  width: 300px;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
   z-index: 1001; /* Ensure sidebar is above other elements */
-  background-color: var(--primary);
+
+  background-color: rgba(0, 0, 0, 0.65);
+  box-shadow: -3px 0px 18px 4px rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
   color: var(--text);
+
   transition: right 0.3s ease; /* Smooth slide-in effect for sidebar */
 }
 
@@ -74,23 +78,25 @@
 .navbar__sidebar-links li a {
   text-transform: uppercase;
   font-family: "Rubik", Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: 800;
-  font-style: italic;
+  font-weight: 500;
   font-size: 18px;
   margin: 0 10px;
   padding-bottom: 3px;
   text-decoration: none;
   color: var(--text);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  opacity: 0.8;
+  transition: all 0.15s ease;
 }
 
 .navbar__links li a:hover,
 .navbar__sidebar-links li a:hover {
-  color: var(--primary);
+  opacity: 1;
 }
 
 .navbar__links li a.active {
-  color: var(--primary);
+  opacity: 1;
+  font-weight: 800;
+  font-style: italic;
   border-bottom: 7px solid var(--primary);
 }
 
@@ -111,7 +117,7 @@
 }
 
 /* Layout */
-@media (max-width: 900px) {
+@media (max-width: 950px) {
   .navbar__links {
     display: none;
   }

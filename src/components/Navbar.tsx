@@ -99,11 +99,6 @@ export default function Navbar(): JSX.Element {
               Support
             </Link>
           </li>
-          <li>
-            <Link to="/About" className={isActive("/About") ? "active" : ""}>
-              About
-            </Link>
-          </li>
         </ul>
         {/* Hamburger Icon for Mobile */}
         <div className="navbar__hamburger" onClick={toggleSidebar}>
