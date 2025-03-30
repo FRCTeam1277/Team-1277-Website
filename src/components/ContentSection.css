@@ -4,12 +4,31 @@
   align-items: center;
 
   padding: 4rem;
+  max-width: 100%; /* Ensure the section doesn't overflow */
+  overflow-wrap: break-word; /* Wrap long text */
+}
+
+.content-section h2 {
+  font-size: 16pt;
+  font-weight: 400;
+  color: var(--text);
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.content-section p {
+  margin-bottom: 2rem;
+  line-height: 1.5;
+  font-size: 13pt;
+  color: var(--text);
+  width: 100%; /* Allow paragraphs to scale */
+  max-width: 70%; /* Limit maximum width */
 }
 
 .content-section_header {
   margin-bottom: 2rem;
   text-align: center;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
   border-bottom: 1px solid var(--accent);
 }
 
@@ -21,25 +40,8 @@
 
 .content-section_header h2 {
   font-size: 18pt;
-  font-weight: 400;
   font-style: italic;
-  color: var(--text);
-}
-
-.content-section p {
-  margin-bottom: 2rem;
-  line-height: 1.5;
-  font-size: 13pt;
-  color: var(--text);
-  width: 70%;
-}
-
-.content-section h2 {
-  font-size: 16pt;
-  font-weight: 700;
-  color: var(--text);
-  text-align: left;
-  margin-bottom: 1rem;
+  text-align: center;
 }
 
 .content-section img {
@@ -56,13 +58,9 @@
   margin-bottom: 1.75rem;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 950px) {
   .content-section {
     padding: 4rem 2rem;
-  }
-
-  .content-section_header {
-    margin-top: 2rem;
   }
 
   .content-section p {
@@ -71,5 +69,24 @@
     font-size: 1.125rem;
     color: var(--text);
     width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .content-section {
+    padding: 2rem; /* Reduce padding */
+  }
+
+  .content-section p {
+    font-size: 12pt; /* Adjust font size */
+    max-width: 100%; /* Allow full width */
+  }
+
+  .content-section_header h1 {
+    font-size: 20pt; /* Reduce header size */
+  }
+
+  .content-section_header h2 {
+    font-size: 14pt; /* Reduce subtitle size */
   }
 }

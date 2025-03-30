@@ -11,6 +11,7 @@
   font-family: "Rubik", sans-serif;
   text-decoration: none;
   list-style: none;
+  max-width: 100%; /* Prevent child elements from exceeding parent width */
 }
 
 /* Define Theme Colors */
@@ -35,13 +36,18 @@
   --accent: #dc2108;
   --inverse-primary: #fbeff2;
   --navbar-background: rgba(0, 0, 0, 0.65); /* Dark mode navbar */
-  --sidebar-background: rgba(20, 20, 20, 0.65); /* Dark mode sidebar */
+  --sidebar-background: rgba(0, 0, 0, 0.65); /* Dark mode sidebar */
 }
 
 :root {
   display: flex;
   justify-content: center;
   background: var(--background);
+}
+
+html,
+body {
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 body {
