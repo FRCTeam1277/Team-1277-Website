@@ -46,7 +46,9 @@
 :root {
   display: flex;
   justify-content: center;
-  background: var(--background);
+
+  /* background: var(--background); */
+  background: linear-gradient(45deg, var(--secondary), var(--background));
 }
 
 html,

@@ -22,7 +22,6 @@ export default function Navbar(): JSX.Element {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 770);
   const [isScrollingDown, setIsScrollingDown] = useState(false);
-  let lastScrollY = window.scrollY;
 
   // Function to check if a link is active
   const isActive = (path: string) => {
@@ -49,7 +48,6 @@ export default function Navbar(): JSX.Element {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       setIsScrollingDown(currentScrollY > 0);
-      lastScrollY = currentScrollY;
     };
 
     window.addEventListener("scroll", handleScroll);
