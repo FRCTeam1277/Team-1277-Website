@@ -20,7 +20,7 @@ footer p {
   background-color: var(--secondary);
   color: var(--inverse-primary);
   padding: 0.5rem 0.5rem;
-  border-radius: 50px;
+  border-radius: 10px;
   display: flex;
   gap: 0.5rem;
 }
@@ -35,7 +35,7 @@ footer p {
 
 .footer__socials a:hover {
   background-color: var(--primary);
-  border-radius: 50px;
+  border-radius: 5px;
 }
 
 .footer__theme-toggle {
@@ -43,7 +43,7 @@ footer p {
   background-color: var(--secondary);
   color: var(--inverse-primary);
   padding: 0.5rem 0.5rem;
-  border-radius: 50px;
+  border-radius: 10px;
   display: flex;
   gap: 0.5rem;
 }
@@ -52,7 +52,7 @@ footer p {
   background-color: var(--secondary);
   color: var(--inverse-primary);
   padding: 0.5rem 0.5rem;
-  border-radius: 50px;
+  border-radius: 5px;
   display: flex;
   gap: 0.5rem;
   transition: all 0.15s ease;

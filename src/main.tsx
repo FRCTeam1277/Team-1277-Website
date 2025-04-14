@@ -1,10 +1,9 @@
-import { StrictMode } from "react";
+import { StrictMode, useEffect } from "react";
 import { createRoot } from "react-dom/client";
-import { useEffect } from "react";
-import { BrowserRouter, Routes, Route, useLocation, useNavigate } from "react-router-dom";
-
+import { BrowserRouter, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import "./index.css";
 import HomePage from "./pages/HomePage";
+import NotFoundPage from "./pages/NotFoundPage";
 import SupportPage from "./pages/SupportPage";
 
 /**
@@ -34,7 +33,12 @@ function App() {
 
   useEffect(() => {
     if (redirectedPath) {
-      navigate(redirectedPath, { replace: true });
+      // Only navigate if it's a valid path (starts with /)
+      if (redirectedPath.startsWith("/")) {
+        navigate(redirectedPath, { replace: true });
+      } else {
+        console.warn("Invalid redirect path:", redirectedPath);
+      }
     }
   }, [redirectedPath, navigate]);
 
@@ -45,6 +49,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/support" element={<SupportPage />} />
+        {/* Add a catch-all route for 404 errors */}
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
   );
