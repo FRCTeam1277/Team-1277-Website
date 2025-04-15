@@ -8,9 +8,9 @@
   max-width: 100%; /* Ensure the section doesn't overflow */
   overflow-wrap: break-word; /* Wrap long text */
 
-  box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+  box-shadow: 5px 5px 10px var(--page-shadow-dark), -5px -5px 10px var(--page-shadow-light);
   border-radius: 10px;
-  background: var(--background);
+  background: var(--page-background);
   border-radius: 12px;
   margin: 40px;
   padding-bottom: 20px;

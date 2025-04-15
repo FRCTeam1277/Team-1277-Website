@@ -18,9 +18,11 @@
 :root[data-theme="light"] {
   --text: #1d070d;
   --background: #fbeff2;
-  --page-background: #e2d9db;
   --shadow-light: #f3eaec;
   --shadow-dark: #cec7c8;
+  --page-background: #e2d9db;
+  --page-shadow-light: #f3eaec;
+  --page-shadow-dark: #cec7c8;
   --primary: #e60024;
   --secondary: #881c2c;
   --accent: #da3e3e;
@@ -32,9 +34,11 @@
 :root[data-theme="dark"] {
   --text: #dde2e9;
   --background: #101721;
-  --page-background: #0c1019;
   --shadow-light: #171c2a;
   --shadow-dark: #0d121e;
+  --page-background: #0c1019;
+  --page-shadow-light: #101521;
+  --page-shadow-dark: #080b12;
   --primary: #e60024;
   --secondary: #881c2c;
   --accent: #da3e3e;
@@ -47,7 +51,7 @@
   display: flex;
   justify-content: center;
 
-  background: var(--page-background);
+  background: var(--background);
   /* background: linear-gradient(45deg, var(--secondary), var(--background)); */
 }
 
@@ -61,7 +65,7 @@ body {
   font-family: "Inter";
   font-weight: 400;
 
-  background: var(--background);
+  background: var(--page-background);
 
   max-width: 1100px;
   padding-top: 100px;
