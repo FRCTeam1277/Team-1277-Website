@@ -7,6 +7,13 @@
   padding-bottom: 0;
   max-width: 100%; /* Ensure the section doesn't overflow */
   overflow-wrap: break-word; /* Wrap long text */
+
+  box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+  border-radius: 10px;
+  background: var(--background);
+  border-radius: 12px;
+  margin: 40px;
+  padding-bottom: 20px;
 }
 
 .content-section h2 {
@@ -122,6 +129,7 @@
 @media (max-width: 600px) {
   .content-section {
     padding: 2rem; /* Reduce padding */
+    margin: 10px;
   }
 
   .content-section img {
