@@ -23,6 +23,7 @@ footer p {
   border-radius: 10px;
   display: flex;
   gap: 0.5rem;
+  max-height: 50px;
 }
 
 .footer__socials a {
@@ -31,6 +32,30 @@ footer p {
   font-size: 12pt;
   padding: 0.5rem;
   transition: all 0.15s ease;
+}
+
+.footer__socials a span {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+  height: 100%;
+}
+
+.footer__socials a span img {
+  width: 20px;
+  height: 20px;
+  filter: invert(1);
+  margin: 0;
+  display: block;
+}
+
+.footer__socials a span .social-text {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+  line-height: 20px;
 }
 
 .footer__socials a:hover {
@@ -54,8 +79,16 @@ footer p {
   padding: 0.5rem 0.5rem;
   border-radius: 5px;
   display: flex;
+  align-items: center;
   gap: 0.5rem;
   transition: all 0.15s ease;
+}
+
+.footer__theme-toggle button .theme-icon {
+  width: 20px;
+  height: 20px;
+  filter: invert(1);
+  display: block;
 }
 
 .footer__theme-toggle button:hover {

@@ -19,17 +19,33 @@ export default function Footer(): JSX.Element {
       </div>
       <div className="footer__socials">
         <a href="https://www.instagram.com/robotomies/" target="_blank" rel="noopener noreferrer">
-          Instagram
+          <span>
+            <img src="socials/instagram.png" alt="Instagram icon" />
+            <span className="social-text">Instagram</span>
+          </span>
         </a>
         <a href="https://www.facebook.com/robotomies/" target="_blank" rel="noopener noreferrer">
-          Facebook
+          <span>
+            <img src="socials/facebook.png" alt="Facebook icon" />
+            <span className="social-text">Facebook</span>
+          </span>
         </a>
         <a href="https://github.com/FRCTeam1277/" target="_blank" rel="noopener noreferrer">
-          Github
+          <span>
+            <img src="socials/github.png" alt="Github icon" />
+            <span className="social-text">Github</span>
+          </span>
         </a>
       </div>
       <div className="footer__theme-toggle">
-        <button onClick={toggleTheme}>{theme === "light" ? "Dark Mode" : "Light Mode"}</button>
+        <button onClick={toggleTheme}>
+          <img
+            src={theme === "light" ? "icons/dark-mode.png" : "icons/light-mode.png"}
+            alt={theme === "light" ? "Dark mode icon" : "Light mode icon"}
+            className="theme-icon"
+          />
+          <span>{theme === "light" ? "Dark Mode" : "Light Mode"}</span>
+        </button>
       </div>
     </footer>
   );
