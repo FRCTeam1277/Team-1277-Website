@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 
 export default function HomePage() {
   return (
-    <div>
+    <div className="page-container">
       <Navbar />
       <BannerImage
         imagePath={"https://www.robotomies.com/wp-content/uploads/2025/03/cropped-robot_2025-cinematic.png"}

@@ -7,7 +7,7 @@ import SponsorGrid from "../components/SponsorGrid";
 
 export default function HomePage() {
   return (
-    <div>
+    <div className="page-container">
       <Navbar />
       <BannerImage imagePath={"/pictures/CenterBanner.png"} />
       <ContentSection
