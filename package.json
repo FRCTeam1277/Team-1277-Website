@@ -2,7 +2,7 @@
   "name": "robotomieswebsite",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://FRCTeam1277.github.io/",
+  "homepage": "https://FRCTeam1277.github.io/Team-1277-Website",
   "type": "module",
   "scripts": {
     "dev": "vite",
