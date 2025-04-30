@@ -1,3 +1,4 @@
+import React from "react";
 import "./DecoratedList.css";
 
 interface ListItem {
@@ -21,7 +22,7 @@ interface DecoratedListProps {
 
 export default function DecoratedList({ items }: DecoratedListProps) {
   return (
-    <ul className="decorated-list">
+    <ul className="decorated-list decorated-list-component">
       {items.map((item, index) => (
         <li key={index}>
           <h3>{item.title}</h3>

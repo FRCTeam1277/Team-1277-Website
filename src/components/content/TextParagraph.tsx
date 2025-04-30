@@ -74,6 +74,7 @@ export default function TextParagraph({
 
   // Build class names based on props
   const classNames = [
+    "text-paragraph",
     primary ? "primary" : "",
     bold ? "bold" : "",
     centered ? "centered" : "",

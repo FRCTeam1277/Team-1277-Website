@@ -1,6 +1,9 @@
 /* TextParagraph component styles */
+/* Only target paragraphs within content sections or explicitly as component */
 .content-section p,
-em {
+.content-section em,
+.text-paragraph p,
+.text-paragraph em {
   margin-bottom: 2rem;
   line-height: 2;
   font-size: 13pt;
@@ -10,23 +13,31 @@ em {
 }
 
 .content-section p.primary,
-.content-section em.primary {
+.content-section em.primary,
+.text-paragraph p.primary,
+.text-paragraph em.primary {
   color: var(--primary);
   font-weight: 600;
 }
 
 .content-section p.bold,
-.content-section em.bold {
+.content-section em.bold,
+.text-paragraph p.bold,
+.text-paragraph em.bold {
   font-weight: bold;
 }
 
 .content-section p.centered,
-.content-section em.centered {
+.content-section em.centered,
+.text-paragraph p.centered,
+.text-paragraph em.centered {
   text-align: center;
 }
 
 .content-section em.emphasis,
-.content-section p.emphasis {
+.content-section p.emphasis,
+.text-paragraph em.emphasis,
+.text-paragraph p.emphasis {
   max-width: 50%;
   font-style: italic;
   font-family: "Rubik", sans-serif;
@@ -38,19 +49,25 @@ em {
 }
 
 .content-section p a,
-.content-section em a {
+.content-section em a,
+.text-paragraph p a,
+.text-paragraph em a {
   color: var(--primary);
   text-decoration: underline;
 }
 
 .content-section p a:hover,
-.content-section em a:hover {
+.content-section em a:hover,
+.text-paragraph p a:hover,
+.text-paragraph em a:hover {
   color: var(--accent);
 }
 
 @media (max-width: 950px) {
   .content-section p,
-  .content-section em {
+  .content-section em,
+  .text-paragraph p,
+  .text-paragraph em {
     margin-bottom: 2rem;
     font-size: 1.125rem;
     color: var(--text);
@@ -60,14 +77,18 @@ em {
 
 @media (max-width: 600px) {
   .content-section p,
-  .content-section em {
+  .content-section em,
+  .text-paragraph p,
+  .text-paragraph em {
     line-height: 1.75;
     font-size: 12pt;
     max-width: 100%;
   }
 
   .content-section em.emphasis,
-  .content-section p.emphasis {
+  .content-section p.emphasis,
+  .text-paragraph em.emphasis,
+  .text-paragraph p.emphasis {
     max-width: 80%;
     font-size: 14pt;
   }
