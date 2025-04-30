@@ -63,6 +63,11 @@
   color: var(--accent);
 }
 
+.content-section em,
+.text-paragraph em {
+  line-height: 1.2;
+}
+
 @media (max-width: 950px) {
   .content-section p,
   .content-section em,
