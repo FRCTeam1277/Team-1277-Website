@@ -6,10 +6,12 @@ This guide is designed to help you edit and maintain the Robotomies Team 1277 we
 
 1. [Understanding the Website Structure](#understanding-the-website-structure)
 2. [Working with Content Sections](#working-with-content-sections)
-3. [Adding and Modifying Pages](#adding-and-modifying-pages)
-4. [Adding Images](#adding-images)
-5. [Updating the Navigation Bar](#updating-the-navigation-bar)
-6. [Common Components Reference](#common-components-reference)
+3. [Using Text Components](#using-text-components)
+4. [Creating Lists](#creating-lists)
+5. [Adding Images](#adding-images)
+6. [Adding and Modifying Pages](#adding-and-modifying-pages)
+7. [Updating the Navigation Bar](#updating-the-navigation-bar)
+8. [Common Components Reference](#common-components-reference)
 
 ## Understanding the Website Structure
 
@@ -34,72 +36,137 @@ Most content on the website is created using the `ContentSection` component, whi
   subtitle={"Celebrating 20 years of competition!"}
   content={
     <>
-      <p>Team 1277: The Robotomies is the FIRST Robotics Competition (FRC) Team out of Groton, MA.</p>
+      <TextParagraph text="Team 1277: The Robotomies is the FIRST Robotics Competition (FRC) Team out of Groton, MA." />
 
-      <em>FIRST - For the Inspiration and Recognition of Science and Technology.</em>
+      <TextParagraph text="FIRST - For the Inspiration and Recognition of Science and Technology." emphasis={true} />
 
-      <img src="/pictures/2025/2025_WPI-Team-Picture.jpg" alt="Team at WPI" />
-      <figcaption>Team picture taken after the 2025 WPI Competition.</figcaption>
+      <SectionImage
+        imagePath="/pictures/2025/2025_WPI-Team-Picture.jpg"
+        caption="Team picture taken after the 2025 WPI Competition."
+      />
     </>
   }
 />
 ```
 
-### Creating Text Content
+## Using Text Components
 
-Text content can be created using standard HTML tags:
+### TextParagraph Component
 
-- `<h3>` - For smaller headings within a content section
-- `<p>` - For paragraphs
-- `<em>` - For emphasized text (highlighted, e.g. quotes)
-- `<b>` - For bold text
+The `TextParagraph` component is a powerful way to create formatted text with minimal effort. It supports styling options and can automatically convert markdown-style links into clickable links.
 
-### Creating Lists
-
-For creating bullet points or lists:
+#### Basic Usage:
 
 ```tsx
-<ul>
-  <li>
-    <h3>List Item Title</h3>
-    <p>Description text for the list item</p>
-  </li>
-  <li>
-    <h3>Another Item</h3>
-    <p>More description text</p>
-  </li>
-</ul>
+<TextParagraph text="This is a regular paragraph of text." />
 ```
 
-### Adding Links
-
-To create a link to another website or page:
+#### Styling Options:
 
 ```tsx
-<a href="https://example.com">Link text here</a>
+// Bold text
+<TextParagraph text="This text will be bold." bold={true} />
+
+// Primary color (team color)
+<TextParagraph text="This text will use the primary color." primary={true} />
+
+// Centered text
+<TextParagraph text="This text will be centered." centered={true} />
+
+// Emphasis (styled quote)
+<TextParagraph text="This is an emphasized quote." emphasis={true} />
+
+// Combinations are possible
+<TextParagraph text="Bold and centered text." bold={true} centered={true} />
 ```
 
-For internal links to other pages on the site:
+#### Adding Links in Text:
+
+The TextParagraph component can automatically convert markdown-style links into clickable links. Use square brackets for the link text and parentheses for the URL:
 
 ```tsx
-<a href="/support">Support Our Team</a>
+<TextParagraph text="Visit our [team website](https://www.robotomies.com) for more information." />
 ```
 
-### Adding Images
+This will render as: Visit our <a href="https://www.robotomies.com">team website</a> for more information.
 
-To add an image to a content section:
+Multiple links in the same paragraph also work:
 
 ```tsx
-<img src="/pictures/2025/image-name.jpg" alt="Description of image" />
-<figcaption>Caption text for the image</figcaption>
+<TextParagraph text="Check out [FIRST Robotics](https://www.firstinspires.org) or view our [team photos](https://photos.robotomies.com)." />
 ```
 
-### Adding Space Between Elements
+## Creating Lists
 
-To add vertical space between elements:
+### DecoratedList Component
+
+The `DecoratedList` component creates visually appealing lists with titles and descriptions for each item.
+
+#### Basic Usage:
 
 ```tsx
-<SizedBox height={40} />
+<DecoratedList
+  items={[
+    {
+      title: "Bring More Kids into STEM",
+      description: "By supporting the team, your company brings real world STEM experience to kids in the community",
+    },
+    {
+      title: "Company Exposure",
+      description:
+        "Your company will be recognized on our website, social media, and at competitions by thousands of people.",
+    },
+  ]}
+/>
+```
+
+Each list item requires a `title` and a `description`. The component automatically applies the proper styling to match the team's design.
+
+## Adding Images
+
+### SectionImage Component
+
+The `SectionImage` component makes it easy to add images with optional captions to your content sections.
+
+#### Basic Usage:
+
+```tsx
+<SectionImage
+  imagePath="/pictures/2025/2025_WPI-Team-Picture.jpg"
+  caption="Team picture taken after the 2025 WPI Competition."
+/>
+```
+
+#### Without a Caption:
+
+```tsx
+<SectionImage imagePath="/pictures/2025/2025_Robot-Low-Perspective.jpg" />
+```
+
+#### With Alt Text for Accessibility:
+
+```tsx
+<SectionImage
+  imagePath="/pictures/2025/2025_WPI-Robot.png"
+  caption="Our 2025 competition robot"
+  altText="Close-up of robot arm mechanism"
+/>
+```
+
+### PhotoGrid
+
+For displaying multiple images in a grid layout:
+
+```tsx
+<PhotoGrid imagePaths={["/pictures/2025/image1.jpg", "/pictures/2025/image2.jpg"]} />
+```
+
+### SponsorGrid
+
+For displaying sponsor logos:
+
+```tsx
+<SponsorGrid imagePaths={["/sponsors/sponsor1-logo.webp", "/sponsors/sponsor2-logo.webp"]} />
 ```
 
 ## Adding and Modifying Pages
@@ -114,6 +181,9 @@ import ContentSection from "../components/content/ContentSection";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import SizedBox from "../components/utils/SizedBox";
+import TextParagraph from "../components/content/TextParagraph";
+import DecoratedList from "../components/content/DecoratedList";
+import SectionImage from "../components/content/SectionImage";
 
 export default function PageName() {
   return (
@@ -121,7 +191,16 @@ export default function PageName() {
       <Navbar />
       <BannerImage imagePath={"/pictures/BannerImage.png"} />
       {/* Content Sections Go Here */}
-      <ContentSection title={"Section Title"} subtitle={"Optional Subtitle"} content={<></>} />
+      <ContentSection
+        title={"Section Title"}
+        subtitle={"Optional Subtitle"}
+        content={
+          <>
+            <TextParagraph text="Your content here" />
+            <SectionImage imagePath="/pictures/2025/image.jpg" caption="Caption text" />
+          </>
+        }
+      />
       <Footer />
     </div>
   );
@@ -146,6 +225,8 @@ import ContentSection from "../../components/content/ContentSection";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import SizedBox from "../../components/utils/SizedBox";
+import TextParagraph from "../../components/content/TextParagraph";
+import SectionImage from "../../components/content/SectionImage";
 
 export default function Season2026Page() {
   return (
@@ -157,7 +238,8 @@ export default function Season2026Page() {
         subtitle={"Game Name Here"}
         content={
           <>
-            <p>Description of the 2026 game and challenge.</p>
+            <TextParagraph text="Description of the 2026 game and challenge." />
+            <SectionImage imagePath="/pictures/2026/2026_Game_Field.jpg" caption="The 2026 competition field" />
             <SizedBox height={40} />
           </>
         }
@@ -213,26 +295,7 @@ public/
 Example:
 
 ```tsx
-<img src="/pictures/2025/2025_WPI-Competition.jpg" alt="WPI Competition" />
-```
-
-### Using Photo Grids
-
-For displaying multiple images in a grid:
-
-```tsx
-<PhotoGrid imagePaths={["/pictures/2025/2025_Mentors-Group-Picture.jpg", "/pictures/2025/2025_WPI-Team-Picture.jpg"]} />
-```
-
-### Adding Sponsor Logos
-
-1. Add sponsor logo images to the `public/sponsors/` directory
-2. Use the `SponsorGrid` component to display them:
-
-```tsx
-<SponsorGrid
-  imagePaths={["/sponsors/sponsor1-logo.webp", "/sponsors/sponsor2-logo.webp", "/sponsors/sponsor3-logo.webp"]}
-/>
+<SectionImage imagePath="/pictures/2025/2025_WPI-Competition.jpg" caption="WPI Competition" />
 ```
 
 ## Updating the Navigation Bar
@@ -277,20 +340,43 @@ For creating content blocks:
 />
 ```
 
-### PhotoGrid
+### TextParagraph
 
-For displaying multiple images in a grid layout:
+For creating formatted text paragraphs:
 
 ```tsx
-<PhotoGrid imagePaths={["/pictures/2025/image1.jpg", "/pictures/2025/image2.jpg"]} />
+<TextParagraph
+  text="Your text content here"
+  bold={false} // Optional: makes text bold
+  primary={false} // Optional: uses primary team color
+  centered={false} // Optional: centers the text
+  emphasis={false} // Optional: styles as a quote/emphasis
+/>
 ```
 
-### SponsorGrid
+### DecoratedList
 
-For displaying sponsor logos:
+For creating styled lists with titles and descriptions:
 
 ```tsx
-<SponsorGrid imagePaths={["/sponsors/sponsor1-logo.webp", "/sponsors/sponsor2-logo.webp"]} />
+<DecoratedList
+  items={[
+    { title: "First Item Title", description: "First item description" },
+    { title: "Second Item Title", description: "Second item description" },
+  ]}
+/>
+```
+
+### SectionImage
+
+For displaying images with optional captions:
+
+```tsx
+<SectionImage
+  imagePath="/pictures/2025/image.jpg"
+  caption="Optional caption text"
+  altText="Optional alternative text for accessibility"
+/>
 ```
 
 ### SizedBox

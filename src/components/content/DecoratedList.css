@@ -1,0 +1,21 @@
+.content-section .decorated-list {
+  width: 70%;
+}
+
+.content-section .decorated-list li h3 {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.content-section .decorated-list li p {
+  margin-left: 1rem;
+  margin-top: 1rem;
+  border-left: 1px solid var(--primary);
+  padding-left: 1rem;
+}
+
+@media (max-width: 600px) {
+  .content-section .decorated-list {
+    width: 90vw;
+  }
+}

@@ -5,6 +5,9 @@ import Navbar from "../components/Navbar";
 import PhotoGrid from "../components/content/PhotoGrid";
 import SponsorGrid from "../components/content/SponsorGrid";
 import SizedBox from "../components/utils/SizedBox";
+import TextParagraph from "../components/content/TextParagraph";
+import DecoratedList from "../components/content/DecoratedList";
+import SectionImage from "../components/content/SectionImage";
 
 export default function HomePage() {
   return (
@@ -18,22 +21,19 @@ export default function HomePage() {
         subtitle={"Celebrating 20 years of competition!"}
         content={
           <>
-            <p>
-              Team 1277: The Robotomies, is the FIRST Robotics Competition (FRC) Team out of Groton, MA. We are a high
-              school competitive robotics team participating in the FIRST programs designed to teach students hands-on,
-              real-world engineering and business skills by creating a custom robot to play that season's game every
-              year.
-            </p>
+            <TextParagraph text="Team 1277: The Robotomies, is the FIRST Robotics Competition (FRC) Team out of Groton, MA. We are a high school competitive robotics team participating in the FIRST programs designed to teach students hands-on, real-world engineering and business skills by creating a custom robot to play that season's game every year." />
 
-            <em>FIRST - For the Inspiration and Recognition of Science and Technology.</em>
+            <TextParagraph
+              text="FIRST - For the Inspiration and Recognition of Science and Technology."
+              emphasis={true}
+            />
 
-            <p>
-              We are a non-profit, student-led organization that relies on funding from companies like you to bring
-              valuable robotics experience to our team and help build the next generation of engineers.
-            </p>
+            <TextParagraph text="We are a non-profit, student-led organization that relies on funding from companies like you to bring valuable robotics experience to our team and help build the next generation of engineers." />
 
-            <img src="/pictures/2025/2025_WPI-Team-Picture.jpg" alt="" />
-            <figcaption>Team picture taken after the 2025 WPI Competition.</figcaption>
+            <SectionImage
+              imagePath="/pictures/2025/2025_WPI-Team-Picture.jpg"
+              caption="Team picture taken after the 2025 WPI Competition."
+            />
 
             <SizedBox height={40} />
           </>
@@ -44,26 +44,25 @@ export default function HomePage() {
         subtitle={"Exposure, Outreach, Inspiration"}
         content={
           <>
-            <ul>
-              <li>
-                <h3>Bring More Kids into STEM</h3>
-                <p>By supporting the team, your company brings real world STEM experience to kids in the community</p>
-              </li>
-              <li>
-                <h3>Company Exposure</h3>
-                <p>
-                  Your company will be recognized on our website, social media, and at competitions by thousands of
-                  people in and outside of the team.
-                </p>
-              </li>
-              <li>
-                <h3>Advertising at Competitions</h3>
-                <p>
-                  Your company name will be announced at competitions and outreach events, providing visibility to a
-                  wide audience. Your logo will be displayed on our team shirts, robot, merchandise.
-                </p>
-              </li>
-            </ul>
+            <DecoratedList
+              items={[
+                {
+                  title: "Bring More Kids into STEM",
+                  description:
+                    "By supporting the team, your company brings real world STEM experience to kids in the community",
+                },
+                {
+                  title: "Company Exposure",
+                  description:
+                    "Your company will be recognized on our website, social media, and at competitions by thousands of people in and outside of the team.",
+                },
+                {
+                  title: "Advertising at Competitions",
+                  description:
+                    "Your company name will be announced at competitions and outreach events, providing visibility to a wide audience. Your logo will be displayed on our team shirts, robot, merchandise.",
+                },
+              ]}
+            />
 
             <SizedBox height={40} />
           </>
@@ -74,26 +73,24 @@ export default function HomePage() {
         subtitle={"Mentor, Coach, Inspire"}
         content={
           <>
-            <ul>
-              <li>
-                <h3>Bring Your Knowledge to the Team</h3>
-                <p>
-                  We are always in search of adult mentors that have a passion for robotics with or without technical
-                  backgrounds
-                </p>
-              </li>
-              <li>
-                <h3>Empower Young Leaders</h3>
-                <p>Your skill and input will inspire and shape future engineers</p>
-              </li>
-              <li>
-                <h3>Community Outreach</h3>
-                <p>
-                  Your financial support enables students to have access to technology and gives them the opportunity to
-                  participate in competitions where they can showcase their hard work.
-                </p>
-              </li>
-            </ul>
+            <DecoratedList
+              items={[
+                {
+                  title: "Bring Your Knowledge to the Team",
+                  description:
+                    "We are always in search of adult mentors that have a passion for robotics with or without technical backgrounds",
+                },
+                {
+                  title: "Empower Young Leaders",
+                  description: "Your skill and input will inspire and shape future engineers",
+                },
+                {
+                  title: "Community Outreach",
+                  description:
+                    "Your financial support enables students to have access to technology and gives them the opportunity to participate in competitions where they can showcase their hard work.",
+                },
+              ]}
+            />
             <SizedBox height={40} />
           </>
         }
