@@ -196,13 +196,13 @@
 .navbar__dropdown {
   position: relative;
   cursor: pointer;
-  display: inline-block; /* Add this to ensure the dropdown works properly */
+  display: inline-block;
 }
 
 .navbar__dropdown-content {
   display: none;
   position: absolute;
-  top: calc(100% + 3px); /* Add a small gap between nav item and dropdown */
+  top: calc(100% + 3px);
   left: 0;
   min-width: 200px;
   background-color: var(--navbar-background);
@@ -212,9 +212,10 @@
   padding: 10px 0;
 }
 
-/* Fix hover behavior for dropdown */
-.navbar__dropdown:hover .navbar__dropdown-content {
-  display: block !important; /* Use !important to override any conflicting styles */
+/* Show dropdown both on hover and when the show class is applied */
+.navbar__dropdown:hover .navbar__dropdown-content,
+.navbar__dropdown-content.show {
+  display: block;
 }
 
 .navbar__dropdown-content a {
@@ -222,12 +223,13 @@
   text-decoration: none;
   display: block;
   text-align: left;
-  width: 100%; /* Ensure the link takes full width */
+  width: 100%;
   box-sizing: border-box;
+  background: transparent !important;
 }
 
 .navbar__dropdown-content a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 /* Sidebar dropdown styles */

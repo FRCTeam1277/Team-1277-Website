@@ -37,7 +37,6 @@ export default function Navbar(): JSX.Element {
   const [isScrollingDown, setIsScrollingDown] = useState(false);
   const [navItems, setNavItems] = useState<NavItem[]>([]);
   const [openDropdowns, setOpenDropdowns] = useState<Record<string, boolean>>({});
-  const [hoveredDropdown, setHoveredDropdown] = useState<string | null>(null);
 
   // Function to check if a link is active
   const isActive = (path: string) => {
@@ -105,34 +104,19 @@ export default function Navbar(): JSX.Element {
     }));
   };
 
-  // Functions to handle mouse hover for dropdowns in navbar
-  const handleMouseEnter = (linkName: string) => {
-    setHoveredDropdown(linkName);
-  };
-
-  const handleMouseLeave = () => {
-    setHoveredDropdown(null);
-  };
-
   // Render navigation links for the main navbar
   const renderNavLinks = () => {
     return navItems.map((item, index) => {
       if (item.subPages?.length) {
         // Render dropdown menu
-        const isHovered = hoveredDropdown === item.linkName;
         return (
-          <li
-            key={index}
-            className={`navbar__dropdown ${isHovered ? "hovered" : ""}`}
-            onMouseEnter={() => handleMouseEnter(item.linkName)}
-            onMouseLeave={handleMouseLeave}
-          >
+          <li key={index} className="navbar__dropdown">
             <Link to={item.path} className={isActive(item.path) ? "active" : ""}>
               {item.linkIcon && <img src={item.linkIcon} alt="" className="navbar__link-icon" />}
               {item.linkName}
               <img src="/icons/expand.png" alt="expand" className="navbar__dropdown-icon" />
             </Link>
-            <div className={`navbar__dropdown-content ${isHovered ? "show" : ""}`}>
+            <div className="navbar__dropdown-content">
               {item.subPages.map((subItem, subIndex) => (
                 <Link key={subIndex} to={subItem.path} className={isActive(subItem.path) ? "active" : ""}>
                   {subItem.linkIcon && <img src={subItem.linkIcon} alt="" className="navbar__link-icon" />}
