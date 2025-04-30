@@ -1,5 +1,5 @@
 import BannerImage from "../components/BannerImage";
-import ContentSection from "../components/ContentSection";
+import ContentSection from "../components/content/ContentSection";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 

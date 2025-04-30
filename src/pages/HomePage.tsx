@@ -1,9 +1,9 @@
 import BannerImage from "../components/BannerImage";
-import ContentSection from "../components/ContentSection";
+import ContentSection from "../components/content/ContentSection";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import PhotoGrid from "../components/PhotoGrid";
-import SponsorGrid from "../components/SponsorGrid";
+import PhotoGrid from "../components/content/PhotoGrid";
+import SponsorGrid from "../components/content/SponsorGrid";
 import SizedBox from "../components/utils/SizedBox";
 
 export default function HomePage() {
