@@ -42,7 +42,17 @@
 
 .navbar__links {
   display: flex;
-  gap: 5px;
+  gap: 3px;
+}
+
+.navbar__links li:first-child a:not(.active) {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.navbar__links li:last-child a:not(.active) {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .navbar__hamburger {
@@ -80,12 +90,23 @@
   font-family: "Rubik", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 500;
   font-size: 18px;
-  margin: 0 10px;
+  /* margin: 0 10px; */
   padding-bottom: 3px;
   text-decoration: none;
   color: var(--text);
+  background: var(--sidebar-background);
+  padding: 10px 15px;
   opacity: 0.8;
   transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.navbar__link-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
 }
 
 .navbar__links li a:hover,
@@ -100,11 +121,19 @@
   border-bottom: 7px solid var(--primary);
 }
 
-.navbar__hamburger img,
-.navbar__close-button {
-  height: 30px;
-  width: 30px;
+.navbar__hamburger img {
+  height: 25px;
+  width: 25px;
   cursor: pointer;
+}
+.navbar__close-button {
+  height: 15px;
+  width: 15px;
+  cursor: pointer;
+}
+
+[data-theme="light"] .navbar__hamburger img {
+  filter: invert(1);
 }
 
 .navbar__sidebar-title {
@@ -117,18 +146,36 @@
 }
 
 .navbar__sidebar-links li {
-  margin: 10px 0;
+  margin: 3px 0;
   background-color: var(--sidebar-background);
-  opacity: 0.9;
+  /* opacity: 0.9; */
   width: 100%;
   padding: 15px;
-  border-radius: 20px;
+}
+
+.navbar__sidebar-links :first-child {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.navbar__sidebar-links :last-child {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.navbar__sidebar-links li a {
+  padding: 0;
+  margin: 0;
+  background: none !important;
 }
 
 .navbar__sidebar-links li a.active {
   font-weight: 800;
   opacity: 1;
-  border-bottom: 1px solid var(--primary);
+}
+
+.navbar__sidebar-links li:has(a.active) {
+  border-bottom: 2px solid var(--primary);
 }
 
 .navbar__sidebar header {
@@ -145,8 +192,91 @@
   color: var(--primary);
 }
 
+/* Dropdown styles */
+.navbar__dropdown {
+  position: relative;
+  cursor: pointer;
+  display: inline-block; /* Add this to ensure the dropdown works properly */
+}
+
+.navbar__dropdown-content {
+  display: none;
+  position: absolute;
+  top: calc(100% + 3px); /* Add a small gap between nav item and dropdown */
+  left: 0;
+  min-width: 200px;
+  background-color: var(--navbar-background);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1002;
+  border-radius: 5px;
+  padding: 10px 0;
+}
+
+/* Fix hover behavior for dropdown */
+.navbar__dropdown:hover .navbar__dropdown-content {
+  display: block !important; /* Use !important to override any conflicting styles */
+}
+
+.navbar__dropdown-content a {
+  padding: 12px 16px !important;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  width: 100%; /* Ensure the link takes full width */
+  box-sizing: border-box;
+}
+
+.navbar__dropdown-content a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Sidebar dropdown styles */
+.navbar__sidebar-dropdown-content {
+  margin-top: 10px;
+  margin-left: 20px;
+  display: none;
+}
+.navbar__sidebar-dropdown-content li {
+  background: none !important;
+}
+
+.navbar__sidebar-dropdown.open .navbar__sidebar-dropdown-content {
+  display: block;
+}
+
+.navbar__sidebar-dropdown-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.navbar__sidebar-dropdown-content li {
+  padding: 10px;
+}
+
+/* Toggle icon for dropdowns */
+.navbar__dropdown-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+[data-theme="dark"] .navbar__dropdown-icon,
+[data-theme="dark"] .navbar__link-icon,
+[data-theme="dark"] .navbar__close-button {
+  filter: invert(1);
+}
+
+.navbar__dropdown.active .navbar__dropdown-icon,
+.navbar__sidebar-dropdown.open .navbar__dropdown-icon {
+  transform: rotate(180deg);
+}
+
 /* Layout */
-@media (max-width: 950px) {
+@media (max-width: 1070px) {
   .navbar__links {
     display: none;
   }

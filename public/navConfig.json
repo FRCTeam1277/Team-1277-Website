@@ -1,0 +1,44 @@
+{
+  "navItems": [
+    {
+      "linkName": "Home",
+      "path": "/",
+      "linkIcon": "/icons/home.png"
+    },
+    {
+      "linkName": "2025: Dive",
+      "path": "/seasons/2025",
+      "linkIcon": "/icons/star.png"
+    },
+    {
+      "linkName": "Seasons",
+      "path": "/seasons",
+      "linkIcon": "/icons/flag.png",
+      "subPages": [
+        {
+          "linkName": "2024: Crescendo",
+          "path": "/seasons/2024"
+        },
+        {
+          "linkName": "2023: Charged Up",
+          "path": "/seasons/2023"
+        }
+      ]
+    },
+    {
+      "linkName": "Members",
+      "path": "/members",
+      "linkIcon": "/icons/people.png"
+    },
+    {
+      "linkName": "Shop",
+      "path": "/shop",
+      "linkIcon": "/icons/cart.png"
+    },
+    {
+      "linkName": "Support",
+      "path": "/support",
+      "linkIcon": "/icons/heart.png"
+    }
+  ]
+}

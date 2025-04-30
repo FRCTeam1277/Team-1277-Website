@@ -300,22 +300,143 @@ Example:
 
 ## Updating the Navigation Bar
 
-### Adding Navigation Links
+### Using the Navigation Configuration File
 
-To add a new link to the navigation bar, edit both the navbar and sidebar sections in `src/components/Navbar.tsx`:
+The website now uses a dynamic navigation system that reads from a JSON file. This allows you to modify the navigation without editing any code.
 
-1. Find the `<ul className="navbar__links">` section
-2. Add a new list item:
+To edit the navigation menu:
 
-   ```tsx
-   <li>
-     <Link to="/new-page" className={isActive("/new-page") ? "active" : ""}>
-       New Page
-     </Link>
-   </li>
-   ```
+1. Open the file `public/navConfig.json`
+2. Modify the JSON structure to add, remove, or change navigation items
+3. Save the file and refresh the website to see your changes
 
-3. Also add it to the sidebar navigation (`<ul className="navbar__sidebar-links">`)
+#### Navigation Item Structure
+
+Each navigation item in the JSON file follows this structure:
+
+```json
+{
+  "linkName": "Display Name", // The text shown in the navigation menu
+  "path": "/page-url", // The URL the link points to
+  "linkIcon": "/icons/icon.png" // Optional: path to an icon image
+}
+```
+
+#### Adding Dropdown Menus
+
+For dropdown menus, add a `subPages` array to any navigation item:
+
+```json
+{
+  "linkName": "Past Seasons",
+  "path": "/seasons",
+  "linkIcon": "/icons/season.png",
+  "subPages": [
+    {
+      "linkName": "2024: Crescendo",
+      "path": "/seasons/2024"
+    },
+    {
+      "linkName": "2023: Charged Up",
+      "path": "/seasons/2023"
+    }
+  ]
+}
+```
+
+#### Example Navigation Configuration
+
+Here's a complete example of the `navConfig.json` file:
+
+```json
+{
+  "navItems": [
+    {
+      "linkName": "Home",
+      "path": "/",
+      "linkIcon": "/icons/home.png"
+    },
+    {
+      "linkName": "2025: Dive",
+      "path": "/seasons/2025"
+    },
+    {
+      "linkName": "Past Seasons",
+      "path": "/seasons",
+      "linkIcon": "/icons/collapse.png",
+      "subPages": [
+        {
+          "linkName": "2024: Crescendo",
+          "path": "/seasons/2024"
+        },
+        {
+          "linkName": "2023: Charged Up",
+          "path": "/seasons/2023"
+        }
+      ]
+    },
+    {
+      "linkName": "Members",
+      "path": "/"
+    },
+    {
+      "linkName": "Shop",
+      "path": "/"
+    },
+    {
+      "linkName": "Support",
+      "path": "/support"
+    }
+  ]
+}
+```
+
+### Adding Icons to Navigation Items
+
+To add an icon to a navigation item:
+
+1. Place your icon image file in the `public/icons/` directory
+2. Add the `linkIcon` property to the navigation item in `navConfig.json` with the path to the icon:
+
+```json
+{
+  "linkName": "Home",
+  "path": "/",
+  "linkIcon": "/icons/home.png"
+}
+```
+
+Icons will appear next to the link text in both the main navigation bar and sidebar.
+
+### Adding New Pages to Navigation
+
+After creating a new page and adding its route (see "Updating Routes"), you need to add it to the navigation:
+
+1. Open `public/navConfig.json`
+2. Add a new item to the `navItems` array:
+
+```json
+{
+  "linkName": "New Page Name",
+  "path": "/new-page"
+}
+```
+
+You can also add it as a submenu item in an existing dropdown:
+
+```json
+{
+  "linkName": "Parent Menu",
+  "path": "/parent",
+  "subPages": [
+    // existing subpages...
+    {
+      "linkName": "New Subpage",
+      "path": "/parent/new-subpage"
+    }
+  ]
+}
+```
 
 ## Common Components Reference
 
