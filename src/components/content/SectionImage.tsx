@@ -1,4 +1,3 @@
-import React from "react";
 import "./SectionImage.css";
 
 interface SectionImageProps {
