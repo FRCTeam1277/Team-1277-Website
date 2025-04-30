@@ -78,7 +78,7 @@ export default function Navbar(): JSX.Element {
             </Link>
           </li>
           <li>
-            <Link to="/2025-Dive" className={isActive("/2025-Dive") ? "active" : ""}>
+            <Link to="/seasons/2025" className={isActive("/seasons/2025") ? "active" : ""}>
               2025: Dive
             </Link>
           </li>
@@ -117,7 +117,7 @@ export default function Navbar(): JSX.Element {
             </Link>
           </li>
           <li>
-            <Link to="/2025-Dive" className={isActive("/2025-Dive") ? "active" : ""}>
+            <Link to="/seasons/2025" className={isActive("/seasons/2025") ? "active" : ""}>
               2025: Dive
             </Link>
           </li>

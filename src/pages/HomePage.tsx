@@ -4,31 +4,38 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import PhotoGrid from "../components/PhotoGrid";
 import SponsorGrid from "../components/SponsorGrid";
+import SizedBox from "../components/utils/SizedBox";
 
 export default function HomePage() {
   return (
     <div className="page-container">
       <Navbar />
       <BannerImage imagePath={"/pictures/CenterBanner.png"} />
+
+      {/* Introduction Section */}
       <ContentSection
         title={"About Our Team"}
         subtitle={"Celebrating 20 years of competition!"}
         content={
           <>
-            {/* Introduction */}
             <p>
               Team 1277: The Robotomies, is the FIRST Robotics Competition (FRC) Team out of Groton, MA. We are a high
               school competitive robotics team participating in the FIRST programs designed to teach students hands-on,
               real-world engineering and business skills by creating a custom robot to play that season's game every
               year.
             </p>
+
             <em>FIRST - For the Inspiration and Recognition of Science and Technology.</em>
+
             <p>
               We are a non-profit, student-led organization that relies on funding from companies like you to bring
               valuable robotics experience to our team and help build the next generation of engineers.
             </p>
-            <img src="/pictures/2025_WPI-Team-Picture.jpg" alt="" />
+
+            <img src="/pictures/2025/2025_WPI-Team-Picture.jpg" alt="" />
             <figcaption>Team picture taken after the 2025 WPI Competition.</figcaption>
+
+            <SizedBox height={40} />
           </>
         }
       />
@@ -36,26 +43,30 @@ export default function HomePage() {
         title={"Sponsor Benefits"}
         subtitle={"Exposure, Outreach, Inspiration"}
         content={
-          <ul>
-            <li>
-              <h3>Bring More Kids into STEM</h3>
-              <p>By supporting the team, your company brings real world STEM experience to kids in the community</p>
-            </li>
-            <li>
-              <h3>Company Exposure</h3>
-              <p>
-                Your company will be recognized on our website, social media, and at competitions by thousands of people
-                in and outside of the team.
-              </p>
-            </li>
-            <li>
-              <h3>Advertising at Competitions</h3>
-              <p>
-                Your company name will be announced at competitions and outreach events, providing visibility to a wide
-                audience. Your logo will be displayed on our team shirts, robot, merchandise.
-              </p>
-            </li>
-          </ul>
+          <>
+            <ul>
+              <li>
+                <h3>Bring More Kids into STEM</h3>
+                <p>By supporting the team, your company brings real world STEM experience to kids in the community</p>
+              </li>
+              <li>
+                <h3>Company Exposure</h3>
+                <p>
+                  Your company will be recognized on our website, social media, and at competitions by thousands of
+                  people in and outside of the team.
+                </p>
+              </li>
+              <li>
+                <h3>Advertising at Competitions</h3>
+                <p>
+                  Your company name will be announced at competitions and outreach events, providing visibility to a
+                  wide audience. Your logo will be displayed on our team shirts, robot, merchandise.
+                </p>
+              </li>
+            </ul>
+
+            <SizedBox height={40} />
+          </>
         }
       />
       <ContentSection
@@ -83,10 +94,13 @@ export default function HomePage() {
                 </p>
               </li>
             </ul>
+            <SizedBox height={40} />
           </>
         }
       />
-      <PhotoGrid imagePaths={["/pictures/2025_Mentors-Group-Picture.jpg", "/pictures/2023_WPI-Team-Picture.jpg"]} />
+      <PhotoGrid
+        imagePaths={["/pictures/2025/2025_Mentors-Group-Picture.jpg", "/pictures/2023/2023_WPI-Team-Picture.jpg"]}
+      />
       <SponsorGrid
         imagePaths={[
           "/sponsors/BAE_Logo.webp",

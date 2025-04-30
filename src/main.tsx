@@ -5,6 +5,7 @@ import "./index.css";
 import HomePage from "./pages/HomePage";
 import NotFoundPage from "./pages/NotFoundPage";
 import SupportPage from "./pages/SupportPage";
+import Season2025Page from "./pages/seasons/Season2025";
 
 /**
  * A React component that automatically scrolls the window to the top
@@ -49,6 +50,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/support" element={<SupportPage />} />
+        {/* Routes for the specific seasons */}
+        <Route path="/seasons/2025" element={<Season2025Page />} />
         {/* Add a catch-all route for 404 errors */}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

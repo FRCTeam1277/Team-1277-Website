@@ -50,6 +50,28 @@
   margin-bottom: 2rem;
 }
 
+.content-section.centered-section {
+  text-align: center !important;
+}
+
+.content-section a {
+  color: var(--primary);
+  text-decoration: underline;
+
+  &:hover {
+    color: var(--accent);
+  }
+}
+
+.content-section .centered {
+  text-align: center;
+}
+
+.content-section .primary {
+  color: var(--primary);
+  font-weight: 600;
+}
+
 .content-section_header {
   margin-bottom: 2rem;
   text-align: center;
