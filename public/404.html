@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Robotomies - Redirecting...</title>
+  <script>
+    var path_segments = 1;
+    var l = window.location;
+    var repo_name = '/Team-1277-Website';
+    
+    // we redirect back to home since i'm too lazy to make a real fix rn
+    // TODO: fix this for proper SPA, client-side routing is not supported on GitHub Pages
+    l.replace(
+      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+      repo_name.split('/').slice(0, 1 + path_segments).join('/') + '/?redirectTo=' +
+      l.pathname.slice(repo_name.split('/').slice(0, 1 + path_segments).join('/').length) +
+      (l.search ? '&' + l.search.slice(1) : '') +
+      l.hash
+    );
+  </script>
+</head>
+<body>
+  redirecting...
+</body>
+</html>

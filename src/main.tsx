@@ -53,10 +53,13 @@ function App() {
   );
 }
 
+// get the base path from the import.meta.env (populated by vite/gh i think)
+const basePath = import.meta.env.BASE_URL || '/';
+
 // Create the primary app component to render
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={basePath}>
       <App />
     </BrowserRouter>
   </StrictMode>
