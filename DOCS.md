@@ -10,8 +10,9 @@ This guide is designed to help you edit and maintain the Robotomies Team 1277 we
 4. [Creating Lists](#creating-lists)
 5. [Adding Images](#adding-images)
 6. [Adding and Modifying Pages](#adding-and-modifying-pages)
-7. [Updating the Navigation Bar](#updating-the-navigation-bar)
-8. [Common Components Reference](#common-components-reference)
+7. [Defining Routes](#defining-routes)
+8. [Updating the Navigation Bar](#updating-the-navigation-bar)
+9. [Common Components Reference](#common-components-reference)
 
 ## Understanding the Website Structure
 
@@ -21,6 +22,7 @@ The website is built using React and TypeScript, but you don't need to understan
 - `public/pictures/`: Stores all images organized by year folders
 - `public/sponsors/`: Contains sponsor logos
 - `src/components/`: Contains reusable UI components
+- `src/routes/`: Contains route definitions that connect URLs to pages
 
 ## Working with Content Sections
 
@@ -212,7 +214,8 @@ export default function PageName() {
 1. Create a new file in the `src/pages/` directory with a `.tsx` extension (e.g., `NewPage.tsx`)
 2. Copy the structure from an existing page like `HomePage.tsx`
 3. Modify the content sections as needed
-4. Add the page to the navigation (see "Updating Routes" below)
+4. Add the page to the routes configuration (see "Defining Routes" below)
+5. Add the page to the navigation (see "Updating the Navigation Bar" below)
 
 ### Adding a New Season Page
 
@@ -250,52 +253,73 @@ export default function Season2026Page() {
 }
 ```
 
-### Updating Routes
+## Defining Routes
 
-After creating a new page, you need to update the routes in `src/main.tsx` to make the page accessible:
+The website uses a centralized routing system that connects URLs to page components. This makes it easy to add new pages without modifying complex code.
 
-1. Add an import for your new page at the top of `main.tsx`:
-   ```tsx
-   import NewPage from "./pages/NewPage";
-   ```
-2. Add a new route in the `Routes` section:
-   ```tsx
-   <Route path="/new-page" element={<NewPage />} />
-   ```
+### Understanding the Routes Configuration
 
-For a season page:
+Routes are defined in the `src/routes/routesConfig.tsx` file. Each route defines a URL path and which page component should be displayed for that path.
+
+### Route Structure
+
+Each route in the configuration follows this structure:
 
 ```tsx
-<Route path="/seasons/2026" element={<Season2026Page />} />
+{
+  path: "/page-url",                // The URL path for this page
+  element: <PageComponent />,       // The page component to display
+  label: "Page Name",               // Optional: Descriptive name for the page
+  description: "Page description"   // Optional: Description of the page content
+}
 ```
 
-## Adding Images
+### Adding a New Route
 
-### Image File Structure
+To add a new route after creating a page component:
 
-Images are stored in the `public/pictures/` directory, organized by year:
+1. Open `src/routes/routesConfig.tsx`
+2. Import your new page component at the top of the file:
+   ```tsx
+   import NewPage from "../pages/NewPage";
+   ```
+3. Add a new route object to the `routes` array:
+   ```tsx
+   {
+     path: "/new-page",
+     element: <NewPage />,
+     label: "New Page",
+     description: "Description of what this page contains"
+   }
+   ```
 
-```
-public/
-  pictures/
-    2023/
-      2023_image-name.jpg
-    2024/
-      2024_image-name.jpg
-    2025/
-      2025_image-name.jpg
-```
+> **Important**: Always add new routes **above** the catch-all 404 route (the one with path "\*").
 
-### Adding New Images
+### Example: Adding a 2026 Season Page
 
-1. Name your image files with the year prefix (e.g., `2025_WPI-Competition.jpg`)
-2. Place the image in the appropriate year folder
-3. Reference the image in your content with the path `/pictures/YEAR/filename.jpg`
-
-Example:
+Here's an example of how to add a route for a new 2026 season page:
 
 ```tsx
-<SectionImage imagePath="/pictures/2025/2025_WPI-Competition.jpg" caption="WPI Competition" />
+// 1. First add the import at the top of the file
+import Season2026Page from "../pages/seasons/Season2026";
+
+// 2. Then add the route to the routes array
+export const routes: RouteConfig[] = [
+  // ... existing routes ...
+  {
+    path: "/seasons/2026",
+    element: <Season2026Page />,
+    label: "2026 Season",
+    description: "Details about the 2026 competition season",
+  },
+  // Add new routes above this line
+
+  // This must be the last route
+  {
+    path: "*",
+    element: <NotFoundPage />,
+  },
+];
 ```
 
 ## Updating the Navigation Bar
@@ -410,7 +434,7 @@ Icons will appear next to the link text in both the main navigation bar and side
 
 ### Adding New Pages to Navigation
 
-After creating a new page and adding its route (see "Updating Routes"), you need to add it to the navigation:
+After creating a new page and adding its route (see "Defining Routes"), you need to add it to the navigation:
 
 1. Open `public/navConfig.json`
 2. Add a new item to the `navItems` array:
