@@ -8,7 +8,7 @@ export default function PageTemplate() {
       <Navbar />
 
       {/* Modify the banner */}
-      <BannerImage imagePath={"/pictures/CenterBanner.png"} />
+      <BannerImage imagePath={"/graphics/CenterBanner.png"} />
 
       {/* Add Content Here */}
 

@@ -1,4 +1,4 @@
-![Website Banner](./public/pictures/CenterBanner.png)
+![Website Banner](./public/graphics/CenterBanner.png)
 
 # The Robotomies Website
 

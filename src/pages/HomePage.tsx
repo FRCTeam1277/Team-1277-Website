@@ -13,7 +13,7 @@ export default function HomePage() {
   return (
     <div className="page-container">
       <Navbar />
-      <BannerImage imagePath={"/pictures/CenterBanner.png"} />
+      <BannerImage imagePath={"/graphics/CenterBanner.png"} />
 
       {/* Introduction Section */}
       <ContentSection
