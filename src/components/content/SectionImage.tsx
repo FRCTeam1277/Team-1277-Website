@@ -1,4 +1,5 @@
 import "./SectionImage.css";
+import { getAssetPath } from "../../utils/assetPath";
 
 interface SectionImageProps {
   /**
@@ -20,7 +21,7 @@ interface SectionImageProps {
 export default function SectionImage({ imagePath, caption, altText = "" }: SectionImageProps) {
   return (
     <div className="section-image-container section-image-wrapper">
-      <img src={imagePath} alt={altText || caption || "Section image"} className="section-image" />
+      <img src={getAssetPath(imagePath)} alt={altText || caption || "Section image"} className="section-image" />
       {caption && <figcaption>{caption}</figcaption>}
     </div>
   );
