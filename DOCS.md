@@ -1,36 +1,111 @@
-# Website Editing Guide
+# Robotomies Website Quick Guide
 
-This guide is designed to help you edit and maintain the Robotomies Team 1277 website content without requiring programming knowledge. It covers how to modify existing pages, add new content, upload images, and update navigation components.
+This guide helps you edit the Team 1277 website without programming knowledge. It covers how to modify pages, add content, upload images, and update navigation.
 
 ## Table of Contents
 
-1. [Understanding the Website Structure](#understanding-the-website-structure)
-2. [Working with Content Sections](#working-with-content-sections)
-3. [Using Text Components](#using-text-components)
+1. [Website Structure](#website-structure)
+2. [Adding Text](#adding-text)
+3. [Adding Images](#adding-images)
 4. [Creating Lists](#creating-lists)
-5. [Adding Images](#adding-images)
-6. [Adding and Modifying Pages](#adding-and-modifying-pages)
-7. [Defining Routes](#defining-routes)
-8. [Updating the Navigation Bar](#updating-the-navigation-bar)
-9. [Common Components Reference](#common-components-reference)
+5. [Building Content Sections](#building-content-sections)
+6. [Adding Pages](#adding-pages)
+7. [Creating Routes](#creating-routes)
+8. [Updating Navigation](#updating-navigation)
+9. [Component Reference](#component-reference)
 
-## Understanding the Website Structure
+## Website Structure
 
-The website is built using React and TypeScript, but you don't need to understand these technologies to edit content. Here's a quick overview of the important folders:
+The website uses React and TypeScript, but you don't need to understand these technologies. Important folders:
 
-- `src/pages/`: Contains all the website pages
-- `public/pictures/`: Stores all images organized by year folders
-- `public/sponsors/`: Contains sponsor logos
-- `src/components/`: Contains reusable UI components
-- `src/routes/`: Contains route definitions that connect URLs to pages
+- `src/pages/`: Website pages
+- `public/pictures/`: Images (organized by year)
+- `public/sponsors/`: Sponsor logos
+- `src/components/`: UI components
+- `src/routes/`: URL to page connections
 
-## Working with Content Sections
+## Adding Text
 
-### The ContentSection Component
+### TextParagraph Component
 
-Most content on the website is created using the `ContentSection` component, which provides a consistent layout for text, images, and other content.
+Use this for all text content. It supports styling options and automatic link conversion.
 
-#### Example of a ContentSection:
+```tsx
+// Basic text
+<TextParagraph text="This is a regular paragraph of text." />
+
+// Styling options
+<TextParagraph text="Bold text example" bold={true} />
+<TextParagraph text="Primary color text" primary={true} />
+<TextParagraph text="This text will be centered" centered={true} />
+<TextParagraph text="This is an emphasized quote" emphasis={true} />
+
+// Automatically converts links
+<TextParagraph text="Visit our [team website](https://www.robotomies.com) for more information." />
+```
+
+## Adding Images
+
+### Individual Images
+
+Use `SectionImage` to add images with optional captions:
+
+```tsx
+<SectionImage
+  imagePath="/pictures/2025/2025_Team-Picture.jpg"
+  caption="Team picture from the 2025 WPI Competition"
+/>
+
+// Without caption
+<SectionImage imagePath="/pictures/2025/2025_Robot.jpg" />
+
+// With alt text for accessibility
+<SectionImage
+  imagePath="/pictures/2025/2025_Robot.png"
+  caption="Our 2025 competition robot"
+  altText="Close-up of robot arm mechanism"
+/>
+```
+
+### Multiple Images
+
+For displaying multiple images in a grid:
+
+```tsx
+<PhotoGrid imagePaths={[
+  "/pictures/2025/image1.jpg",
+  "/pictures/2025/image2.jpg"
+]} />
+
+// For sponsor logos
+<SponsorGrid imagePaths={[
+  "/sponsors/sponsor1-logo.webp",
+  "/sponsors/sponsor2-logo.webp"
+]} />
+```
+
+## Creating Lists
+
+Use `DecoratedList` to create attractive lists with titles and descriptions:
+
+```tsx
+<DecoratedList
+  items={[
+    {
+      title: "Bring More Kids into STEM",
+      description: "Your support brings real world STEM experience to kids in the community",
+    },
+    {
+      title: "Company Exposure",
+      description: "Recognition on our website, social media, and at competitions",
+    },
+  ]}
+/>
+```
+
+## Building Content Sections
+
+Most content uses the `ContentSection` component, which provides consistent layout.
 
 ```tsx
 <ContentSection
@@ -40,321 +115,124 @@ Most content on the website is created using the `ContentSection` component, whi
     <>
       <TextParagraph text="Team 1277: The Robotomies is the FIRST Robotics Competition (FRC) Team out of Groton, MA." />
 
-      <TextParagraph text="FIRST - For the Inspiration and Recognition of Science and Technology." emphasis={true} />
+      <SectionImage imagePath="/pictures/2025/2025_Team-Picture.jpg" caption="Team picture from WPI" />
 
-      <SectionImage
-        imagePath="/pictures/2025/2025_WPI-Team-Picture.jpg"
-        caption="Team picture taken after the 2025 WPI Competition."
+      <DecoratedList
+        items={
+          [
+            /* list items here */
+          ]
+        }
       />
     </>
   }
 />
 ```
 
-## Using Text Components
-
-### TextParagraph Component
-
-The `TextParagraph` component is a powerful way to create formatted text with minimal effort. It supports styling options and can automatically convert markdown-style links into clickable links.
-
-#### Basic Usage:
-
-```tsx
-<TextParagraph text="This is a regular paragraph of text." />
-```
-
-#### Styling Options:
-
-```tsx
-// Bold text
-<TextParagraph text="This text will be bold." bold={true} />
-
-// Primary color (team color)
-<TextParagraph text="This text will use the primary color." primary={true} />
-
-// Centered text
-<TextParagraph text="This text will be centered." centered={true} />
-
-// Emphasis (styled quote)
-<TextParagraph text="This is an emphasized quote." emphasis={true} />
-
-// Combinations are possible
-<TextParagraph text="Bold and centered text." bold={true} centered={true} />
-```
-
-#### Adding Links in Text:
-
-The TextParagraph component can automatically convert markdown-style links into clickable links. Use square brackets for the link text and parentheses for the URL:
-
-```tsx
-<TextParagraph text="Visit our [team website](https://www.robotomies.com) for more information." />
-```
-
-This will render as: Visit our <a href="https://www.robotomies.com">team website</a> for more information.
-
-Multiple links in the same paragraph also work:
-
-```tsx
-<TextParagraph text="Check out [FIRST Robotics](https://www.firstinspires.org) or view our [team photos](https://photos.robotomies.com)." />
-```
-
-## Creating Lists
-
-### DecoratedList Component
-
-The `DecoratedList` component creates visually appealing lists with titles and descriptions for each item.
-
-#### Basic Usage:
-
-```tsx
-<DecoratedList
-  items={[
-    {
-      title: "Bring More Kids into STEM",
-      description: "By supporting the team, your company brings real world STEM experience to kids in the community",
-    },
-    {
-      title: "Company Exposure",
-      description:
-        "Your company will be recognized on our website, social media, and at competitions by thousands of people.",
-    },
-  ]}
-/>
-```
-
-Each list item requires a `title` and a `description`. The component automatically applies the proper styling to match the team's design.
-
-## Adding Images
-
-### SectionImage Component
-
-The `SectionImage` component makes it easy to add images with optional captions to your content sections.
-
-#### Basic Usage:
-
-```tsx
-<SectionImage
-  imagePath="/pictures/2025/2025_WPI-Team-Picture.jpg"
-  caption="Team picture taken after the 2025 WPI Competition."
-/>
-```
-
-#### Without a Caption:
-
-```tsx
-<SectionImage imagePath="/pictures/2025/2025_Robot-Low-Perspective.jpg" />
-```
-
-#### With Alt Text for Accessibility:
-
-```tsx
-<SectionImage
-  imagePath="/pictures/2025/2025_WPI-Robot.png"
-  caption="Our 2025 competition robot"
-  altText="Close-up of robot arm mechanism"
-/>
-```
-
-### PhotoGrid
-
-For displaying multiple images in a grid layout:
-
-```tsx
-<PhotoGrid imagePaths={["/pictures/2025/image1.jpg", "/pictures/2025/image2.jpg"]} />
-```
-
-### SponsorGrid
-
-For displaying sponsor logos:
-
-```tsx
-<SponsorGrid imagePaths={["/sponsors/sponsor1-logo.webp", "/sponsors/sponsor2-logo.webp"]} />
-```
-
-## Adding and Modifying Pages
+## Adding Pages
 
 ### Page Structure
 
-Each page in the website follows a similar structure:
+Each page follows this structure:
 
 ```tsx
 import BannerImage from "../components/BannerImage";
 import ContentSection from "../components/content/ContentSection";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import SizedBox from "../components/utils/SizedBox";
 import TextParagraph from "../components/content/TextParagraph";
-import DecoratedList from "../components/content/DecoratedList";
-import SectionImage from "../components/content/SectionImage";
+// Other imports as needed
 
 export default function PageName() {
   return (
     <div className="page-container">
       <Navbar />
       <BannerImage imagePath={"/pictures/BannerImage.png"} />
-      {/* Content Sections Go Here */}
+
+      {/* Content Sections */}
       <ContentSection
         title={"Section Title"}
-        subtitle={"Optional Subtitle"}
         content={
           <>
             <TextParagraph text="Your content here" />
-            <SectionImage imagePath="/pictures/2025/image.jpg" caption="Caption text" />
+            {/* More content components */}
           </>
         }
       />
+
       <Footer />
     </div>
   );
 }
 ```
 
-### Adding a New Page
+### Creating A New Page
 
-1. Create a new file in the `src/pages/` directory with a `.tsx` extension (e.g., `NewPage.tsx`)
+1. Create a new file in `src/pages/` with a `.tsx` extension (e.g., `NewPage.tsx`)
 2. Copy the structure from an existing page like `HomePage.tsx`
 3. Modify the content sections as needed
-4. Add the page to the routes configuration (see "Defining Routes" below)
-5. Add the page to the navigation (see "Updating the Navigation Bar" below)
+4. Add the page to routes configuration (see next section)
+5. Add the page to navigation (see "Updating Navigation")
 
-### Adding a New Season Page
+### Season Pages
 
-For a new season page, create it in the `src/pages/seasons/` directory:
+Create season pages in `src/pages/seasons/` directory (e.g., `Season2026.tsx`)
 
-```tsx
-// src/pages/seasons/Season2026.tsx
-import BannerImage from "../../components/BannerImage";
-import ContentSection from "../../components/content/ContentSection";
-import Footer from "../../components/Footer";
-import Navbar from "../../components/Navbar";
-import SizedBox from "../../components/utils/SizedBox";
-import TextParagraph from "../../components/content/TextParagraph";
-import SectionImage from "../../components/content/SectionImage";
+## Creating Routes
 
-export default function Season2026Page() {
-  return (
-    <div className="page-container">
-      <Navbar />
-      <BannerImage imagePath={"/pictures/2026/2026_Banner.png"} />
-      <ContentSection
-        title={"2026 Competition Season"}
-        subtitle={"Game Name Here"}
-        content={
-          <>
-            <TextParagraph text="Description of the 2026 game and challenge." />
-            <SectionImage imagePath="/pictures/2026/2026_Game_Field.jpg" caption="The 2026 competition field" />
-            <SizedBox height={40} />
-          </>
-        }
-      />
-      <Footer />
-    </div>
-  );
-}
-```
-
-## Defining Routes
-
-The website uses a centralized routing system that connects URLs to page components. This makes it easy to add new pages without modifying complex code.
-
-### Understanding the Routes Configuration
-
-Routes are defined in the `src/routes/routesConfig.tsx` file. Each route defines a URL path and which page component should be displayed for that path.
-
-### Route Structure
-
-Each route in the configuration follows this structure:
-
-```tsx
-{
-  path: "/page-url",                // The URL path for this page
-  element: <PageComponent />,       // The page component to display
-  label: "Page Name",               // Optional: Descriptive name for the page
-  description: "Page description"   // Optional: Description of the page content
-}
-```
+Routes connect URLs to pages in the `src/routes/routesConfig.tsx` file.
 
 ### Adding a New Route
 
-To add a new route after creating a page component:
+1. Import your new page at the top of the file:
 
-1. Open `src/routes/routesConfig.tsx`
-2. Import your new page component at the top of the file:
    ```tsx
    import NewPage from "../pages/NewPage";
    ```
-3. Add a new route object to the `routes` array:
+
+2. Add a route to the `routes` array:
    ```tsx
    {
      path: "/new-page",
      element: <NewPage />,
      label: "New Page",
-     description: "Description of what this page contains"
+     description: "Description of the page"
    }
    ```
 
-> **Important**: Always add new routes **above** the catch-all 404 route (the one with path "\*").
+**Important**: Always add new routes **above** the catch-all 404 route (path "\*").
 
-### Example: Adding a 2026 Season Page
+## Updating Navigation
 
-Here's an example of how to add a route for a new 2026 season page:
+The navigation menu is defined in `public/navConfig.json`.
 
-```tsx
-// 1. First add the import at the top of the file
-import Season2026Page from "../pages/seasons/Season2026";
-
-// 2. Then add the route to the routes array
-export const routes: RouteConfig[] = [
-  // ... existing routes ...
-  {
-    path: "/seasons/2026",
-    element: <Season2026Page />,
-    label: "2026 Season",
-    description: "Details about the 2026 competition season",
-  },
-  // Add new routes above this line
-
-  // This must be the last route
-  {
-    path: "*",
-    element: <NotFoundPage />,
-  },
-];
-```
-
-## Updating the Navigation Bar
-
-### Using the Navigation Configuration File
-
-The website now uses a dynamic navigation system that reads from a JSON file. This allows you to modify the navigation without editing any code.
-
-To edit the navigation menu:
-
-1. Open the file `public/navConfig.json`
-2. Modify the JSON structure to add, remove, or change navigation items
-3. Save the file and refresh the website to see your changes
-
-#### Navigation Item Structure
-
-Each navigation item in the JSON file follows this structure:
+### Basic Navigation Items
 
 ```json
 {
-  "linkName": "Display Name", // The text shown in the navigation menu
-  "path": "/page-url", // The URL the link points to
-  "linkIcon": "/icons/icon.png" // Optional: path to an icon image
+  "navItems": [
+    {
+      "linkName": "Home",
+      "path": "/",
+      "linkIcon": "/icons/home.png"
+    },
+    {
+      "linkName": "Support",
+      "path": "/support"
+    }
+  ]
 }
 ```
 
-#### Adding Dropdown Menus
+### Dropdown Menus
 
-For dropdown menus, add a `subPages` array to any navigation item:
+For dropdown menus, add a `subPages` array:
 
 ```json
 {
   "linkName": "Past Seasons",
   "path": "/seasons",
-  "linkIcon": "/icons/season.png",
+  "linkIcon": "/icons/collapse.png",
   "subPages": [
     {
       "linkName": "2024: Crescendo",
@@ -368,167 +246,64 @@ For dropdown menus, add a `subPages` array to any navigation item:
 }
 ```
 
-#### Example Navigation Configuration
+### Adding Icons
 
-Here's a complete example of the `navConfig.json` file:
+1. Place icon images in `public/icons/` directory
+2. Add `"linkIcon": "/icons/icon-name.png"` to the navigation item
 
-```json
-{
-  "navItems": [
-    {
-      "linkName": "Home",
-      "path": "/",
-      "linkIcon": "/icons/home.png"
-    },
-    {
-      "linkName": "2025: Dive",
-      "path": "/seasons/2025"
-    },
-    {
-      "linkName": "Past Seasons",
-      "path": "/seasons",
-      "linkIcon": "/icons/collapse.png",
-      "subPages": [
-        {
-          "linkName": "2024: Crescendo",
-          "path": "/seasons/2024"
-        },
-        {
-          "linkName": "2023: Charged Up",
-          "path": "/seasons/2023"
-        }
-      ]
-    },
-    {
-      "linkName": "Members",
-      "path": "/"
-    },
-    {
-      "linkName": "Shop",
-      "path": "/"
-    },
-    {
-      "linkName": "Support",
-      "path": "/support"
-    }
-  ]
-}
-```
+## Component Reference
 
-### Adding Icons to Navigation Items
-
-To add an icon to a navigation item:
-
-1. Place your icon image file in the `public/icons/` directory
-2. Add the `linkIcon` property to the navigation item in `navConfig.json` with the path to the icon:
-
-```json
-{
-  "linkName": "Home",
-  "path": "/",
-  "linkIcon": "/icons/home.png"
-}
-```
-
-Icons will appear next to the link text in both the main navigation bar and sidebar.
-
-### Adding New Pages to Navigation
-
-After creating a new page and adding its route (see "Defining Routes"), you need to add it to the navigation:
-
-1. Open `public/navConfig.json`
-2. Add a new item to the `navItems` array:
-
-```json
-{
-  "linkName": "New Page Name",
-  "path": "/new-page"
-}
-```
-
-You can also add it as a submenu item in an existing dropdown:
-
-```json
-{
-  "linkName": "Parent Menu",
-  "path": "/parent",
-  "subPages": [
-    // existing subpages...
-    {
-      "linkName": "New Subpage",
-      "path": "/parent/new-subpage"
-    }
-  ]
-}
-```
-
-## Common Components Reference
-
-### BannerImage
-
-Used for the large banner at the top of pages:
-
-```tsx
-<BannerImage imagePath={"/pictures/2025/2025_Banner.png"} />
-```
-
-### ContentSection
-
-For creating content blocks:
-
-```tsx
-<ContentSection
-  title={"Title Goes Here"}
-  subtitle={"Optional Subtitle"}
-  centerText={true} // Optional, centers all text in the section
-  content={<>{/* Content elements go here */}</>}
-/>
-```
-
-### TextParagraph
-
-For creating formatted text paragraphs:
+### Text and Paragraphs
 
 ```tsx
 <TextParagraph
-  text="Your text content here"
+  text="Your text here"
   bold={false} // Optional: makes text bold
-  primary={false} // Optional: uses primary team color
-  centered={false} // Optional: centers the text
-  emphasis={false} // Optional: styles as a quote/emphasis
+  primary={false} // Optional: uses team color
+  centered={false} // Optional: centers text
+  emphasis={false} // Optional: styles as quote
 />
 ```
 
-### DecoratedList
+### Images
 
-For creating styled lists with titles and descriptions:
+```tsx
+<SectionImage
+  imagePath="/pictures/image.jpg"
+  caption="Optional caption"
+  altText="Accessibility description"
+/>
+
+<PhotoGrid imagePaths={["/pictures/img1.jpg", "/pictures/img2.jpg"]} />
+<SponsorGrid imagePaths={["/sponsors/logo1.webp", "/sponsors/logo2.webp"]} />
+```
+
+### Layout Elements
+
+```tsx
+<ContentSection
+  title={"Section Title"}
+  subtitle={"Optional Subtitle"}
+  centerText={false}  // Optional: centers all text
+  content={<>{/* Content elements */}</>}
+/>
+
+<BannerImage imagePath={"/pictures/Banner.png"} />
+
+<SizedBox height={40} />  // Adds vertical space
+<SizedBox width={20} />   // Adds horizontal space
+```
+
+### Lists
 
 ```tsx
 <DecoratedList
   items={[
-    { title: "First Item Title", description: "First item description" },
-    { title: "Second Item Title", description: "Second item description" },
+    {
+      title: "Item Title",
+      description: "Item description",
+    },
+    // More items...
   ]}
 />
-```
-
-### SectionImage
-
-For displaying images with optional captions:
-
-```tsx
-<SectionImage
-  imagePath="/pictures/2025/image.jpg"
-  caption="Optional caption text"
-  altText="Optional alternative text for accessibility"
-/>
-```
-
-### SizedBox
-
-For adding vertical or horizontal spacing:
-
-```tsx
-<SizedBox height={40} /> // Adds 40 pixels of vertical space
-<SizedBox width={20} />  // Adds 20 pixels of horizontal space
 ```
