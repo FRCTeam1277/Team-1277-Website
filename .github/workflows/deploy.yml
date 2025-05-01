@@ -2,7 +2,7 @@ name: deploy to gh pages
 
 on:
   push:
-    branches: ["main"]
+    branches: ["gh-pages-fix-testing", "main"]
 
   workflow_dispatch:
 
@@ -37,7 +37,6 @@ jobs:
         with:
           path: ./dist
 
-  # Deployment job
   deploy:
     environment:
       name: github-pages
