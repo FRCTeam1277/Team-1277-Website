@@ -202,9 +202,9 @@
 .navbar__dropdown-content {
   display: none;
   position: absolute;
-  top: calc(100% + 3px);
+  top: calc(100% + 0px);
   left: 0;
-  min-width: 200px;
+  min-width: 250px;
   background-color: var(--navbar-background);
   backdrop-filter: blur(10px);
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
