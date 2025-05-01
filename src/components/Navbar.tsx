@@ -1,6 +1,6 @@
 import { JSX, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getAssetPath } from "../utils/assetPath";
+import { assetPathFixer } from "../utils/assetPath";
 
 import "./Navbar.css";
 
@@ -51,7 +51,7 @@ export default function Navbar(): JSX.Element {
   useEffect(() => {
     const fetchNavConfig = async () => {
       try {
-        const response = await fetch(getAssetPath("navConfig.json"));
+        const response = await fetch(assetPathFixer("navConfig.json"));
         if (!response.ok) {
           throw new Error("Failed to load navigation configuration");
         }
@@ -113,14 +113,14 @@ export default function Navbar(): JSX.Element {
         return (
           <li key={index} className="navbar__dropdown">
             <Link to={item.path} className={isActive(item.path) ? "active" : ""}>
-              {item.linkIcon && <img src={getAssetPath(item.linkIcon)} alt="" className="navbar__link-icon" />}
+              {item.linkIcon && <img src={assetPathFixer(item.linkIcon)} alt="" className="navbar__link-icon" />}
               {item.linkName}
-              <img src={getAssetPath("/icons/expand.png")} alt="expand" className="navbar__dropdown-icon" />
+              <img src={assetPathFixer("/icons/expand.png")} alt="expand" className="navbar__dropdown-icon" />
             </Link>
             <div className="navbar__dropdown-content">
               {item.subPages.map((subItem, subIndex) => (
                 <Link key={subIndex} to={subItem.path} className={isActive(subItem.path) ? "active" : ""}>
-                  {subItem.linkIcon && <img src={getAssetPath(subItem.linkIcon)} alt="" className="navbar__link-icon" />}
+                  {subItem.linkIcon && <img src={assetPathFixer(subItem.linkIcon)} alt="" className="navbar__link-icon" />}
                   {subItem.linkName}
                 </Link>
               ))}
@@ -132,7 +132,7 @@ export default function Navbar(): JSX.Element {
         return (
           <li key={index}>
             <Link to={item.path} className={isActive(item.path) ? "active" : ""}>
-              {item.linkIcon && <img src={getAssetPath(item.linkIcon)} alt="" className="navbar__link-icon" />}
+              {item.linkIcon && <img src={assetPathFixer(item.linkIcon)} alt="" className="navbar__link-icon" />}
               {item.linkName}
             </Link>
           </li>
@@ -150,16 +150,16 @@ export default function Navbar(): JSX.Element {
           <li key={index} className={`navbar__sidebar-dropdown ${openDropdowns[item.linkName] ? "open" : ""}`}>
             <div className="navbar__sidebar-dropdown-toggle" onClick={() => toggleDropdown(item.linkName)}>
               <Link to={item.path} className={isActive(item.path) ? "active" : ""}>
-                {item.linkIcon && <img src={getAssetPath(item.linkIcon)} alt="" className="navbar__link-icon" />}
+                {item.linkIcon && <img src={assetPathFixer(item.linkIcon)} alt="" className="navbar__link-icon" />}
                 {item.linkName}
               </Link>
-              <img src={getAssetPath("/icons/expand.png")} alt="expand" className="navbar__dropdown-icon" />
+              <img src={assetPathFixer("/icons/expand.png")} alt="expand" className="navbar__dropdown-icon" />
             </div>
             <ul className="navbar__sidebar-dropdown-content">
               {item.subPages.map((subItem, subIndex) => (
                 <li key={subIndex}>
                   <Link to={subItem.path} className={isActive(subItem.path) ? "active" : ""}>
-                    {subItem.linkIcon && <img src={getAssetPath(subItem.linkIcon)} alt="" className="navbar__link-icon" />}
+                    {subItem.linkIcon && <img src={assetPathFixer(subItem.linkIcon)} alt="" className="navbar__link-icon" />}
                     {subItem.linkName}
                   </Link>
                 </li>
@@ -172,7 +172,7 @@ export default function Navbar(): JSX.Element {
         return (
           <li key={index}>
             <Link to={item.path} className={isActive(item.path) ? "active" : ""}>
-              {item.linkIcon && <img src={getAssetPath(item.linkIcon)} alt="" className="navbar__link-icon" />}
+              {item.linkIcon && <img src={assetPathFixer(item.linkIcon)} alt="" className="navbar__link-icon" />}
               {item.linkName}
             </Link>
           </li>
@@ -187,14 +187,14 @@ export default function Navbar(): JSX.Element {
         {/* Left-aligned Logo Image */}
         <div className="navbar__logo">
           <Link to="/">
-            <img src={getAssetPath("/RobotomiesLogo.png")} alt="Logo" />
+            <img src={assetPathFixer("/RobotomiesLogo.png")} alt="Logo" />
           </Link>
         </div>
         {/* Navigation Links */}
         <ul className="navbar__links">{renderNavLinks()}</ul>
         {/* Hamburger Icon for Mobile */}
         <div className="navbar__hamburger" onClick={toggleSidebar}>
-          <img src={getAssetPath("/icons/MenuIcon.png")} alt="Menu" />
+          <img src={assetPathFixer("/icons/MenuIcon.png")} alt="Menu" />
         </div>
       </nav>
 
@@ -202,7 +202,7 @@ export default function Navbar(): JSX.Element {
       <div className={`navbar__sidebar ${sidebarOpen ? "open" : ""}`}>
         <header>
           <h2 className="navbar__sidebar-title">Menu</h2>
-          <img src={getAssetPath("/icons/closeIcon.png")} alt="X" className="navbar__close-button" onClick={toggleSidebar} />
+          <img src={assetPathFixer("/icons/closeIcon.png")} alt="X" className="navbar__close-button" onClick={toggleSidebar} />
         </header>
         <ul className="navbar__sidebar-links">{renderSidebarLinks()}</ul>
       </div>

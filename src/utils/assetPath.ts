@@ -1,4 +1,4 @@
-export function getAssetPath(path: string): string {
+export function assetPathFixer(path: string): string {
   if (path.startsWith('http')) {
     return path;
   }

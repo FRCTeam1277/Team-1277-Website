@@ -1,5 +1,5 @@
 import { JSX } from "react";
-import { getAssetPath } from "../utils/assetPath";
+import { assetPathFixer } from "../utils/assetPath";
 
 import "./Banner.css";
 
@@ -15,5 +15,5 @@ interface IBannerImageProps {
  * @returns {JSX.Element} The rendered banner image element.
  */
 export default function BannerImage({ imagePath }: IBannerImageProps): JSX.Element {
-  return <img src={getAssetPath(imagePath)} alt="Banner" className="banner__image" />;
+  return <img src={assetPathFixer(imagePath)} alt="Banner" className="banner__image" />;
 }
