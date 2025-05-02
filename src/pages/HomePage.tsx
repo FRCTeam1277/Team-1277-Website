@@ -97,11 +97,11 @@ export default function HomePage() {
       />
       <SponsorGrid
         imagePaths={[
-          "/sponsors/BAE_Logo.webp",
-          "/sponsors/GDEF_Logo.webp",
-          "/sponsors/HPE_Logo.webp",
-          "/sponsors/national-carpet-flooring-logo.webp",
+          "/sponsors/BAE_Logo.png",
           "/sponsors/RTX_Raytheon_Technologies_logo.webp",
+          "/sponsors/HPE_Logo.png",
+          "/sponsors/GDEF_Logo.png",
+          "/sponsors/national-carpet-flooring-logo.png",
         ]}
       />
     </>

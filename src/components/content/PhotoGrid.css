@@ -20,7 +20,9 @@
 }
 
 .sponsor-grid {
-  background-color: white;
+  /* background-color: white; */
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 }
@@ -28,6 +30,8 @@
 .sponsor-grid img {
   box-shadow: none;
   background-color: transparent;
+  border-radius: 0;
+  max-height: 70px;
 }
 
 @media (max-width: 950px) {
