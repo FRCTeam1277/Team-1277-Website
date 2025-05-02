@@ -231,7 +231,7 @@ import TextParagraph from "../components/content/TextParagraph";
 
 export default function PageName() {
   return (
-    <div className="page-container">
+    <>
       <Navbar />
       <BannerImage imagePath={"/pictures/BannerImage.png"} />
 
@@ -247,7 +247,7 @@ export default function PageName() {
       />
 
       <Footer />
-    </div>
+    </>
   );
 }
 ```
