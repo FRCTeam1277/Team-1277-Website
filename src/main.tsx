@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import "./index.css";
 import routes from "./routes/routesConfig";
+import Layout from "./components/Layout";
 
 /**
  * A React component that automatically scrolls the window to the top
@@ -45,9 +46,11 @@ function App() {
     <>
       <ScrollToTop />
       <Routes>
-        {routes.map((route, index) => (
-          <Route key={`route-${index}-${route.path}`} path={route.path} element={route.element} />
-        ))}
+        <Route element={<Layout />}>
+          {routes.map((route, index) => (
+            <Route key={`route-${index}-${route.path}`} path={route.path} element={route.element} />
+          ))}
+        </Route>
       </Routes>
     </>
   );

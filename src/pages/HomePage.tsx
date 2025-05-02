@@ -1,7 +1,5 @@
 import BannerImage from "../components/BannerImage";
 import ContentSection from "../components/content/ContentSection";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
 import PhotoGrid from "../components/content/PhotoGrid";
 import SponsorGrid from "../components/content/SponsorGrid";
 import SizedBox from "../components/utils/SizedBox";
@@ -11,8 +9,7 @@ import SectionImage from "../components/content/SectionImage";
 
 export default function HomePage() {
   return (
-    <div className="page-container">
-      <Navbar />
+    <>
       <BannerImage imagePath={"/graphics/CenterBanner.png"} />
 
       {/* Introduction Section */}
@@ -107,7 +104,6 @@ export default function HomePage() {
           "/sponsors/RTX_Raytheon_Technologies_logo.webp",
         ]}
       />
-      <Footer />
-    </div>
+    </>
   );
 }

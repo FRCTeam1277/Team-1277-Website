@@ -1,15 +1,12 @@
 import BannerImage from "../../components/BannerImage";
 import ContentSection from "../../components/content/ContentSection";
-import Footer from "../../components/Footer";
-import Navbar from "../../components/Navbar";
 import SizedBox from "../../components/utils/SizedBox";
 import TextParagraph from "../../components/content/TextParagraph";
 import SectionImage from "../../components/content/SectionImage";
 
 export default function Season2025Page() {
   return (
-    <div className="page-container">
-      <Navbar />
+    <>
       <BannerImage imagePath={"/pictures/2025/2025_Banner.png"} />
       <ContentSection
         title={"2025 Competition Season"}
@@ -66,7 +63,6 @@ export default function Season2025Page() {
           </>
         }
       />
-      <Footer />
-    </div>
+    </>
   );
 }
