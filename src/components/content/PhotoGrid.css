@@ -32,6 +32,12 @@
   background-color: transparent;
   border-radius: 0;
   max-height: 70px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.085) translateY(-2px);
+  }
 }
 
 @media (max-width: 950px) {

@@ -103,6 +103,7 @@ export default function HomePage() {
           "/sponsors/GDEF_Logo.png",
           "/sponsors/national-carpet-flooring-logo.png",
         ]}
+        link={["https://www.baesystems.com/en/home"]}
       />
     </>
   );
