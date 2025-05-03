@@ -98,10 +98,11 @@ export default function HomePage() {
       <SideBySideSection
         leftContent={
           <ContentSection
+            preheading="We proudly support"
             title={"Students First"}
             content={
               <>
-                <TextParagraph text="We proudly support Students First, an organization dedicated to ensuring that student education and autonomy are prioritized in robotics teams. The organization embraces FIRST's values while advocating for a balance between mentor involvement and student learning, empowering students to develop technical skills and take leadership roles in their robotics journey." />
+                <TextParagraph text="Students First is an organization dedicated to ensuring that student education and autonomy are prioritized in robotics teams. The organization embraces FIRST's values while advocating for a balance between mentor involvement and student learning, empowering students to develop technical skills and take leadership roles in their robotics journey." />
                 <LinkImage
                   imagePath="/graphics/StudentsFirst.webp"
                   url="https://studentsfirst.tech/"
