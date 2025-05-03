@@ -117,12 +117,7 @@ export default function HomePage() {
         }
         rightContent={
           <PhotoGrid
-            imagePaths={[
-              "/pictures/2025/2025_Mentors-Group-Picture.jpg",
-              "/pictures/2023/2023_WPI-Team-Picture.jpg",
-              "/pictures/2025/2025_Mentors-Group-Picture.jpg",
-              "/pictures/2023/2023_WPI-Team-Picture.jpg",
-            ]}
+            imagePaths={["/pictures/2025/2025_Mentors-Group-Picture.jpg", "/pictures/2023/2023_WPI-Team-Picture.jpg"]}
           />
         }
       />

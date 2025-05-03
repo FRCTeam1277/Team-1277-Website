@@ -13,13 +13,21 @@
 }
 
 /* Make the layout stack on mobile devices */
-@media (max-width: 1100px) {
+@media (max-width: 1300px) {
   .side-by-side-section {
     flex-direction: column;
+    align-items: center;
     gap: 20px; /* Smaller gap when stacked */
+    padding: 0;
   }
 
   .side-by-side-item {
     width: 100%;
+  }
+
+  .side-by-side-item .content-section {
+    width: 100%;
+    padding: 3rem 1rem;
+    margin: 0;
   }
 }

@@ -10,20 +10,24 @@
 }
 
 .photo-grid {
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
 }
 
 .photo-grid img {
-  min-width: 200px;
+  min-width: 300px;
   width: 100%;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05) translateY(-2px);
+    filter: saturate(1.3) brightness(1.1);
+  }
 }
 
 .photo-grid img,
 .sponsor-grid img {
   margin: 0;
-  margin-top: 0.5rem;
-  margin-bottom: 0.35rem;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   background: red;
