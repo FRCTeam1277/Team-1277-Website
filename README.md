@@ -25,3 +25,12 @@ Developed by [Anahat Mudgal](https://github.com/AnahatM).
 - **Vite**: Next Generation Frontend Tooling
 - **React**: A JavaScript library for building user interfaces
 - **TypeScript**: Typed JavaScript at Any Scale
+
+## Documentation
+
+For a complete guide on managing and developing the website, please refer to the detailed documentation:
+
+• For instructions on setting up your development environment, see the [SETUP.md](./SETUP.md) file.  
+• For a quick guide on editing pages, adding content, and managing components, view the [DOCS.md](./DOCS.md) file.
+
+Make sure to follow the prerequisites and setup steps before diving into modifications. The guides provide essential tips and best practices for both developers and content editors.
