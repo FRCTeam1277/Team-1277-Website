@@ -2,6 +2,9 @@
 
 This guide helps you edit the Team 1277 website without programming knowledge. It covers how to modify pages, add content, upload images, and update navigation.
 
+Visit the `/testing` page to see all the possible components you can add to the website in use.
+This has the best example code to modify for your needs.
+
 ## Table of Contents
 
 1. [Website Structure](#website-structure)
@@ -29,7 +32,7 @@ Please refer to the [SETUP.md](SETUP.md) file for setup instructions to get star
 
 This section covers all the components you can use to build pages.
 
-Visitn the `/testing` page to see all the possible components you can add to the website in use.
+Visit the `/testing` page to see all the possible components you can add to the website in use.
 
 ### TextParagraph
 
@@ -173,6 +176,19 @@ This component provides a consistent layout for content sections:
 - `preheading`: String - Optional text to display above the title
 - `centerText`: Boolean - Whether to center all text in the section
 - `content`: JSX Element - The content to display in the section (required)
+
+## HighlightSection
+
+This component wraps content in a highlighted container to draw attention to important information.
+
+```tsx
+// Example usage with a text component
+<HighlightSection content={<TextParagraph text="This is an important highlight!" />} />
+```
+
+**Props:**
+
+- content (JSX.Element, required): The content to display within the highlighted section.
 
 ### BannerImage
 
