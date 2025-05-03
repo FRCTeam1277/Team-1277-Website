@@ -1,4 +1,4 @@
-import "./ContentSection.css";
+import "./LinkButton.css";
 
 interface LinkButtonProps {
   url: string;

@@ -1,4 +1,4 @@
-import "./ContentSection.css";
+import "./LinkImage.css";
 
 interface LinkImageProps {
   url: string;

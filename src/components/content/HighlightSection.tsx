@@ -1,5 +1,5 @@
 import { JSX } from "react";
-import "./ContentSection.css";
+import "./HighlightSection.css";
 
 export interface IHighlightSectionProps {
   content: JSX.Element;

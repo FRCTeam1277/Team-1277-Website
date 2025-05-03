@@ -1,0 +1,70 @@
+.link-button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: var(--text);
+  font-family: "Rubik", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: linear-gradient(45deg, var(--secondary), var(--primary));
+  box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    scale: 1.05;
+    translate: 0 -2px;
+    color: var(--text);
+  }
+}
+
+[data-theme="light"] .link-button {
+  color: var(--page-background);
+}
+
+.link-button.outline {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  box-shadow: inset 5px 5px 10px var(--shadow-dark), inset -5px -5px 10px var(--shadow-light);
+  transition: all 0.15s ease-in-out;
+
+  &:hover {
+    background: var(--secondary);
+    color: var(--text);
+    box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+    scale: 1;
+    translate: 0 0;
+  }
+}
+
+[data-theme="light"] .link-button.outline:hover {
+  color: var(--page-background);
+}
+
+.link-button.uncolored {
+  background: var(--page-background);
+  border: 1px solid var(--shadow-light);
+  color: var(--text);
+
+  &:hover {
+    background: var(--shadow-light);
+    color: var(--text);
+  }
+}
+
+[data-theme="light"] .link-button.uncolored img {
+  filter: invert(0) !important;
+}
+
+.link-button.disable-shadow {
+  box-shadow: none !important;
+}
+
+.link-button img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}

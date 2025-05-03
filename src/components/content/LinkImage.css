@@ -1,0 +1,17 @@
+.link-image {
+  opacity: 0.9;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    opacity: 1;
+    transform: scale(1.05) translateY(-2px);
+  }
+}
+
+.link-image img {
+  width: 100%;
+  height: auto;
+}

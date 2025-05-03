@@ -1,6 +1,7 @@
 import { JSX, useState } from "react";
 
 import "./Footer.css";
+import SizedBox from "./utils/SizedBox";
 
 export default function Footer(): JSX.Element {
   const [theme, setTheme] = useState(() => document.documentElement.getAttribute("data-theme") || "light");
@@ -13,6 +14,7 @@ export default function Footer(): JSX.Element {
 
   return (
     <footer>
+      <SizedBox height={60} />
       <div className="footer__content">
         <p>© 2025 Groton-Dunstable Regional High School Robotics Team</p>
         <p>FRC Team 1277 | The Robotomies</p>
@@ -47,6 +49,7 @@ export default function Footer(): JSX.Element {
           <span>{theme === "light" ? "Dark Mode" : "Light Mode"}</span>
         </button>
       </div>
+      <SizedBox height={60} />
     </footer>
   );
 }
