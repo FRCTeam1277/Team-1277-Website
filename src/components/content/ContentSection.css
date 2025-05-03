@@ -40,6 +40,10 @@
 
 .highlight-section .side-by-side-item {
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .highlight-section .content-section .content-section_header h1 {
@@ -48,6 +52,15 @@
   background-clip: none;
   -webkit-background-clip: none;
   -webkit-text-fill-color: initial;
+}
+
+.highlight-section .content-section em {
+  color: var(--page-background) !important;
+}
+
+.highlight-section .content-section .text-paragraph a {
+  color: var(--page-background) !important;
+  text-decoration: underline;
 }
 
 .content-section h2 {

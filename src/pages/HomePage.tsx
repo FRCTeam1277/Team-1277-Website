@@ -40,6 +40,7 @@ export default function HomePage() {
           </>
         }
       />
+
       <ContentSection
         title={"Sponsor Benefits"}
         subtitle={"Exposure, Outreach, Inspiration"}
@@ -103,7 +104,6 @@ export default function HomePage() {
             }
             rightContent={
               <>
-                <SizedBox height={45} />
                 <SectionImage
                   imagePath="/pictures/2025/2025_Practice-Field-Robot.png"
                   caption="Image of our 2025 season robot on the practice field at WPI."
