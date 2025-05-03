@@ -1,15 +1,12 @@
 import BannerImage from "../components/BannerImage";
 import ContentSection from "../components/content/ContentSection";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
 import TextParagraph from "../components/content/TextParagraph";
 import SectionImage from "../components/content/SectionImage";
 import SizedBox from "../components/utils/SizedBox";
 
 export default function SupportPage() {
   return (
-    <div className="page-container">
-      <Navbar />
+    <>
       <BannerImage
         imagePath={"https://www.robotomies.com/wp-content/uploads/2025/03/cropped-robot_2025-cinematic.png"}
       />
@@ -97,7 +94,6 @@ export default function SupportPage() {
           </>
         }
       />
-      <Footer />
-    </div>
+    </>
   );
 }

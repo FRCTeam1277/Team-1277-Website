@@ -1,15 +1,13 @@
 import BannerImage from "../../components/BannerImage";
 import ContentSection from "../../components/content/ContentSection";
-import Footer from "../../components/Footer";
-import Navbar from "../../components/Navbar";
 import SizedBox from "../../components/utils/SizedBox";
 import TextParagraph from "../../components/content/TextParagraph";
 import SectionImage from "../../components/content/SectionImage";
+import LinkButton from "../../components/content/LinkButton";
 
 export default function Season2025Page() {
   return (
-    <div className="page-container">
-      <Navbar />
+    <>
       <BannerImage imagePath={"/pictures/2025/2025_Banner.png"} />
       <ContentSection
         title={"2025 Competition Season"}
@@ -31,7 +29,7 @@ export default function Season2025Page() {
               Algae) into goals. At the end of the match, robots move to a truss structure called the Barge and climb
               metal Cages to earn additional points."
             />
-            <SectionImage imagePath="/pictures/2025/2025_Dive_Banner.jpg" />
+            <SectionImage imagePath="/pictures/2025/2025_Dive_Banner.jpg" widthPercent={50} disableClick={true} />
             <SizedBox height={40} />
           </>
         }
@@ -47,7 +45,15 @@ export default function Season2025Page() {
               text="[Salem HS](https://frc-events.firstinspires.org/2025/NHSAL): 
               Friday, February 28 to Sunday, March 2, 2025 (Week 1)"
             />
-            <TextParagraph text="[Event Info](https://firstnh.wixsite.com/firstnh/gsd-team-information)" bold={true} />
+
+            <LinkButton
+              url={"https://firstnh.wixsite.com/firstnh/gsd-team-information"}
+              textContent={"Event Info"}
+              icon="/icons/calendar.png"
+              invertIcon={true}
+            />
+            <SizedBox height={30} />
+
             <TextParagraph
               text="NE FIRST will stream match play to [nefirst.org/livestream](http://nefirst.org/livestream). 
               Northern events will stream to BLUE links. Southern events will stream to RED links. 
@@ -66,7 +72,6 @@ export default function Season2025Page() {
           </>
         }
       />
-      <Footer />
-    </div>
+    </>
   );
 }

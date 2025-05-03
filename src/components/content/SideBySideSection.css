@@ -1,0 +1,33 @@
+.side-by-side-section {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  gap: 40px; /* Default gap between the two sides */
+  margin: 40px 0;
+  padding: 0 5px;
+}
+
+.side-by-side-item {
+  flex: 1;
+  min-width: 0; /* Allows the content to shrink below its minimum content size */
+}
+
+/* Make the layout stack on mobile devices */
+@media (max-width: 1300px) {
+  .side-by-side-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Smaller gap when stacked */
+    padding: 0;
+  }
+
+  .side-by-side-item {
+    width: 100%;
+  }
+
+  .side-by-side-item .content-section {
+    width: 100%;
+    padding: 3rem 1rem;
+    margin: 0;
+  }
+}
