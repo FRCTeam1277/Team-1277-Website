@@ -34,7 +34,7 @@ interface ImageCarouselProps {
    * Time in milliseconds between automatic image transitions
    * Only used when autoScroll is true
    */
-  autoScrollTime?: number;
+  autoScrollTimeMS?: number;
 
   /**
    * Optional CSS class to apply to the carousel container
@@ -45,7 +45,7 @@ interface ImageCarouselProps {
 export default function ImageCarousel({
   images,
   autoScroll = false,
-  autoScrollTime = 3000,
+  autoScrollTimeMS: autoScrollTime = 3000,
   className = "",
 }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);

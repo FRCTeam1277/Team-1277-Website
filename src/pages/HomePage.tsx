@@ -10,6 +10,7 @@ import LinkImage from "../components/content/LinkImage";
 import SideBySideSection from "../components/content/SideBySideSection";
 import HighlightSection from "../components/content/HighlightSection";
 import LinkButton from "../components/content/LinkButton";
+import ImageCarousel from "../components/content/ImageCarousel";
 
 export default function HomePage() {
   return (
@@ -37,6 +38,41 @@ export default function HomePage() {
             />
 
             <SizedBox height={40} />
+          </>
+        }
+      />
+
+      <ContentSection
+        title={"2025 Season"}
+        subtitle={"Making Waves on the Reefscape"}
+        content={
+          <>
+            <TextParagraph
+              text="We just finished our 2025 competition season. View more information about our success this year on the [2025: Dive](/seasons/2025) page."
+              centered={true}
+            />
+            <ImageCarousel
+              autoScroll={true}
+              autoScrollTimeMS={3000}
+              images={[
+                {
+                  path: "/pictures/2025/2025_Robot-Near-Reef.jpg",
+                  caption: "Robot positioned near the reef during the 2025 competition",
+                },
+                {
+                  path: "/pictures/2025/2025_Robot-Low-Perspective.jpg",
+                  caption: "Low angle perspective of our robot's mechanical systems",
+                },
+                {
+                  path: "/pictures/2025/2025_Hanging-Robot.jpg",
+                  caption: "Robot hanging from the cage structure at the end of the match",
+                },
+                {
+                  path: "/pictures/2025/2025_Driver-Station-POV.jpg",
+                  caption: "View from the driver station during competition",
+                },
+              ]}
+            />{" "}
           </>
         }
       />

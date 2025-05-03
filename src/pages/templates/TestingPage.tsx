@@ -138,7 +138,7 @@ export default function TestingPage() {
                 },
               ]}
               autoScroll={true}
-              autoScrollTime={5000}
+              autoScrollTimeMS={5000}
             />
 
             <SizedBox height={20} />
