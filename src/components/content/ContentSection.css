@@ -134,9 +134,14 @@
   }
 }
 
+[data-theme="light"] .content-section .link-button.outline:hover {
+  color: var(--page-background);
+}
+
 .content-section .link-button.uncolored {
   background: transparent;
   border: 1px solid var(--shadow-light);
+  color: var(--text);
 
   &:hover {
     background: var(--shadow-light);

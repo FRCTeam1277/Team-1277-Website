@@ -198,6 +198,46 @@ Add space between elements:
 - `height`: Number - Height in pixels
 - `width`: Number - Width in pixels
 
+### ImageCarousel
+
+Use this component to create a slideshow of images with navigation arrows, captions, and indicators.
+
+```tsx
+<ImageCarousel
+  images={[
+    {
+      path: "/pictures/2025/2025_Robot-Near-Reef.jpg",
+      caption: "Robot positioned near the reef during competition",
+    },
+    {
+      path: "/pictures/2025/2025_Robot-Low-Perspective.jpg",
+      caption: "Low angle perspective of our robot's systems",
+    },
+  ]}
+  autoScroll={true}
+  autoScrollTime={5000}
+/>
+```
+
+**Props:**
+
+- `images`: Array of image objects (required):
+  - `path`: String - Path to the image file (required)
+  - `caption`: String - Optional caption text to display under the image
+  - `alt`: String - Optional alt text for accessibility
+- `autoScroll`: Boolean - Whether to automatically scroll through images
+- `autoScrollTime`: Number - Time in milliseconds between image transitions (default: 3000)
+- `className`: String - Optional CSS class to apply to the carousel
+
+**Features:**
+
+- Navigation arrows on both sides to manually navigate between images
+- Image counter showing current position (e.g., "2 / 5")
+- Optional captions with a "link" button to open the image in a new tab
+- Indicator dots showing which image is currently displayed
+- Autoscroll capability that stops when manual navigation is used
+- Maintains aspect ratio and properly fits images with black bars if needed
+
 ## Building Content Sections
 
 Most content uses the `ContentSection` component, which provides consistent layout.
