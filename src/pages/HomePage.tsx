@@ -6,6 +6,7 @@ import SizedBox from "../components/utils/SizedBox";
 import TextParagraph from "../components/content/TextParagraph";
 import DecoratedList from "../components/content/DecoratedList";
 import SectionImage from "../components/content/SectionImage";
+import LinkImage from "../components/content/LinkImage";
 
 export default function HomePage() {
   return (
@@ -92,18 +93,41 @@ export default function HomePage() {
           </>
         }
       />
+
+      <ContentSection
+        title={"Students First"}
+        content={
+          <>
+            <TextParagraph text="We proudly support Students First, an organization dedicated to ensuring that student education and autonomy are prioritized in robotics teams. The organization embraces FIRST's values while advocating for a balance between mentor involvement and student learning, empowering students to develop technical skills and take leadership roles in their robotics journey." />
+            <LinkImage
+              imagePath="/graphics/StudentsFirst.webp"
+              url="https://studentsfirst.tech/"
+              altText="[Students First Link]"
+              widthPercent={100}
+              heightPercent={100}
+              roundCorners={true}
+            />
+            <SizedBox height={40} />
+          </>
+        }
+      />
+
+      <SizedBox height={40} />
+
       <PhotoGrid
         imagePaths={["/pictures/2025/2025_Mentors-Group-Picture.jpg", "/pictures/2023/2023_WPI-Team-Picture.jpg"]}
       />
       <SponsorGrid
-        imagePaths={[
-          "/sponsors/BAE_Logo.png",
-          "/sponsors/RTX_Raytheon_Technologies_logo.webp",
-          "/sponsors/HPE_Logo.png",
-          "/sponsors/GDEF_Logo.png",
-          "/sponsors/national-carpet-flooring-logo.png",
+        items={[
+          { imagePath: "/sponsors/BAE_Logo.png", link: "https://www.baesystems.com/en-us/home" },
+          { imagePath: "/sponsors/RTX_Raytheon_Technologies_logo.webp", link: "https://www.rtx.com/" },
+          { imagePath: "/sponsors/HPE_Logo.png", link: "https://www.hpe.com/us/en/home.html" },
+          { imagePath: "/sponsors/GDEF_Logo.png", link: "https://www.gdefinc.org/" },
+          {
+            imagePath: "/sponsors/national-carpet-flooring-logo.png",
+            link: "https://www.nationalcarpetandflooring.com/",
+          },
         ]}
-        link={["https://www.baesystems.com/en/home"]}
       />
     </>
   );

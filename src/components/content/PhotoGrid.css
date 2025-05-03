@@ -20,11 +20,16 @@
 }
 
 .sponsor-grid {
-  /* background-color: white; */
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  gap: 3rem;
+}
+
+[data-theme="light"] .sponsor-grid {
+  background-color: #0c1019;
+  padding: 20px 0;
 }
 
 .sponsor-grid img {

@@ -46,7 +46,12 @@ export default function Season2025Page() {
               Friday, February 28 to Sunday, March 2, 2025 (Week 1)"
             />
 
-            <LinkButton href={"https://firstnh.wixsite.com/firstnh/gsd-team-information"} textContent={"Event Info"} />
+            <LinkButton
+              url={"https://firstnh.wixsite.com/firstnh/gsd-team-information"}
+              textContent={"Event Info"}
+              icon="/icons/calendar.png"
+              invertIcon={true}
+            />
             <SizedBox height={30} />
 
             <TextParagraph

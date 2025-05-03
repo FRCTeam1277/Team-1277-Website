@@ -4,6 +4,7 @@
   align-items: center;
 
   max-width: 1000px !important;
+  width: 100%;
 
   padding: 4rem;
   padding-bottom: 0;
@@ -92,12 +93,19 @@
   background: linear-gradient(45deg, var(--secondary), var(--primary));
   box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
   transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     scale: 1.05;
     translate: 0 -2px;
     color: var(--text);
   }
+}
+
+[data-theme="light"] .content-section .link-button {
+  color: var(--page-background);
 }
 
 .content-section .link-button.outline {
@@ -123,6 +131,22 @@
   &:hover {
     background: var(--shadow-light);
     color: var(--text);
+  }
+}
+
+.content-section .link-button img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.content-section .link-image {
+  opacity: 0.9;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 1;
+    transform: scale(1.05) translateY(-2px);
   }
 }
 

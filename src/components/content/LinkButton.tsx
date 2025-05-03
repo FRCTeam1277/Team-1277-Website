@@ -1,18 +1,21 @@
+import "./ContentSection.css";
+
 interface LinkButtonProps {
-  href: string;
+  url: string;
   textContent: string;
   outline?: boolean;
   uncolored?: boolean;
   icon?: string;
+  invertIcon?: boolean;
 }
 
 export default function LinkButton(props: LinkButtonProps) {
   return (
     <a
-      href={props.href}
+      href={props.url}
       className={`link-button ${props.outline ? "outline" : ""} ${props.uncolored ? "uncolored" : ""}`}
     >
-      {props.icon && <img src={props.icon} alt="?" />}
+      {props.icon && <img src={props.icon} alt="?" style={{ filter: props.invertIcon ? "invert(1)" : "none" }} />}
       {props.textContent}
     </a>
   );
