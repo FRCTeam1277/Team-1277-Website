@@ -8,6 +8,8 @@ import DecoratedList from "../components/content/DecoratedList";
 import SectionImage from "../components/content/SectionImage";
 import LinkImage from "../components/content/LinkImage";
 import SideBySideSection from "../components/content/SideBySideSection";
+import HighlightSection from "../components/content/HighlightSection";
+import LinkButton from "../components/content/LinkButton";
 
 export default function HomePage() {
   return (
@@ -67,6 +69,52 @@ export default function HomePage() {
           </>
         }
       />
+
+      <HighlightSection
+        content={
+          <SideBySideSection
+            leftContent={
+              <ContentSection
+                title={"Learn More"}
+                subtitle="Follow us on social media!"
+                content={
+                  <>
+                    <TextParagraph text="Follow the robotomies on instagram and facbeook. We recommend checking out our Instagram and Facebook pages for the latest updates. We regularly post about our events, competitions, and team activities. On the instagram we also share lots of pictures and videos from our competitions." />
+                    <LinkButton
+                      url={"https://www.instagram.com/robotomies1277/"}
+                      icon="/socials/instagram.png"
+                      textContent={"Instagram"}
+                      invertIcon={true}
+                      uncolored={true}
+                      disableShadow={true}
+                    />
+                    <SizedBox height={10} />
+                    <LinkButton
+                      url={"https://www.facebook.com/team1277"}
+                      icon="/socials/facebook.png"
+                      textContent={"Facebook"}
+                      invertIcon={true}
+                      uncolored={true}
+                      disableShadow={true}
+                    />
+                  </>
+                }
+              />
+            }
+            rightContent={
+              <>
+                <SizedBox height={45} />
+                <SectionImage
+                  imagePath="/pictures/2025/2025_Practice-Field-Robot.png"
+                  caption="Image of our 2025 season robot on the practice field at WPI."
+                />
+              </>
+            }
+            gap={20}
+          />
+        }
+      />
+
       <ContentSection
         title={"Volunteer"}
         subtitle={"Mentor, Coach, Inspire"}

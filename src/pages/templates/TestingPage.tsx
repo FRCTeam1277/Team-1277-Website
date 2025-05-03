@@ -1,6 +1,7 @@
 import BannerImage from "../../components/BannerImage";
 import ContentSection from "../../components/content/ContentSection";
 import DecoratedList from "../../components/content/DecoratedList";
+import HighlightSection from "../../components/content/HighlightSection";
 import ImageCarousel from "../../components/content/ImageCarousel";
 import LinkButton from "../../components/content/LinkButton";
 import LinkImage from "../../components/content/LinkImage";
@@ -228,6 +229,52 @@ export default function TestingPage() {
 
             <SizedBox height={20} />
           </>
+        }
+      />
+
+      {/* Highlight Section Examples */}
+      <HighlightSection
+        content={
+          <SideBySideSection
+            leftContent={
+              <ContentSection
+                title={"Learn More"}
+                subtitle="Follow us on social media!"
+                content={
+                  <>
+                    <TextParagraph text="Follow the robotomies on instagram and facbeook. We recommend checking out our Instagram and Facebook pages for the latest updates. We regularly post about our events, competitions, and team activities. On the instagram we also share lots of pictures and videos from our competitions." />
+                    <LinkButton
+                      url={"https://www.instagram.com/robotomies1277/"}
+                      icon="/socials/instagram.png"
+                      textContent={"Instagram"}
+                      invertIcon={true}
+                      uncolored={true}
+                      disableShadow={true}
+                    />
+                    <SizedBox height={10} />
+                    <LinkButton
+                      url={"https://www.facebook.com/team1277"}
+                      icon="/socials/facebook.png"
+                      textContent={"Facebook"}
+                      invertIcon={true}
+                      uncolored={true}
+                      disableShadow={true}
+                    />
+                  </>
+                }
+              />
+            }
+            rightContent={
+              <>
+                <SizedBox height={45} />
+                <SectionImage
+                  imagePath="/pictures/2025/2025_Practice-Field-Robot.png"
+                  caption="Example image in the right column"
+                />
+              </>
+            }
+            gap={20}
+          />
         }
       />
 

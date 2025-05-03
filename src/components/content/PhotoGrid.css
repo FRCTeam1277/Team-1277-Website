@@ -10,11 +10,11 @@
 }
 
 .photo-grid {
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(30vw, 1fr));
 }
 
 .photo-grid img {
-  min-width: 300px;
+  min-width: 30vw;
   width: 100%;
   cursor: pointer;
   transition: all 0.2s ease-in-out;

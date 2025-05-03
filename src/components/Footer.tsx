@@ -18,13 +18,13 @@ export default function Footer(): JSX.Element {
         <p>FRC Team 1277 | The Robotomies</p>
       </div>
       <div className="footer__socials">
-        <a href="https://www.instagram.com/robotomies/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.instagram.com/robotomies1277/" target="_blank" rel="noopener noreferrer">
           <span>
             <img src="/socials/instagram.png" alt="Instagram icon" />
             <span className="social-text">Instagram</span>
           </span>
         </a>
-        <a href="https://www.facebook.com/robotomies/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.facebook.com/team1277" target="_blank" rel="noopener noreferrer">
           <span>
             <img src="/socials/facebook.png" alt="Facebook icon" />
             <span className="social-text">Facebook</span>
