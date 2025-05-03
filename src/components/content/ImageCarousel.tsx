@@ -101,6 +101,10 @@ export default function ImageCarousel({
     setCurrentIndex(index);
   };
 
+  const openImageInNewTab = (imagePath: string) => {
+    window.open(imagePath, "_blank", "noopener,noreferrer");
+  };
+
   // Don't render if no images
   if (!images.length) {
     return null;
@@ -128,7 +132,18 @@ export default function ImageCarousel({
         {images.map((image, index) => (
           <div key={`slide-${index}`} className={`carousel-slide ${index === currentIndex ? "active" : ""}`}>
             <img src={image.path} alt={image.alt || `Slide ${index + 1}`} className="carousel-image" />
-            {image.caption && <div className="carousel-caption">{image.caption}</div>}
+            {image.caption && (
+              <div className="carousel-caption">
+                <div className="carousel-caption-text">{image.caption}</div>
+                <button
+                  className="carousel-link-button"
+                  onClick={() => openImageInNewTab(image.path)}
+                  aria-label="Open image in new tab"
+                >
+                  <img src="/icons/link.png" alt="Open in new tab" className="carousel-link-icon" />
+                </button>
+              </div>
+            )}
           </div>
         ))}
 

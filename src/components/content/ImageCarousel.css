@@ -22,8 +22,9 @@
 /* Navigation arrows */
 .carousel-arrow {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  /* Change from top: 0; bottom: 0; to exclude the corners */
+  top: 15%;
+  bottom: 15%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,14 +46,14 @@
 
 .carousel-arrow-prev {
   left: 0;
-  /* border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px; */
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 
 .carousel-arrow-next {
   right: 0;
-  /* border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px; */
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
 }
 
 .carousel-arrow-icon {
@@ -95,6 +96,41 @@
   padding: 10px 15px;
   text-align: center;
   font-family: "Rubik", sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.carousel-caption-text {
+  flex: 1;
+  text-align: center;
+}
+
+.carousel-link-button {
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+  padding: 3px;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.carousel-link-button:hover {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.carousel-link-icon {
+  width: 18px;
+  height: 18px;
+  filter: invert(1);
 }
 
 /* Indicator dots */
@@ -169,5 +205,15 @@
   .carousel-dot {
     width: 8px;
     height: 8px;
+  }
+
+  .carousel-link-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .carousel-link-button {
+    width: 20px;
+    height: 20px;
   }
 }
