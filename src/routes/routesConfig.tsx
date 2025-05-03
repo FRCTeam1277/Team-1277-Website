@@ -3,6 +3,7 @@ import HomePage from "../pages/HomePage";
 import NotFoundPage from "../pages/NotFoundPage";
 import SupportPage from "../pages/SupportPage";
 import Season2025Page from "../pages/seasons/Season2025";
+import TestingPage from "../pages/templates/TestingPage";
 
 // Route configuration interface - this makes it easy to understand what properties each route should have
 export interface RouteConfig {
@@ -24,6 +25,8 @@ export interface RouteConfig {
  * { path: "/new-page", element: <NewPageComponent /> }
  */
 export const routes: RouteConfig[] = [
+  // >>>>>>>>>>>>> START OF ROUTES <<<<<<<<<<<<<<
+
   {
     path: "/",
     element: <HomePage />,
@@ -42,7 +45,15 @@ export const routes: RouteConfig[] = [
     label: "2025 Season",
     description: "Details about the 2025 competition season",
   },
-  // Add new routes above this line
+
+  // >>>>>>>>>>>>> END OF ROUTES <<<<<<<<<<<<<<
+
+  {
+    path: "/testing",
+    element: <TestingPage />,
+    label: "Testing Page",
+    description: "This is a placeholder for testing purposes",
+  },
 
   // This must be the last route - it catches all unmatched paths
   {

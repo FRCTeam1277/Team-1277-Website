@@ -7,6 +7,7 @@ import TextParagraph from "../components/content/TextParagraph";
 import DecoratedList from "../components/content/DecoratedList";
 import SectionImage from "../components/content/SectionImage";
 import LinkImage from "../components/content/LinkImage";
+import SideBySideSection from "../components/content/SideBySideSection";
 
 export default function HomePage() {
   return (
@@ -94,29 +95,40 @@ export default function HomePage() {
         }
       />
 
-      <ContentSection
-        title={"Students First"}
-        content={
-          <>
-            <TextParagraph text="We proudly support Students First, an organization dedicated to ensuring that student education and autonomy are prioritized in robotics teams. The organization embraces FIRST's values while advocating for a balance between mentor involvement and student learning, empowering students to develop technical skills and take leadership roles in their robotics journey." />
-            <LinkImage
-              imagePath="/graphics/StudentsFirst.webp"
-              url="https://studentsfirst.tech/"
-              altText="[Students First Link]"
-              widthPercent={100}
-              heightPercent={100}
-              roundCorners={true}
-            />
-            <SizedBox height={40} />
-          </>
+      <SideBySideSection
+        leftContent={
+          <ContentSection
+            title={"Students First"}
+            content={
+              <>
+                <TextParagraph text="We proudly support Students First, an organization dedicated to ensuring that student education and autonomy are prioritized in robotics teams. The organization embraces FIRST's values while advocating for a balance between mentor involvement and student learning, empowering students to develop technical skills and take leadership roles in their robotics journey." />
+                <LinkImage
+                  imagePath="/graphics/StudentsFirst.webp"
+                  url="https://studentsfirst.tech/"
+                  altText="[Students First Link]"
+                  widthPercent={100}
+                  heightPercent={100}
+                  roundCorners={true}
+                />
+                <SizedBox height={40} />
+              </>
+            }
+          />
+        }
+        rightContent={
+          <PhotoGrid
+            imagePaths={[
+              "/pictures/2025/2025_Mentors-Group-Picture.jpg",
+              "/pictures/2023/2023_WPI-Team-Picture.jpg",
+              "/pictures/2025/2025_Mentors-Group-Picture.jpg",
+              "/pictures/2023/2023_WPI-Team-Picture.jpg",
+            ]}
+          />
         }
       />
 
       <SizedBox height={40} />
 
-      <PhotoGrid
-        imagePaths={["/pictures/2025/2025_Mentors-Group-Picture.jpg", "/pictures/2023/2023_WPI-Team-Picture.jpg"]}
-      />
       <SponsorGrid
         items={[
           { imagePath: "/sponsors/BAE_Logo.png", link: "https://www.baesystems.com/en-us/home" },
