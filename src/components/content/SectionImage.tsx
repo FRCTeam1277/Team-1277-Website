@@ -21,9 +21,20 @@ interface SectionImageProps {
    */
   widthPercent?: number | string;
   heightPercent?: number | string;
+
+  /**
+   * Optional flag to disable clicking on the image
+   */
+  disableClick?: boolean;
 }
 
 export default function SectionImage(props: SectionImageProps) {
+  const handleImageClick = () => {
+    if (!props.disableClick) {
+      window.open(props.imagePath, "_blank");
+    }
+  };
+
   return (
     <div className="section-image-container section-image-wrapper">
       <img
@@ -33,7 +44,9 @@ export default function SectionImage(props: SectionImageProps) {
         style={{
           width: typeof props.widthPercent === "number" ? `${props.widthPercent}%` : props.widthPercent || "90%",
           height: typeof props.heightPercent === "number" ? `${props.heightPercent}%` : props.heightPercent || "auto",
+          cursor: props.disableClick ? "default" : "pointer",
         }}
+        onClick={handleImageClick}
       />
       {props.caption && <figcaption>{props.caption}</figcaption>}
     </div>

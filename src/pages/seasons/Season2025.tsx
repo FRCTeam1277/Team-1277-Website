@@ -29,7 +29,7 @@ export default function Season2025Page() {
               Algae) into goals. At the end of the match, robots move to a truss structure called the Barge and climb
               metal Cages to earn additional points."
             />
-            <SectionImage imagePath="/pictures/2025/2025_Dive_Banner.jpg" widthPercent={50} />
+            <SectionImage imagePath="/pictures/2025/2025_Dive_Banner.jpg" widthPercent={50} disableClick={true} />
             <SizedBox height={40} />
           </>
         }
