@@ -9,6 +9,16 @@
   margin-bottom: 3rem;
 }
 
+.photo-grid {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.photo-grid img {
+  min-width: 200px;
+  width: 100%;
+  cursor: pointer;
+}
+
 .photo-grid img,
 .sponsor-grid img {
   margin: 0;
