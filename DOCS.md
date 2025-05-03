@@ -29,6 +29,8 @@ Please refer to the [SETUP.md](SETUP.md) file for setup instructions to get star
 
 This section covers all the components you can use to build pages.
 
+Visitn the `/testing` page to see all the possible components you can add to the website in use.
+
 ### TextParagraph
 
 Use this for all text content. It supports styling options and automatic link conversion.
