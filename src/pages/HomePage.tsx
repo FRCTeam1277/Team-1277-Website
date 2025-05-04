@@ -1,4 +1,4 @@
-import BannerImage from "../components/BannerImage";
+import BannerImage from "../components/common/BannerImage";
 import ContentSection from "../components/content/ContentSection";
 import PhotoGrid from "../components/content/PhotoGrid";
 import SponsorGrid from "../components/content/SponsorGrid";
@@ -11,6 +11,7 @@ import SideBySideSection from "../components/content/SideBySideSection";
 import HighlightSection from "../components/content/HighlightSection";
 import LinkButton from "../components/content/LinkButton";
 import ImageCarousel from "../components/content/ImageCarousel";
+import GoFundMe from "../components/other/GoFundMe";
 
 export default function HomePage() {
   return (
@@ -73,6 +74,21 @@ export default function HomePage() {
                 },
               ]}
             />{" "}
+          </>
+        }
+      />
+
+      <ContentSection
+        title={"Help Support the Robotomies"}
+        subtitle="Join us in our mission to inspire students!"
+        content={
+          <>
+            <TextParagraph
+              text="We use funding to get to competitions and support robot-building expanses. We greatly appreciate any support you can provide."
+              centered={true}
+            />
+            <GoFundMe />
+            <SizedBox height={40} />
           </>
         }
       />

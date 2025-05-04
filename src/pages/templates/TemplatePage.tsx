@@ -1,4 +1,4 @@
-import BannerImage from "../../components/BannerImage";
+import BannerImage from "../../components/common/BannerImage";
 import ContentSection from "../../components/content/ContentSection";
 import TextParagraph from "../../components/content/TextParagraph";
 

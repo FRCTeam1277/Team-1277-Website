@@ -112,7 +112,13 @@ small {
 }
 
 .neuromorphic {
-  box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+  box-shadow: 5px 5px 10px var(--page-shadow-dark), -5px -5px 10px var(--page-shadow-light);
   border-radius: 10px;
   background: var(--background);
+}
+
+.neuromorphic-inset {
+  box-shadow: inset 5px 5px 10px var(--page-shadow-dark), inset -5px -5px 10px var(--page-shadow-light);
+  border-radius: 10px;
+  background: var(--page-background);
 }
