@@ -1,7 +1,7 @@
 import { JSX, useState } from "react";
 
 import "./Footer.css";
-import SizedBox from "./utils/SizedBox";
+import SizedBox from "../utils/SizedBox";
 
 export default function Footer(): JSX.Element {
   const [theme, setTheme] = useState(() => document.documentElement.getAttribute("data-theme") || "light");
