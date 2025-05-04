@@ -1,5 +1,5 @@
 import { JSX } from "react";
-import { assetPathFixer } from "../utils/assetPath";
+import { assetPathFixer } from "../../utils/assetPath";
 
 import "./Banner.css";
 

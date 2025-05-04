@@ -1,5 +1,5 @@
 import { JSX, useState } from "react";
-import { assetPathFixer } from "../utils/assetPath";
+import { assetPathFixer } from "../../utils/assetPath";
 
 import "./Footer.css";
 import SizedBox from "../utils/SizedBox";

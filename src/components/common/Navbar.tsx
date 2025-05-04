@@ -1,6 +1,6 @@
 import { JSX, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { assetPathFixer } from "../utils/assetPath";
+import { assetPathFixer } from "../../utils/assetPath";
 
 import "./Navbar.css";
 
@@ -120,7 +120,9 @@ export default function Navbar(): JSX.Element {
             <div className="navbar__dropdown-content">
               {item.subPages.map((subItem, subIndex) => (
                 <Link key={subIndex} to={subItem.path} className={isActive(subItem.path) ? "active" : ""}>
-                  {subItem.linkIcon && <img src={assetPathFixer(subItem.linkIcon)} alt="" className="navbar__link-icon" />}
+                  {subItem.linkIcon && (
+                    <img src={assetPathFixer(subItem.linkIcon)} alt="" className="navbar__link-icon" />
+                  )}
                   {subItem.linkName}
                 </Link>
               ))}
@@ -159,7 +161,9 @@ export default function Navbar(): JSX.Element {
               {item.subPages.map((subItem, subIndex) => (
                 <li key={subIndex}>
                   <Link to={subItem.path} className={isActive(subItem.path) ? "active" : ""}>
-                    {subItem.linkIcon && <img src={assetPathFixer(subItem.linkIcon)} alt="" className="navbar__link-icon" />}
+                    {subItem.linkIcon && (
+                      <img src={assetPathFixer(subItem.linkIcon)} alt="" className="navbar__link-icon" />
+                    )}
                     {subItem.linkName}
                   </Link>
                 </li>
@@ -202,7 +206,12 @@ export default function Navbar(): JSX.Element {
       <div className={`navbar__sidebar ${sidebarOpen ? "open" : ""}`}>
         <header>
           <h2 className="navbar__sidebar-title">Menu</h2>
-          <img src={assetPathFixer("/icons/closeIcon.png")} alt="X" className="navbar__close-button" onClick={toggleSidebar} />
+          <img
+            src={assetPathFixer("/icons/closeIcon.png")}
+            alt="X"
+            className="navbar__close-button"
+            onClick={toggleSidebar}
+          />
         </header>
         <ul className="navbar__sidebar-links">{renderSidebarLinks()}</ul>
       </div>
