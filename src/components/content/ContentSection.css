@@ -4,6 +4,7 @@
   align-items: center;
 
   max-width: 1000px !important;
+  width: 100%;
 
   padding: 4rem;
   padding-bottom: 0;
@@ -34,7 +35,7 @@
   text-align: center !important;
 }
 
-.content-section a {
+.content-section .text-paragraph a {
   color: var(--primary);
   text-decoration: underline;
 
@@ -79,6 +80,16 @@
   background-clip: initial;
   -webkit-background-clip: initial;
   -webkit-text-fill-color: initial;
+}
+
+.content-section_header h4 {
+  font-size: 14pt;
+  font-weight: 100;
+  text-transform: uppercase;
+  color: var(--text);
+  opacity: 0.8;
+  text-align: center;
+  margin-top: 0.5rem;
 }
 
 @media (max-width: 950px) {

@@ -2,17 +2,17 @@
 
 This guide helps you edit the Team 1277 website without programming knowledge. It covers how to modify pages, add content, upload images, and update navigation.
 
+Visit the `/testing` page to see all the possible components you can add to the website in use.
+This has the best example code to modify for your needs.
+
 ## Table of Contents
 
 1. [Website Structure](#website-structure)
-2. [Adding Text](#adding-text)
-3. [Adding Images](#adding-images)
-4. [Creating Lists](#creating-lists)
-5. [Building Content Sections](#building-content-sections)
-6. [Adding Pages](#adding-pages)
-7. [Creating Routes](#creating-routes)
-8. [Updating Navigation](#updating-navigation)
-9. [Component Reference](#component-reference)
+2. [Components](#components)
+3. [Building Content Sections](#building-content-sections)
+4. [Adding Pages](#adding-pages)
+5. [Creating Routes](#creating-routes)
+6. [Updating Navigation](#updating-navigation)
 
 ## Website Structure
 
@@ -26,93 +26,15 @@ The website uses React and TypeScript, but you don't need to understand these te
 
 ## Get Started
 
-To begin modifying the website, follow these steps:
+Please refer to the [SETUP.md](SETUP.md) file for setup instructions to get started modifying and testing this website.
 
-### Clone the Repository
+## Components
 
-First, clone the repository to your local machine:
+This section covers all the components you can use to build pages.
 
-```bash
-git clone https://github.com/FRCTeam1277/Team-1277-Website.git
-cd Team-1277-Website
-```
+Visit the `/testing` page to see all the possible components you can add to the website in use.
 
-### Requirements
-
-Ensure you have the following installed on your system:
-
-1. **Node.js** (version 18 or higher) and **npm** (Node Package Manager)
-
-- [Download Node.js](https://nodejs.org/)
-- Verify installation:
-  ```bash
-  node -v
-  npm -v
-  ```
-
-2. **Text Editor**: Use a code editor like [Visual Studio Code](https://code.visualstudio.com/).
-
-3. **Git**: Ensure Git is installed for version control.
-
-- [Download Git](https://git-scm.com/)
-- Verify installation:
-  ```bash
-  git --version
-  ```
-
-### Install Dependencies
-
-After cloning the repository, install the required dependencies in the project root folder:
-
-```bash
-npm install
-```
-
-### Run the Development Server
-
-Start the development server to test the website locally:
-
-```bash
-npm run dev
-```
-
-This will start the Vite development server. Open your browser and navigate to `http://localhost:5173` to view the website.
-
-### Build for Production
-
-To create a production-ready build of the website:
-
-```bash
-npm run build
-```
-
-The build files will be generated in the `dist` directory.
-
-### Preview the Build
-
-To preview the production build locally:
-
-```bash
-npm run preview
-```
-
-### Deploying the Website
-
-Ensure you have the correct permissions to push changes to the repository.
-
-### Additional Notes
-
-- The `package.json` file contains all the scripts and dependencies required for the project.
-- For linting and code quality checks, you can run:
-  ```bash
-  npm run lint
-  ```
-- Use the `.gitignore` file to exclude unnecessary files from version control.
-- For any issues, refer to the [README.md](./README.md) file or contact the repository maintainer.
-
-## Adding Text
-
-### TextParagraph Component
+### TextParagraph
 
 Use this for all text content. It supports styling options and automatic link conversion.
 
@@ -130,11 +52,17 @@ Use this for all text content. It supports styling options and automatic link co
 <TextParagraph text="Visit our [team website](https://www.robotomies.com) for more information." />
 ```
 
-## Adding Images
+**Props:**
 
-### Individual Images
+- `text`: String - The text content to display (required)
+- `primary`: Boolean - Whether to use primary color styling
+- `bold`: Boolean - Whether to make the text bold
+- `centered`: Boolean - Whether to center the text
+- `emphasis`: Boolean - Whether to use emphasis styling (highlighted in primary color)
 
-Use `SectionImage` to add images with optional captions:
+### SectionImage
+
+Use this component to add individual images with optional captions:
 
 ```tsx
 <SectionImage
@@ -151,28 +79,60 @@ Use `SectionImage` to add images with optional captions:
   caption="Our 2025 competition robot"
   altText="Close-up of robot arm mechanism"
 />
+
+// With custom width
+<SectionImage
+  imagePath="/pictures/2025/2025_Robot.jpg"
+  widthPercent={50}
+/>
 ```
 
-### Multiple Images
+**Props:**
 
-For displaying multiple images in a grid:
+- `imagePath`: String - Path to the image file (required)
+- `caption`: String - Optional caption text to display under the image
+- `altText`: String - Optional alt text for accessibility
+- `widthPercent`: Number or String - Optional width percentage or CSS value
+- `heightPercent`: Number or String - Optional height percentage or CSS value
+- `disableClick`: Boolean - Optional flag to disable opening image in new tab on click
+
+### PhotoGrid
+
+Display multiple images in a grid layout:
 
 ```tsx
-<PhotoGrid imagePaths={[
-  "/pictures/2025/image1.jpg",
-  "/pictures/2025/image2.jpg"
-]} />
-
-// For sponsor logos
-<SponsorGrid imagePaths={[
-  "/sponsors/sponsor1-logo.webp",
-  "/sponsors/sponsor2-logo.webp"
-]} />
+<PhotoGrid imagePaths={["/pictures/2025/image1.jpg", "/pictures/2025/image2.jpg"]} />
 ```
 
-## Creating Lists
+**Props:**
 
-Use `DecoratedList` to create attractive lists with titles and descriptions:
+- `imagePaths`: String[] - Array of image paths to display (required)
+
+### SponsorGrid
+
+Display sponsor logos in a grid layout. Each sponsor is represented as an object with an image path and an optional link to the sponsor's page.
+
+```tsx
+<SponsorGrid
+  items={[
+    { imagePath: "/sponsors/sponsor1-logo.webp", link: "https://sponsor1.com" },
+    { imagePath: "/sponsors/sponsor2-logo.webp" },
+  ]}
+/>
+```
+
+**Props:**
+
+- items: SponsorGridItem[] - An array of sponsor items (required)
+
+SponsorGridItem object properties:
+
+- imagePath: string - Path to the sponsor logo image (required)
+- link?: string - Optional URL; if provided, clicking the logo opens the link in a new tab
+
+### DecoratedList
+
+Use this component to create attractive lists with titles and descriptions:
 
 ```tsx
 <DecoratedList
@@ -188,6 +148,113 @@ Use `DecoratedList` to create attractive lists with titles and descriptions:
   ]}
 />
 ```
+
+**Props:**
+
+- `items`: Array of objects with:
+  - `title`: String - Title of the list item (required)
+  - `description`: String - Description of the list item (required)
+
+### ContentSection
+
+This component provides a consistent layout for content sections:
+
+```tsx
+<ContentSection
+  title={"Section Title"}
+  subtitle={"Optional Subtitle"}
+  preheading={"Optional Preheading"}
+  centerText={false}
+  content={<>{/* Content elements */}</>}
+/>
+```
+
+**Props:**
+
+- `title`: String - The section title (required)
+- `subtitle`: String - Optional subtitle
+- `preheading`: String - Optional text to display above the title
+- `centerText`: Boolean - Whether to center all text in the section
+- `content`: JSX Element - The content to display in the section (required)
+
+## HighlightSection
+
+This component wraps content in a highlighted container to draw attention to important information.
+
+```tsx
+// Example usage with a text component
+<HighlightSection content={<TextParagraph text="This is an important highlight!" />} />
+```
+
+**Props:**
+
+- content (JSX.Element, required): The content to display within the highlighted section.
+
+### BannerImage
+
+Display a full-width banner image:
+
+```tsx
+<BannerImage imagePath={"/pictures/BannerImage.png"} />
+```
+
+**Props:**
+
+- `imagePath`: String - Path to the banner image (required)
+
+### SizedBox
+
+Add space between elements:
+
+```tsx
+<SizedBox height={40} />  // Adds vertical space
+<SizedBox width={20} />   // Adds horizontal space
+```
+
+**Props:**
+
+- `height`: Number - Height in pixels
+- `width`: Number - Width in pixels
+
+### ImageCarousel
+
+Use this component to create a slideshow of images with navigation arrows, captions, and indicators.
+
+```tsx
+<ImageCarousel
+  images={[
+    {
+      path: "/pictures/2025/2025_Robot-Near-Reef.jpg",
+      caption: "Robot positioned near the reef during competition",
+    },
+    {
+      path: "/pictures/2025/2025_Robot-Low-Perspective.jpg",
+      caption: "Low angle perspective of our robot's systems",
+    },
+  ]}
+  autoScroll={true}
+  autoScrollTime={5000}
+/>
+```
+
+**Props:**
+
+- `images`: Array of image objects (required):
+  - `path`: String - Path to the image file (required)
+  - `caption`: String - Optional caption text to display under the image
+  - `alt`: String - Optional alt text for accessibility
+- `autoScroll`: Boolean - Whether to automatically scroll through images
+- `autoScrollTime`: Number - Time in milliseconds between image transitions (default: 3000)
+- `className`: String - Optional CSS class to apply to the carousel
+
+**Features:**
+
+- Navigation arrows on both sides to manually navigate between images
+- Image counter showing current position (e.g., "2 / 5")
+- Optional captions with a "link" button to open the image in a new tab
+- Indicator dots showing which image is currently displayed
+- Autoscroll capability that stops when manual navigation is used
+- Maintains aspect ratio and properly fits images with black bars if needed
 
 ## Building Content Sections
 
@@ -231,7 +298,7 @@ import TextParagraph from "../components/content/TextParagraph";
 
 export default function PageName() {
   return (
-    <div className="page-container">
+    <>
       <Navbar />
       <BannerImage imagePath={"/pictures/BannerImage.png"} />
 
@@ -247,7 +314,7 @@ export default function PageName() {
       />
 
       <Footer />
-    </div>
+    </>
   );
 }
 ```
@@ -336,60 +403,3 @@ For dropdown menus, add a `subPages` array:
 
 1. Place icon images in `public/icons/` directory
 2. Add `"linkIcon": "/icons/icon-name.png"` to the navigation item
-
-## Component Reference
-
-### Text and Paragraphs
-
-```tsx
-<TextParagraph
-  text="Your text here"
-  bold={false} // Optional: makes text bold
-  primary={false} // Optional: uses team color
-  centered={false} // Optional: centers text
-  emphasis={false} // Optional: styles as quote
-/>
-```
-
-### Images
-
-```tsx
-<SectionImage
-  imagePath="/pictures/image.jpg"
-  caption="Optional caption"
-  altText="Accessibility description"
-/>
-
-<PhotoGrid imagePaths={["/pictures/img1.jpg", "/pictures/img2.jpg"]} />
-<SponsorGrid imagePaths={["/sponsors/logo1.webp", "/sponsors/logo2.webp"]} />
-```
-
-### Layout Elements
-
-```tsx
-<ContentSection
-  title={"Section Title"}
-  subtitle={"Optional Subtitle"}
-  centerText={false}  // Optional: centers all text
-  content={<>{/* Content elements */}</>}
-/>
-
-<BannerImage imagePath={"/pictures/Banner.png"} />
-
-<SizedBox height={40} />  // Adds vertical space
-<SizedBox width={20} />   // Adds horizontal space
-```
-
-### Lists
-
-```tsx
-<DecoratedList
-  items={[
-    {
-      title: "Item Title",
-      description: "Item description",
-    },
-    // More items...
-  ]}
-/>
-```

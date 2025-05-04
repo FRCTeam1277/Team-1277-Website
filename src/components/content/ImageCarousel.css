@@ -1,0 +1,219 @@
+/* filepath: c:\Dev\RobotomiesWebsite\src\components\content\ImageCarousel.css */
+.image-carousel {
+  position: relative;
+  width: 100%;
+  margin: 2rem 0;
+  overflow: hidden;
+  box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+  border-radius: 10px;
+  background-color: var(--page-background);
+}
+
+/* Container for carousel slides with fixed aspect ratio */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  display: flex;
+  overflow: hidden;
+  background-color: #000;
+}
+
+/* Navigation arrows */
+.carousel-arrow {
+  position: absolute;
+  /* Change from top: 0; bottom: 0; to exclude the corners */
+  top: 15%;
+  bottom: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  background: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s, background-color 0.3s;
+  z-index: 2;
+  border: none;
+}
+
+.carousel-arrow:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.carousel-arrow-prev {
+  left: 0;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.carousel-arrow-next {
+  right: 0;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+.carousel-arrow-icon {
+  width: 30px;
+  height: 30px;
+  filter: invert(1);
+}
+
+/* Slide */
+.carousel-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+}
+
+/* Image styling */
+.carousel-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Ensures the image fits within the container */
+}
+
+/* Caption styling */
+.carousel-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  font-family: "Rubik", sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.carousel-caption-text {
+  flex: 1;
+  text-align: center;
+}
+
+.carousel-link-button {
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+  padding: 3px;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.carousel-link-button:hover {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.carousel-link-icon {
+  width: 18px;
+  height: 18px;
+  filter: invert(1);
+}
+
+/* Indicator dots */
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+  gap: 8px;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--text);
+  opacity: 0.3;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+
+.carousel-dot.active {
+  transform: scale(1.35);
+  opacity: 1;
+}
+
+/* Image counter */
+.carousel-counter {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-family: "Rubik", sans-serif;
+  font-size: 0.8rem;
+  z-index: 2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .carousel-arrow {
+    width: 40px;
+  }
+
+  .carousel-arrow-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .carousel-caption {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-arrow {
+    width: 30px;
+  }
+
+  .carousel-counter {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+  }
+
+  .carousel-indicators {
+    padding: 10px 0;
+  }
+
+  .carousel-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .carousel-link-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .carousel-link-button {
+    width: 20px;
+    height: 20px;
+  }
+}

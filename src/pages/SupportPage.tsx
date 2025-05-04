@@ -1,15 +1,13 @@
-import BannerImage from "../components/BannerImage";
+import BannerImage from "../components/common/BannerImage";
 import ContentSection from "../components/content/ContentSection";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
 import TextParagraph from "../components/content/TextParagraph";
 import SectionImage from "../components/content/SectionImage";
 import SizedBox from "../components/utils/SizedBox";
+import GoFundMe from "../components/other/GoFundMe";
 
 export default function SupportPage() {
   return (
-    <div className="page-container">
-      <Navbar />
+    <>
       <BannerImage
         imagePath={"https://www.robotomies.com/wp-content/uploads/2025/03/cropped-robot_2025-cinematic.png"}
       />
@@ -33,7 +31,17 @@ export default function SupportPage() {
               non-robotics aspect of the club; fundraising, events, and recruitment. To reach our fundraising goal, we
               need your help!"
             />
-            <TextParagraph text="Funding Needed" bold={true} primary={true} centered={true} />
+            <GoFundMe />
+            <SizedBox height={40} />
+          </>
+        }
+      />
+
+      <ContentSection
+        title={"Funding Needed"}
+        subtitle={"Not just about building robots; it's about building futures."}
+        content={
+          <>
             <TextParagraph
               text="We need your donations to obtain the resources needed to get to districts and regionals. We are trying to
               get $10,000 in corporate sponsorships and $10,000 in private donations this year. Any money left over will
@@ -92,12 +100,10 @@ export default function SupportPage() {
               1277, would like to thank all of its sponsors over the years for their generosity."
             />
             <TextParagraph text="Thank you!" />
-
             <SizedBox height={40} />
           </>
         }
       />
-      <Footer />
-    </div>
+    </>
   );
 }

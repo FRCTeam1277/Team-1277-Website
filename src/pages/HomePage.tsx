@@ -1,19 +1,22 @@
-import BannerImage from "../components/BannerImage";
+import BannerImage from "../components/common/BannerImage";
 import ContentSection from "../components/content/ContentSection";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
 import PhotoGrid from "../components/content/PhotoGrid";
 import SponsorGrid from "../components/content/SponsorGrid";
 import SizedBox from "../components/utils/SizedBox";
 import TextParagraph from "../components/content/TextParagraph";
 import DecoratedList from "../components/content/DecoratedList";
 import SectionImage from "../components/content/SectionImage";
+import LinkImage from "../components/content/LinkImage";
+import SideBySideSection from "../components/content/SideBySideSection";
+import HighlightSection from "../components/content/HighlightSection";
+import LinkButton from "../components/content/LinkButton";
+import ImageCarousel from "../components/content/ImageCarousel";
+import GoFundMe from "../components/other/GoFundMe";
 
 export default function HomePage() {
   return (
-    <div className="page-container">
-      <Navbar />
-      <BannerImage imagePath={"/pictures/CenterBanner.png"} />
+    <>
+      <BannerImage imagePath={"/graphics/CenterBanner.png"} />
 
       {/* Introduction Section */}
       <ContentSection
@@ -39,6 +42,57 @@ export default function HomePage() {
           </>
         }
       />
+
+      <ContentSection
+        title={"2025 Season"}
+        subtitle={"Making Waves on the Reefscape"}
+        content={
+          <>
+            <TextParagraph
+              text="We just finished our 2025 competition season. View more information about our success this year on the [2025: Dive](/seasons/2025) page."
+              centered={true}
+            />
+            <ImageCarousel
+              autoScroll={true}
+              autoScrollTimeMS={3000}
+              images={[
+                {
+                  path: "/pictures/2025/2025_Robot-Near-Reef.jpg",
+                  caption: "Robot positioned near the reef during the 2025 competition",
+                },
+                {
+                  path: "/pictures/2025/2025_Robot-Low-Perspective.jpg",
+                  caption: "Low angle perspective of our robot's mechanical systems",
+                },
+                {
+                  path: "/pictures/2025/2025_Hanging-Robot.jpg",
+                  caption: "Robot hanging from the cage structure at the end of the match",
+                },
+                {
+                  path: "/pictures/2025/2025_Driver-Station-POV.jpg",
+                  caption: "View from the driver station during competition",
+                },
+              ]}
+            />{" "}
+          </>
+        }
+      />
+
+      <ContentSection
+        title={"Help Support the Robotomies"}
+        subtitle="Join us in our mission to inspire students!"
+        content={
+          <>
+            <TextParagraph
+              text="We use funding to get to competitions and support robot-building expanses. We greatly appreciate any support you can provide."
+              centered={true}
+            />
+            <GoFundMe />
+            <SizedBox height={40} />
+          </>
+        }
+      />
+
       <ContentSection
         title={"Sponsor Benefits"}
         subtitle={"Exposure, Outreach, Inspiration"}
@@ -68,6 +122,51 @@ export default function HomePage() {
           </>
         }
       />
+
+      <HighlightSection
+        content={
+          <SideBySideSection
+            leftContent={
+              <ContentSection
+                title={"Learn More"}
+                subtitle="Follow us on social media!"
+                content={
+                  <>
+                    <TextParagraph text="Follow the robotomies on instagram and facbeook. We recommend checking out our Instagram and Facebook pages for the latest updates. We regularly post about our events, competitions, and team activities. On the instagram we also share lots of pictures and videos from our competitions." />
+                    <LinkButton
+                      url={"https://www.instagram.com/robotomies1277/"}
+                      icon="/socials/instagram.png"
+                      textContent={"Instagram"}
+                      invertIcon={true}
+                      uncolored={true}
+                      disableShadow={true}
+                    />
+                    <SizedBox height={10} />
+                    <LinkButton
+                      url={"https://www.facebook.com/team1277"}
+                      icon="/socials/facebook.png"
+                      textContent={"Facebook"}
+                      invertIcon={true}
+                      uncolored={true}
+                      disableShadow={true}
+                    />
+                  </>
+                }
+              />
+            }
+            rightContent={
+              <>
+                <SectionImage
+                  imagePath="/pictures/2025/2025_Practice-Field-Robot.png"
+                  caption="Image of our 2025 season robot on the practice field at WPI."
+                />
+              </>
+            }
+            gap={20}
+          />
+        }
+      />
+
       <ContentSection
         title={"Volunteer"}
         subtitle={"Mentor, Coach, Inspire"}
@@ -95,19 +194,49 @@ export default function HomePage() {
           </>
         }
       />
-      <PhotoGrid
-        imagePaths={["/pictures/2025/2025_Mentors-Group-Picture.jpg", "/pictures/2023/2023_WPI-Team-Picture.jpg"]}
+
+      <SideBySideSection
+        leftContent={
+          <ContentSection
+            preheading="We proudly support"
+            title={"Students First"}
+            content={
+              <>
+                <TextParagraph text="Students First is an organization dedicated to ensuring that student education and autonomy are prioritized in robotics teams. The organization embraces FIRST's values while advocating for a balance between mentor involvement and student learning, empowering students to develop technical skills and take leadership roles in their robotics journey." />
+                <LinkImage
+                  imagePath="/graphics/StudentsFirst.webp"
+                  url="https://studentsfirst.tech/"
+                  altText="[Students First Link]"
+                  widthPercent={100}
+                  heightPercent={100}
+                  roundCorners={true}
+                />
+                <SizedBox height={40} />
+              </>
+            }
+          />
+        }
+        rightContent={
+          <PhotoGrid
+            imagePaths={["/pictures/2025/2025_Mentors-Group-Picture.jpg", "/pictures/2023/2023_WPI-Team-Picture.jpg"]}
+          />
+        }
       />
+
+      <SizedBox height={40} />
+
       <SponsorGrid
-        imagePaths={[
-          "/sponsors/BAE_Logo.webp",
-          "/sponsors/GDEF_Logo.webp",
-          "/sponsors/HPE_Logo.webp",
-          "/sponsors/national-carpet-flooring-logo.webp",
-          "/sponsors/RTX_Raytheon_Technologies_logo.webp",
+        items={[
+          { imagePath: "/sponsors/BAE_Logo.png", link: "https://www.baesystems.com/en-us/home" },
+          { imagePath: "/sponsors/RTX_Raytheon_Technologies_logo.webp", link: "https://www.rtx.com/" },
+          { imagePath: "/sponsors/HPE_Logo.png", link: "https://www.hpe.com/us/en/home.html" },
+          { imagePath: "/sponsors/GDEF_Logo.png", link: "https://www.gdefinc.org/" },
+          {
+            imagePath: "/sponsors/national-carpet-flooring-logo.png",
+            link: "https://www.nationalcarpetandflooring.com/",
+          },
         ]}
       />
-      <Footer />
-    </div>
+    </>
   );
 }
