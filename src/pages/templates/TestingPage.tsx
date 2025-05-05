@@ -11,6 +11,7 @@ import SideBySideSection from "../../components/content/SideBySideSection";
 import SponsorGrid from "../../components/content/SponsorGrid";
 import TextParagraph from "../../components/content/TextParagraph";
 import SizedBox from "../../components/utils/SizedBox";
+import GoFundMe from "../../components/other/GoFundMe";
 
 export default function TestingPage() {
   return (
@@ -121,7 +122,7 @@ export default function TestingPage() {
             />
 
             <SizedBox height={30} />
-            <TextParagraph text="Auto-scrolling ImageCarousel (5 second interval):" />
+            <TextParagraph text="Auto-scrolling ImageCarousel (5 second interval) (will stop autoscrolling if the arrows are clicked):" />
             <ImageCarousel
               images={[
                 {
@@ -429,6 +430,19 @@ export default function TestingPage() {
             </div>
 
             <SizedBox height={40} />
+          </>
+        }
+      />
+
+      {/* GoFundMe Section Example */}
+      <ContentSection
+        title={"GoFundMe Component"}
+        subtitle={"Showcase a donation section with branding and call-to-action"}
+        content={
+          <>
+            <TextParagraph text="The GoFundMe component provides a branded section for fundraising, including a logo and a prominent donate button. Use this to encourage donations and support for the team." />
+            <GoFundMe />
+            <SizedBox height={20} />
           </>
         }
       />
