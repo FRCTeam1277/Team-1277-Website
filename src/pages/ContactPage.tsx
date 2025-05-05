@@ -1,3 +1,4 @@
+import ContactForm from "../components/common/ContactForm";
 import ContentSection from "../components/content/ContentSection";
 import DecoratedList from "../components/content/DecoratedList";
 import TextParagraph from "../components/content/TextParagraph";
@@ -15,15 +16,15 @@ export default function ContactPage() {
               items={[
                 {
                   title: "Lead mentor:",
-                  description: "Britt McKinley – brittain.mckinley at gmail.com",
+                  description: "Britt McKinley – brittain.mckinley@gmail.com",
                 },
                 {
                   title: "Faculty advisor/mentor:",
-                  description: "Mark Rocheleau (faculty advisor) – mrocheleau at gdrsd.org",
+                  description: "Mark Rocheleau (faculty advisor) – mrocheleau@gdrsd.org",
                 },
               ]}
             />
-            <TextParagraph text="General email – 1277 at robotomies.com" centered={true} />
+            <TextParagraph text="General email – 1277@robotomies.com" />
             <TextParagraph text="Mailing address:" removeMargin={true} primary={true} bold={true} />
             <TextParagraph text="GDRHS" removeMargin={true} />
             <TextParagraph text="The Robotomies" removeMargin={true} />
@@ -35,12 +36,7 @@ export default function ContactPage() {
           </>
         }
       />
-      <ContentSection
-        title="Contact Form"
-        content={
-          <TextParagraph text="Please fill out the form below to contact us. We will get back to you as soon as possible." />
-        }
-      />
+      <ContentSection title="Contact Form" content={<ContactForm />} />
     </>
   );
 }

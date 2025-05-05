@@ -41,6 +41,10 @@
   gap: 3rem;
 }
 
+.content-section .sponsor-grid {
+  border-radius: 10px;
+}
+
 [data-theme="light"] .sponsor-grid {
   background-color: #0c1019;
   padding: 20px 0;
