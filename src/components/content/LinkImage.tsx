@@ -1,5 +1,6 @@
 import "./LinkImage.css";
 import { Link } from "react-router-dom";
+import { assetPathFixer } from "../../utils/assetPath";
 
 interface LinkImageProps {
   url: string;
@@ -25,7 +26,7 @@ export default function LinkButton(props: LinkImageProps) {
   return props.url.startsWith("/") ? (
     <Link to={props.url} className="link-image">
       <img
-        src={props.imagePath}
+        src={assetPathFixer(props.imagePath)}
         alt={props.altText || ""}
         style={{
           width: typeof props.widthPercent === "number" ? `${props.widthPercent}%` : props.widthPercent || "90%",
@@ -37,7 +38,7 @@ export default function LinkButton(props: LinkImageProps) {
   ) : (
     <a href={props.url} className="link-image" target="_blank" rel="noopener noreferrer">
       <img
-        src={props.imagePath}
+        src={assetPathFixer(props.imagePath)}
         alt={props.altText || ""}
         style={{
           width: typeof props.widthPercent === "number" ? `${props.widthPercent}%` : props.widthPercent || "90%",

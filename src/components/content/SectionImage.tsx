@@ -32,7 +32,7 @@ interface SectionImageProps {
 export default function SectionImage(props: SectionImageProps) {
   const handleImageClick = () => {
     if (!props.disableClick) {
-      window.open(props.imagePath, "_blank");
+      window.open(assetPathFixer(props.imagePath), "_blank");
     }
   };
 

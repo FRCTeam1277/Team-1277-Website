@@ -103,7 +103,7 @@ export default function ImageCarousel({
   };
 
   const openImageInNewTab = (imagePath: string) => {
-    window.open(imagePath, "_blank", "noopener,noreferrer");
+    window.open(assetPathFixer(imagePath), "_blank", "noopener,noreferrer");
   };
 
   // Don't render if no images

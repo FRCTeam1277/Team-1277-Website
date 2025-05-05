@@ -8,7 +8,7 @@ interface PhotoGridProps {
 
 export default function PhotoGrid({ imagePaths, maintainOriginalAspectRatio }: PhotoGridProps) {
   const handleImageClick = (imagePath: string) => {
-    window.open(imagePath, "_blank");
+    window.open(assetPathFixer(imagePath), "_blank");
   };
 
   return (
