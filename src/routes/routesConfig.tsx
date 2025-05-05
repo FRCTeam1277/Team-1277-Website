@@ -27,6 +27,9 @@ export interface RouteConfig {
 export const routes: RouteConfig[] = [
   // >>>>>>>>>>>>> START OF ROUTES <<<<<<<<<<<<<<
 
+  // General routes
+  // These routes are not specific to any season or competition year
+
   {
     path: "/",
     element: <HomePage />,
@@ -39,6 +42,11 @@ export const routes: RouteConfig[] = [
     label: "Support Page",
     description: "Information about supporting the team",
   },
+
+  // Season-specific routes
+  // These routes are specific to a particular season or competition year
+  // They are organized under the "/seasons" path for clarity
+
   {
     path: "/seasons/2025",
     element: <Season2025Page />,

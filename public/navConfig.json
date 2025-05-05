@@ -12,7 +12,6 @@
     },
     {
       "linkName": "Seasons",
-      "path": "/seasons",
       "linkIcon": "/icons/flag.png",
       "subPages": [
         {
