@@ -22,7 +22,9 @@ export default function ContactForm() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (form.name && form.email && form.message && form.notRobot) {
-      setSubmitted(true);
+      const subject = encodeURIComponent(`Contact Form Submission from ${form.name}`);
+      const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\nMessage:\n${form.message}`);
+      window.location.href = `mailto:1277@robotomies.com?subject=${subject}&body=${body}`;
     }
   }
 
