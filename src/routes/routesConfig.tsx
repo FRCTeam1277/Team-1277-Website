@@ -4,6 +4,14 @@ import NotFoundPage from "../pages/NotFoundPage";
 import SupportPage from "../pages/SupportPage";
 import Season2025Page from "../pages/seasons/Season2025";
 import TestingPage from "../pages/templates/TestingPage";
+import ContactPage from "../pages/ContactPage";
+import MembersPage from "../pages/members/MembersPage";
+import SafetyPage from "../pages/members/SafetyPage";
+import CalendarPage from "../pages/members/CalendarPage";
+import MentorSignup from "../pages/members/MentorSignup";
+import StudentSignup from "../pages/members/StudentSignup";
+import ProgrammingPage from "../pages/members/ProgrammingPage";
+import MemberShopPage from "../pages/shop/MemberShop";
 
 // Route configuration interface - this makes it easy to understand what properties each route should have
 export interface RouteConfig {
@@ -27,8 +35,23 @@ export interface RouteConfig {
 export const routes: RouteConfig[] = [
   // >>>>>>>>>>>>> START OF ROUTES <<<<<<<<<<<<<<
 
+  // ========================================================
+  // Season-specific routes
+  // These routes are specific to a particular season or competition year
+  // They are organized under the "/seasons" path for clarity
+  // ========================================================
+
+  {
+    path: "/seasons/2025",
+    element: <Season2025Page />,
+    label: "2025 Season",
+    description: "Details about the 2025 competition season",
+  },
+
+  // ========================================================
   // General routes
   // These routes are not specific to any season or competition year
+  // ========================================================
 
   {
     path: "/",
@@ -42,19 +65,66 @@ export const routes: RouteConfig[] = [
     label: "Support Page",
     description: "Information about supporting the team",
   },
+  {
+    path: "/contact",
+    element: <ContactPage />,
+    label: "Contact Page",
+    description: "Contact information and form for inquiries",
+  },
+  {
+    path: "/shop",
+    element: <MemberShopPage />,
+    label: "Member Shop Page",
+    description: "Shop page for team members to order merchandise",
+  },
 
-  // Season-specific routes
-  // These routes are specific to a particular season or competition year
-  // They are organized under the "/seasons" path for clarity
+  // ========================================================
+  // Members routes
+  // These routes are specific to members and their resources
+  // ========================================================
 
   {
-    path: "/seasons/2025",
-    element: <Season2025Page />,
-    label: "2025 Season",
-    description: "Details about the 2025 competition season",
+    path: "/members",
+    element: <MembersPage />,
+    label: "Members Page",
+    description: "Main members landing page",
+  },
+  {
+    path: "/members/safety",
+    element: <SafetyPage />,
+    label: "Safety Page",
+    description: "Safety information for members",
+  },
+  {
+    path: "/members/calendar",
+    element: <CalendarPage />,
+    label: "Calendar Page",
+    description: "Team calendar (Google Calendar embed)",
+  },
+  {
+    path: "/members/mentor-signup",
+    element: <MentorSignup />,
+    label: "Mentor Signup Page",
+    description: "Signup info and links for mentors",
+  },
+  {
+    path: "/members/student-signup",
+    element: <StudentSignup />,
+    label: "Student Signup Page",
+    description: "Signup info and links for students",
+  },
+  {
+    path: "/members/programming",
+    element: <ProgrammingPage />,
+    label: "Programming Page",
+    description: "Programming resources for members",
   },
 
   // >>>>>>>>>>>>> END OF ROUTES <<<<<<<<<<<<<<
+
+  // ========================================================
+  // Other routes
+  // ========================================================
 
   {
     path: "/testing",

@@ -3,7 +3,13 @@
     {
       "linkName": "Home",
       "path": "/",
-      "linkIcon": "/icons/home.png"
+      "linkIcon": "/icons/home.png",
+      "subPages": [
+        {
+          "linkName": "Contact",
+          "path": "/contact"
+        }
+      ]
     },
     {
       "linkName": "2025: Dive",
@@ -27,7 +33,14 @@
     {
       "linkName": "Members",
       "path": "/members",
-      "linkIcon": "/icons/people.png"
+      "linkIcon": "/icons/people.png",
+      "subPages": [
+        { "linkName": "Safety", "path": "/members/safety", "linkIcon": "/icons/info.png" },
+        { "linkName": "Calendar", "path": "/members/calendar", "linkIcon": "/icons/calendar.png" },
+        { "linkName": "Mentor Signup", "path": "/members/mentor-signup", "linkIcon": "/icons/engineer.png" },
+        { "linkName": "Student Signup", "path": "/members/student-signup", "linkIcon": "/icons/people.png" },
+        { "linkName": "Programming", "path": "/members/programming", "linkIcon": "/icons/code.png" }
+      ]
     },
     {
       "linkName": "Shop",
