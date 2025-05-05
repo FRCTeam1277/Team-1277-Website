@@ -1,4 +1,5 @@
 import "./LinkButton.css";
+import { assetPathFixer } from "../../utils/assetPath";
 
 interface LinkButtonProps {
   url: string;
@@ -18,7 +19,9 @@ export default function LinkButton(props: LinkButtonProps) {
         props.disableShadow ? "disable-shadow" : ""
       } `}
     >
-      {props.icon && <img src={props.icon} alt="?" style={{ filter: props.invertIcon ? "invert(1)" : "none" }} />}
+      {props.icon && (
+        <img src={assetPathFixer(props.icon)} alt="?" style={{ filter: props.invertIcon ? "invert(1)" : "none" }} />
+      )}
       {props.textContent}
     </a>
   );

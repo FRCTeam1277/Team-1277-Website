@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./TextParagraph.css";
 
 interface TextParagraphProps {
@@ -60,11 +61,21 @@ export default function TextParagraph({
         // Link text
         const linkText = parts[i];
         const linkUrl = parts[i + 1];
-        result.push(
-          <a key={i} href={linkUrl} target="_blank" rel="noopener noreferrer">
-            {linkText}
-          </a>
-        );
+        if (linkUrl.startsWith("/")) {
+          // Internal link: use <Link>
+          result.push(
+            <Link key={i} to={linkUrl}>
+              {linkText}
+            </Link>
+          );
+        } else {
+          // External link: use <a>
+          result.push(
+            <a key={i} href={linkUrl} target="_blank" rel="noopener noreferrer">
+              {linkText}
+            </a>
+          );
+        }
       }
       // Skip URL parts (i % 3 === 2) as they are processed with the link text
     }

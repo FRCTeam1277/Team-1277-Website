@@ -1,4 +1,5 @@
 import "./LinkImage.css";
+import { Link } from "react-router-dom";
 
 interface LinkImageProps {
   url: string;
@@ -21,7 +22,19 @@ interface LinkImageProps {
 }
 
 export default function LinkButton(props: LinkImageProps) {
-  return (
+  return props.url.startsWith("/") ? (
+    <Link to={props.url} className="link-image">
+      <img
+        src={props.imagePath}
+        alt={props.altText || ""}
+        style={{
+          width: typeof props.widthPercent === "number" ? `${props.widthPercent}%` : props.widthPercent || "90%",
+          height: typeof props.heightPercent === "number" ? `${props.heightPercent}%` : props.heightPercent || "auto",
+          borderRadius: props.roundCorners ? "10px" : "0",
+        }}
+      />
+    </Link>
+  ) : (
     <a href={props.url} className="link-image" target="_blank" rel="noopener noreferrer">
       <img
         src={props.imagePath}

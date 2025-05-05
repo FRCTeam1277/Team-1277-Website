@@ -1,4 +1,5 @@
 import "./PhotoGrid.css";
+import { assetPathFixer } from "../../utils/assetPath";
 
 interface PhotoGridProps {
   imagePaths: string[];
@@ -15,7 +16,7 @@ export default function PhotoGrid({ imagePaths, maintainOriginalAspectRatio }: P
       {imagePaths.map((path, index) => (
         <img
           key={index}
-          src={path}
+          src={assetPathFixer(path)}
           alt={`Photo ${index + 1}`}
           className="neuromorphic"
           onClick={() => handleImageClick(path)}
