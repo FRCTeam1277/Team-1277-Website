@@ -20,11 +20,14 @@ export default function ContactPage() {
                 },
                 {
                   title: "Faculty advisor/mentor:",
-                  description: "Mark Rocheleau (faculty advisor) – mrocheleau@gdrsd.org",
+                  description: "Mark Rocheleau – mrocheleau@gdrsd.org",
+                },
+                {
+                  title: "General email:",
+                  description: "1277@robotomies.com",
                 },
               ]}
             />
-            <TextParagraph text="General email – 1277@robotomies.com" />
             <TextParagraph text="Mailing address:" removeMargin={true} primary={true} bold={true} />
             <TextParagraph text="GDRHS" removeMargin={true} />
             <TextParagraph text="The Robotomies" removeMargin={true} />
