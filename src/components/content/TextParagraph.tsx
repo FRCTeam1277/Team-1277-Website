@@ -28,6 +28,16 @@ interface TextParagraphProps {
    * Whether to use emphasis styling (italic)
    */
   emphasis?: boolean;
+
+  /**
+   * Whether to use uppercase styling
+   * */
+  uppercase?: boolean;
+
+  /**
+   * Whether to not have margin on bottom
+   * */
+  removeMargin?: boolean;
 }
 
 export default function TextParagraph({
@@ -36,6 +46,8 @@ export default function TextParagraph({
   bold = false,
   centered = false,
   emphasis = false,
+  uppercase = false,
+  removeMargin = false,
 }: TextParagraphProps) {
   // Function to parse and replace markdown-style links with actual <a> tags
   const parseLinks = (text: string) => {
@@ -90,6 +102,8 @@ export default function TextParagraph({
     bold ? "bold" : "",
     centered ? "centered" : "",
     emphasis ? "emphasis" : "",
+    uppercase ? "uppercase" : "",
+    removeMargin ? "remove-margin" : "",
   ]
     .filter(Boolean)
     .join(" ");

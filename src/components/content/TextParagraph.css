@@ -68,6 +68,15 @@
   line-height: 1.2;
 }
 
+/* Uppercase styling */
+.content-section .uppercase {
+  text-transform: uppercase;
+}
+
+.content-section .remove-margin {
+  margin: 0;
+}
+
 @media (max-width: 950px) {
   .content-section p,
   .content-section em,
