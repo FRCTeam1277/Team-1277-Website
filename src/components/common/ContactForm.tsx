@@ -9,7 +9,7 @@ export default function ContactForm() {
     message: "",
     notRobot: false,
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [submitted] = useState(false);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     const { name, value, type } = e.target;
