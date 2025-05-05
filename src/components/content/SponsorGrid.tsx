@@ -1,4 +1,5 @@
 import "./PhotoGrid.css";
+import { assetPathFixer } from "../../utils/assetPath";
 
 interface PhotoGridItem {
   imagePath: string;
@@ -18,7 +19,7 @@ export default function PhotoGrid({ items }: PhotoGridProps) {
       {items.map((item, index) => (
         <img
           key={index}
-          src={item.imagePath}
+          src={assetPathFixer(item.imagePath)}
           alt={`Photo ${index + 1}`}
           onClick={() => item.link && window.open(item.link, "_blank")}
           style={item.link ? { cursor: "pointer" } : {}}

@@ -1,4 +1,5 @@
 import "./SectionImage.css";
+import { assetPathFixer } from "../../utils/assetPath";
 
 interface SectionImageProps {
   /**
@@ -38,7 +39,7 @@ export default function SectionImage(props: SectionImageProps) {
   return (
     <div className="section-image-container section-image-wrapper">
       <img
-        src={props.imagePath}
+        src={assetPathFixer(props.imagePath)}
         alt={props.altText || props.caption || "Section image"}
         className="section-image"
         style={{
