@@ -41,10 +41,18 @@ export default function Navbar(): JSX.Element {
 
   // Function to check if a link is active
   const isActive = (path: string) => {
-    if (path === "/") {
-      return window.location.pathname === path;
+    // Get the base path from Vite/Router
+    const basePath = import.meta.env.BASE_URL || "/";
+    // Remove basePath from the start of the current pathname if present
+    let currentPath = window.location.pathname;
+    if (basePath !== "/" && currentPath.startsWith(basePath)) {
+      currentPath = currentPath.slice(basePath.length - (basePath.endsWith("/") ? 1 : 0));
+      if (!currentPath.startsWith("/")) currentPath = "/" + currentPath;
     }
-    return window.location.pathname.startsWith(path);
+    if (path === "/") {
+      return currentPath === "/";
+    }
+    return currentPath.startsWith(path);
   };
 
   // Load navigation configuration from JSON
