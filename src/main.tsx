@@ -56,8 +56,11 @@ function App() {
   );
 }
 
-// get the base path from the import.meta.env (populated by vite/gh i think)
-const basePath = import.meta.env.BASE_URL || '/';
+const isCustomDomain = window.location.hostname !== 'frcteam1277.github.io' &&
+                      !window.location.hostname.includes('localhost') &&
+                      !window.location.hostname.includes('127.0.0.1');
+
+const basePath = isCustomDomain ? '/' : (import.meta.env.BASE_URL || '/');
 
 // Create the primary app component to render
 createRoot(document.getElementById("root")!).render(

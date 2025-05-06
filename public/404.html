@@ -4,26 +4,33 @@
     <meta charset="utf-8" />
     <title>Robotomies - Redirecting...</title>
     <script>
-      // Improved SPA redirect for GitHub Pages
       (function () {
-        var repo = "/Team-1277-Website";
         var l = window.location;
+        var hostname = l.hostname;
         var path = l.pathname;
-        // Only redirect if not already at the root
-        if (!path.startsWith(repo + "/index.html")) {
+
+        var isCustomDomain = hostname !== 'frcteam1277.github.io' &&
+                            !hostname.includes('localhost') &&
+                            !hostname.includes('127.0.0.1');
+
+        var basePath = isCustomDomain ? '' : '/Team-1277-Website';
+
+        if (!path.endsWith('/index.html')) {
+          var redirectPath = isCustomDomain ? path : path.replace(basePath, '');
+
           var newUrl =
-            repo +
-            "/index.html?redirectTo=" +
-            encodeURIComponent(path.replace(repo, "")) +
-            (l.search ? "&" + l.search.slice(1) : "") +
+            basePath +
+            '/index.html?redirectTo=' +
+            encodeURIComponent(redirectPath) +
+            (l.search ? '&' + l.search.slice(1) : '') +
             l.hash;
+
           window.location.replace(newUrl);
         }
       })();
     </script>
   </head>
   <body>
-    <h2>Redirecting to the homepage...</h2>
-    <p>If you are not redirected, <a href="/Team-1277-Website/">click here</a>.</p>
+    <h2>Redirecting to homepage...</h2>
   </body>
 </html>

@@ -28,10 +28,22 @@ jobs:
           cache: 'npm'
       - name: dependencies
         run: npm ci
+      - name: check domain
+        id: check_domain
+        run: |
+          if [ -f "./public/CNAME" ]; then
+            echo "custom domain found"
+            echo "CUSTOM_DOMAIN=true" >> $GITHUB_ENV
+          else
+            echo "no custom domain! switching to regular gh pages domain"
+            echo "CUSTOM_DOMAIN=false" >> $GITHUB_ENV
+          fi
+
       - name: build it
         run: npm run build
         env:
           GITHUB_ACTIONS: true
+          CUSTOM_DOMAIN: ${{ env.CUSTOM_DOMAIN }}
       - name: upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
