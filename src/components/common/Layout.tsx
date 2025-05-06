@@ -11,7 +11,7 @@ export default function Layout() {
   return (
     <div className="app-container">
       <Navbar />
-      <div className="page-container" style={{ minHeight: "calc(100vh - 200px)" }}>
+      <div className="page-container" style={{ minHeight: "calc(100vh - 400px)" }}>
         <Outlet />
       </div>
       <Footer />

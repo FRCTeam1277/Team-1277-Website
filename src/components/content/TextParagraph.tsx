@@ -49,39 +49,39 @@ export default function TextParagraph({
   uppercase = false,
   removeMargin = false,
 }: TextParagraphProps) {
-  // Function to parse and replace markdown-style links with actual <a> tags
+  // Function to parse and replace markdown-style links with actual <a> tags and handle newlines
   const parseLinks = (text: string) => {
     const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
-
     // Split the text by link pattern
     const parts = text.split(linkRegex);
     const result: React.ReactNode[] = [];
 
-    // If there are no links, return the original text
+    // If there are no links, return the original text with newlines handled
     if (parts.length === 1) {
-      return text;
+      return parts[0].split(/\n/g).map((line, idx, arr) => (idx < arr.length - 1 ? [line, <br key={idx} />] : line));
     }
 
-    // Process parts to reconstruct text with links
     for (let i = 0; i < parts.length; i++) {
       if (i % 3 === 0) {
-        // Text part
+        // Text part, handle newlines
         if (parts[i]) {
-          result.push(parts[i]);
+          const lines = parts[i].split(/\n/g);
+          lines.forEach((line, idx) => {
+            if (line) result.push(line);
+            if (idx < lines.length - 1) result.push(<br key={`br-${i}-${idx}`} />);
+          });
         }
       } else if (i % 3 === 1) {
         // Link text
         const linkText = parts[i];
         const linkUrl = parts[i + 1];
         if (linkUrl.startsWith("/")) {
-          // Internal link: use <Link>
           result.push(
             <Link key={i} to={linkUrl}>
               {linkText}
             </Link>
           );
         } else {
-          // External link: use <a>
           result.push(
             <a key={i} href={linkUrl} target="_blank" rel="noopener noreferrer">
               {linkText}
