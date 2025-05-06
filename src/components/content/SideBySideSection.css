@@ -10,6 +10,8 @@
 .side-by-side-item {
   flex: 1;
   min-width: 0; /* Allows the content to shrink below its minimum content size */
+  display: flex;
+  justify-content: center;
 }
 
 /* Make the layout stack on mobile devices */
