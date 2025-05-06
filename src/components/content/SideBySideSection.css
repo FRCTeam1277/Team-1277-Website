@@ -14,6 +14,10 @@
   justify-content: center;
 }
 
+.side-by-side-item .content-section {
+  margin: 0;
+}
+
 /* Make the layout stack on mobile devices */
 @media (max-width: 1300px) {
   .side-by-side-section {
