@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import HomePage from "../pages/HomePage";
+import AboutPage from "../pages/AboutPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import SupportPage from "../pages/SupportPage";
 import Season2025Page from "../pages/seasons/Season2025";
@@ -15,6 +15,7 @@ import MemberShopPage from "../pages/shop/MemberShop";
 import RobotCodingGuide from "../pages/members/RobotCodingGuide";
 import JavaResources from "../pages/members/JavaResources";
 import SoftwareTools from "../pages/members/SoftwareTools";
+import HomePage from "../pages/HomePage";
 
 // Route configuration interface - this makes it easy to understand what properties each route should have
 export interface RouteConfig {
@@ -67,6 +68,12 @@ export const routes: RouteConfig[] = [
     element: <SupportPage />,
     label: "Support Page",
     description: "Information about supporting the team",
+  },
+  {
+    path: "/about",
+    element: <AboutPage />,
+    label: "About Us Page",
+    description: "Information about the team and its mission",
   },
   {
     path: "/contact",

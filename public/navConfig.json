@@ -6,6 +6,10 @@
       "linkIcon": "/icons/home.png",
       "subPages": [
         {
+          "linkName": "About Us",
+          "path": "/about"
+        },
+        {
           "linkName": "Contact",
           "path": "/contact"
         }

@@ -322,7 +322,7 @@ export default function PageName() {
 ### Creating A New Page
 
 1. Create a new file in `src/pages/` with a `.tsx` extension (e.g., `NewPage.tsx`)
-2. Copy the structure from an existing page like `HomePage.tsx`
+2. Copy the structure from an existing page like `AboutPage.tsx`
 3. Modify the content sections as needed
 4. Add the page to routes configuration (see next section)
 5. Add the page to navigation (see "Updating Navigation")
