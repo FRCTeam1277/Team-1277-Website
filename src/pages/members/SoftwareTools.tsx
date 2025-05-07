@@ -23,6 +23,7 @@ export default function SoftwareTools() {
               url="http://wpilib.screenstepslive.com/s/3120/m/8559/l/91405-programming-your-radio-for-home-use"
               textContent="Radio Programming Guide for Home Use"
               icon="/icons/link.png"
+              invertIcon
             />
             <SizedBox height={50} />
 
@@ -58,6 +59,7 @@ export default function SoftwareTools() {
               textContent="Radio Configuration Guide (PDF)"
               icon="/icons/link.png"
               outline
+              invertIcon
             />
             <SizedBox height={50} />
 
