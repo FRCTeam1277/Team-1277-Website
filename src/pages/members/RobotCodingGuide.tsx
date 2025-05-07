@@ -21,7 +21,6 @@ export default function RobotCodingGuide() {
             <LinkButton
               url="http://wpilib.screenstepslive.com/s/4485/m/13809"
               textContent="WPILib ScreenSteps Java Guide"
-              icon="/icons/link.png"
             />
             <SizedBox height={20} />
 
@@ -30,7 +29,6 @@ export default function RobotCodingGuide() {
             <LinkButton
               url="http://first.wpi.edu/FRC/roborio/release/docs/java/"
               textContent="WPILibJ Javadoc"
-              icon="/icons/link.png"
               outline
             />
             <SizedBox height={20} />
@@ -40,7 +38,6 @@ export default function RobotCodingGuide() {
             <LinkButton
               url="http://wpilib.screenstepslive.com/s/4485/m/13809/c/88893"
               textContent="Command-Based Programming Guide"
-              icon="/icons/link.png"
             />
             <SizedBox height={20} />
 
@@ -49,7 +46,6 @@ export default function RobotCodingGuide() {
             <LinkButton
               url="http://wpilib.screenstepslive.com/s/4485/m/13809/c/57246"
               textContent="Robot Programs Guide"
-              icon="/icons/link.png"
               outline
             />
             <SizedBox height={20} />
@@ -59,7 +55,8 @@ export default function RobotCodingGuide() {
             <LinkButton
               url="http://ni.com/download/cds/view/p/id/5773/lang/en"
               textContent="FRC Software Download"
-              icon="/icons/download.png"
+              icon="/icons/star.png"
+              invertIcon
             />
             <SizedBox height={40} />
 
@@ -74,7 +71,6 @@ export default function RobotCodingGuide() {
             <TextParagraph
               text="Need help? Don't hesitate to ask one of our programming mentors or senior team members!"
               centered
-              emphasis
             />
             <SizedBox height={40} />
           </>

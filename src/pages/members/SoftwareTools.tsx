@@ -24,9 +24,9 @@ export default function SoftwareTools() {
               textContent="Radio Programming Guide for Home Use"
               icon="/icons/link.png"
             />
-            <SizedBox height={20} />
+            <SizedBox height={50} />
 
-            <TextParagraph text="Key points when programming your radio:" removeMargin />
+            <h3>Key points when programming your radio</h3>
             <DecoratedList
               items={[
                 {
@@ -59,7 +59,7 @@ export default function SoftwareTools() {
               icon="/icons/link.png"
               outline
             />
-            <SizedBox height={30} />
+            <SizedBox height={50} />
 
             <h3>Development Environment Setup</h3>
 
@@ -91,7 +91,8 @@ export default function SoftwareTools() {
             />
             <SizedBox height={20} />
 
-            <TextParagraph text="Version Control Best Practices" primary bold />
+            <h3>Version Control Best Practices</h3>
+
             <TextParagraph text="It's essential to use version control for your robot code. We recommend using Git and GitHub to track changes to your code and collaborate with team members." />
             <DecoratedList
               items={[
@@ -119,7 +120,6 @@ export default function SoftwareTools() {
             <TextParagraph
               text="Remember to always back up your code before making significant changes, and keep an eye on battery voltage during testing!"
               centered
-              emphasis
             />
             <SizedBox height={40} />
           </>

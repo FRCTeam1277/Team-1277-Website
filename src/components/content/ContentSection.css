@@ -32,7 +32,8 @@
   -webkit-text-fill-color: transparent;
 }
 
-.content-section > h3 {
+.content-section > h3,
+.content-section > h4 {
   border-bottom: 1px solid var(--text);
   color: var(--text);
   margin-bottom: 20px;
