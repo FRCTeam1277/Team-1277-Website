@@ -19,7 +19,8 @@
   padding-bottom: 20px;
 }
 
-.content-section h2 {
+.content-section h2,
+.content-section h3 {
   font-size: 20pt;
   font-weight: 800;
   color: var(--text);
@@ -29,6 +30,18 @@
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.content-section > h3 {
+  border-bottom: 1px solid var(--text);
+  color: var(--text);
+  margin-bottom: 20px;
+  font-weight: 700;
+
+  background: none;
+  background-clip: initial;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
 }
 
 .content-section.centered-section {

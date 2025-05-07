@@ -22,7 +22,7 @@ interface LinkImageProps {
   roundCorners?: boolean;
 }
 
-export default function LinkButton(props: LinkImageProps) {
+export default function LinkImage(props: LinkImageProps) {
   return props.url.startsWith("/") ? (
     <Link to={props.url} className="link-image">
       <img

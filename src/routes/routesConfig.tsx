@@ -12,6 +12,9 @@ import MentorSignup from "../pages/members/MentorSignup";
 import StudentSignup from "../pages/members/StudentSignup";
 import ProgrammingPage from "../pages/members/ProgrammingPage";
 import MemberShopPage from "../pages/shop/MemberShop";
+import RobotCodingGuide from "../pages/members/RobotCodingGuide";
+import JavaResources from "../pages/members/JavaResources";
+import SoftwareTools from "../pages/members/SoftwareTools";
 
 // Route configuration interface - this makes it easy to understand what properties each route should have
 export interface RouteConfig {
@@ -118,6 +121,24 @@ export const routes: RouteConfig[] = [
     element: <ProgrammingPage />,
     label: "Programming Page",
     description: "Programming resources for members",
+  },
+  {
+    path: "/members/programming/robot-coding-guide",
+    element: <RobotCodingGuide />,
+    label: "Robot Coding Guide",
+    description: "Guide for coding the robot",
+  },
+  {
+    path: "/members/programming/java-resources",
+    element: <JavaResources />,
+    label: "Java Resources",
+    description: "Resources for learning Java",
+  },
+  {
+    path: "/members/programming/software-tools",
+    element: <SoftwareTools />,
+    label: "Software Tools",
+    description: "Resources for software tools used in programming",
   },
 
   // >>>>>>>>>>>>> END OF ROUTES <<<<<<<<<<<<<<
