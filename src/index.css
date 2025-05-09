@@ -1,5 +1,5 @@
 /* Import Fonts from Google Fonts */
-@import url("https://fonts.googleapis.com/css?family=Inter:400|Rubik:400,500,600,700,800,900");
+@import url("https://fonts.googleapis.com/css2?family=Inter:400&family=Rubik:400,500,600,700,800,900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
 
 /* Reset Default CSS Properties */
 * {
@@ -118,6 +118,12 @@ h5 {
 }
 small {
   font-size: 7.2pt;
+}
+
+.monospaced {
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 400;
+  font-size: 10pt;
 }
 
 .neuromorphic {

@@ -55,7 +55,7 @@ const CodeView: React.FC<CodeViewProps> = ({
         )}
       </div>
       <pre className={`code-view-code ${language}`}>
-        <code>{code}</code>
+        <code className="monospaced">{code}</code>
       </pre>
       {copied && <div className="code-view-copied-message">{copiedMessage}</div>}
     </div>
