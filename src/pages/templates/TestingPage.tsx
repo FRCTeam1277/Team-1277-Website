@@ -12,11 +12,27 @@ import SponsorGrid from "../../components/content/SponsorGrid";
 import TextParagraph from "../../components/content/TextParagraph";
 import SizedBox from "../../components/utils/SizedBox";
 import GoFundMe from "../../components/other/GoFundMe";
-import Button from "../../components/ui/Button";
-import CodeView from "../../components/ui/CodeView";
 import CopyOutputBox from "../../components/ui/CopyOutputBox";
+import CodeView from "../../components/ui/CodeView";
+import Button from "../../components/ui/Button";
+import Checkbox from "../../components/ui/Checkbox";
+import React, { useState } from "react";
 
 export default function TestingPage() {
+  // Add state for checkbox demos
+  const [checkboxStates, setCheckboxStates] = useState({
+    basic: false,
+    required: false,
+    disabled: true,
+  });
+
+  const handleCheckboxChange = (name: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCheckboxStates((prev) => ({
+      ...prev,
+      [name]: e.target.checked,
+    }));
+  };
+
   return (
     <>
       <BannerImage imagePath={"/graphics/CenterBanner.png"} />
@@ -463,6 +479,56 @@ export default function TestingPage() {
                 Click Event Button
               </Button>
               <Button type="submit">Submit Button</Button>
+            </div>
+          </>
+        }
+      />
+
+      {/* Checkbox Component */}
+      <ContentSection
+        title={"Checkbox Component"}
+        subtitle={"Interactive checkbox input with label"}
+        content={
+          <>
+            <TextParagraph text="The Checkbox component provides a styled checkbox input with a label." />
+
+            <div style={{ display: "flex", flexDirection: "column", gap: "15px", marginBottom: "20px" }}>
+              <Checkbox
+                label="Basic checkbox"
+                name="basic"
+                checked={checkboxStates.basic}
+                onChange={handleCheckboxChange("basic")}
+              />
+
+              <Checkbox
+                label="Required checkbox"
+                name="required"
+                checked={checkboxStates.required}
+                onChange={handleCheckboxChange("required")}
+                required={true}
+              />
+
+              <Checkbox
+                label="Disabled checkbox"
+                name="disabled"
+                checked={checkboxStates.disabled}
+                onChange={handleCheckboxChange("disabled")}
+                disabled={true}
+              />
+
+              <div
+                style={{
+                  marginTop: "10px",
+                  padding: "15px",
+                  border: "1px solid var(--shadow-dark)",
+                  borderRadius: "8px",
+                }}
+              >
+                <TextParagraph text="Selected checkboxes:" />
+                <pre style={{ fontFamily: "monospace", margin: "10px 0" }}>
+                  {JSON.stringify(checkboxStates, null, 2)}
+                </pre>
+              </div>
             </div>
           </>
         }

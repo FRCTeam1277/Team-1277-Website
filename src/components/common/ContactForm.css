@@ -9,36 +9,6 @@
   gap: 1rem;
 }
 
-.contact-form-checkbox {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 1rem;
-  color: var(--primary);
-  margin-bottom: 1rem;
-  user-select: none;
-}
-
-.contact-form-checkbox input[type="checkbox"] {
-  accent-color: var(--primary);
-  width: 1.1rem;
-  height: 1.1rem;
-}
-
-.contact-form-submit {
-  padding: 0.75rem 2rem;
-  border: none;
-  border-radius: 10px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.contact-form-submit:hover {
-  filter: brightness(0.95);
-}
-
 .contact-form-success {
   text-align: center;
   color: var(--primary);
