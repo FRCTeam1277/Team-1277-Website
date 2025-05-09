@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import InputField from "../ui/InputField";
+import Checkbox from "../ui/Checkbox";
+import Button from "../ui/Button";
 import "./ContactForm.css";
 
 export default function ContactForm() {
@@ -37,17 +39,10 @@ export default function ContactForm() {
       <InputField label="Name" name="name" value={form.name} onChange={handleChange} required />
       <InputField label="Email" name="email" type="email" value={form.email} onChange={handleChange} required />
       <InputField label="Message" name="message" textarea value={form.message} onChange={handleChange} required />
-      <label className="contact-form-checkbox">
-        <input type="checkbox" name="notRobot" checked={form.notRobot} onChange={handleChange} required />
-        <span>I am not a robot</span>
-      </label>
-      <button
-        className="contact-form-submit"
-        type="submit"
-        style={{ background: "var(--primary)", color: "var(--inverse-primary)" }}
-      >
+      <Checkbox label="I am not a robot" name="notRobot" checked={form.notRobot} onChange={handleChange} required />
+      <Button type="submit" variant="primary" style="solid">
         Submit
-      </button>
+      </Button>
     </form>
   );
 }

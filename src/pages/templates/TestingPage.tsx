@@ -12,11 +12,31 @@ import SponsorGrid from "../../components/content/SponsorGrid";
 import TextParagraph from "../../components/content/TextParagraph";
 import SizedBox from "../../components/utils/SizedBox";
 import GoFundMe from "../../components/other/GoFundMe";
+import CopyOutputBox from "../../components/ui/CopyOutputBox";
+import CodeView from "../../components/ui/CodeView";
+import Button from "../../components/ui/Button";
+import Checkbox from "../../components/ui/Checkbox";
+import React, { useState } from "react";
 
 export default function TestingPage() {
+  // Add state for checkbox demos
+  const [checkboxStates, setCheckboxStates] = useState({
+    basic: false,
+    required: false,
+    disabled: true,
+  });
+
+  const handleCheckboxChange = (name: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCheckboxStates((prev) => ({
+      ...prev,
+      [name]: e.target.checked,
+    }));
+  };
+
   return (
     <>
-      <BannerImage imagePath={"/graphics/CenterBanner.png"} />
+      {/* <BannerImage imagePath={"/graphics/CenterBanner.png"} /> */}
+
       <SizedBox height={40} />
 
       {/* Introduction Section */}
@@ -26,10 +46,6 @@ export default function TestingPage() {
         content={
           <>
             <TextParagraph text="This page showcases all the components available for use in the Robotomies website. Use this as a reference when building new pages or updating existing ones." />
-            <TextParagraph
-              text="Each component is displayed with example usage and a brief description."
-              emphasis={true}
-            />
           </>
         }
       />
@@ -70,20 +86,7 @@ export default function TestingPage() {
 
             <SectionImage
               imagePath="/pictures/2025/2025_WPI-Team-Picture.jpg"
-              caption="Basic SectionImage with a caption: Team picture from the 2025 WPI Competition"
-            />
-
-            <SectionImage
-              imagePath="/pictures/2025/2025_Robot-Near-Reef.jpg"
-              caption="SectionImage with custom width (70%)"
-              widthPercent={70}
-            />
-
-            <SectionImage
-              imagePath="/pictures/2025/2025_Dive_Banner.jpg"
-              caption="SectionImage with disabled click functionality"
-              widthPercent={50}
-              disableClick={true}
+              caption="Click to open: Team picture from the 2025 WPI Competition"
             />
 
             <SizedBox height={20} />
@@ -99,7 +102,7 @@ export default function TestingPage() {
           <>
             <TextParagraph text="The ImageCarousel provides an interactive slideshow of images with navigation buttons, captions, and indicators. Users can navigate through images manually, and the carousel can automatically scroll through images if enabled." />
 
-            <TextParagraph text="Standard ImageCarousel with navigation and captions:" />
+            <TextParagraph text="Auto-scrolling ImageCarousel (5 second interval) (will stop autoscrolling if the arrows are clicked):" />
             <ImageCarousel
               images={[
                 {
@@ -118,13 +121,6 @@ export default function TestingPage() {
                   path: "/pictures/2025/2025_Driver-Station-POV.jpg",
                   caption: "View from the driver station during competition",
                 },
-              ]}
-            />
-
-            <SizedBox height={30} />
-            <TextParagraph text="Auto-scrolling ImageCarousel (5 second interval) (will stop autoscrolling if the arrows are clicked):" />
-            <ImageCarousel
-              images={[
                 {
                   path: "/pictures/2025/2025_WPI-Team-Picture.jpg",
                   caption: "Team picture at the 2025 WPI event",
@@ -214,16 +210,6 @@ export default function TestingPage() {
                   title: "Student Leadership",
                   description:
                     "Team members take on leadership roles in design, programming, fabrication, business operations, and outreach, developing valuable skills for future careers.",
-                },
-                {
-                  title: "Community Engagement",
-                  description:
-                    "Beyond competitions, we engage with our local community through demonstrations, workshops, and mentoring programs to inspire interest in STEM fields.",
-                },
-                {
-                  title: "Inclusive Environment",
-                  description:
-                    "We welcome students of all backgrounds and experience levels, providing training and support to help everyone contribute meaningfully to the team's success.",
                 },
               ]}
             />
@@ -338,19 +324,6 @@ export default function TestingPage() {
         }
       />
 
-      {/* SideBySideSection Examples */}
-      <ContentSection
-        title={"SideBySideSection Component"}
-        subtitle={"Create two-column layouts"}
-        content={
-          <>
-            <TextParagraph text="SideBySideSection creates a two-column layout, allowing you to place content side by side. This is useful for creating more dynamic page layouts with complementary content." />
-
-            <SizedBox height={20} />
-          </>
-        }
-      />
-
       <SideBySideSection
         leftContent={
           <ContentSection
@@ -392,48 +365,6 @@ export default function TestingPage() {
         gap={40}
       />
 
-      {/* SizedBox Examples */}
-      <ContentSection
-        title={"SizedBox Component"}
-        subtitle={"Add space between elements"}
-        content={
-          <>
-            <TextParagraph text="SizedBox adds empty space between elements. This is a simple but important component for controlling layout spacing." />
-
-            <div
-              style={{
-                background: "rgba(230, 0, 36, 0.1)",
-                padding: "10px",
-                borderRadius: "5px",
-                marginBottom: "10px",
-              }}
-            >
-              <TextParagraph text="Element before SizedBox" />
-            </div>
-
-            <SizedBox height={40} />
-
-            <div style={{ background: "rgba(230, 0, 36, 0.1)", padding: "10px", borderRadius: "5px" }}>
-              <TextParagraph text="Element after SizedBox (40px vertical space added)" />
-            </div>
-
-            <div style={{ display: "flex", marginTop: "20px" }}>
-              <div style={{ background: "rgba(230, 0, 36, 0.1)", padding: "10px", borderRadius: "5px" }}>
-                <TextParagraph text="Element before" />
-              </div>
-
-              <SizedBox width={40} />
-
-              <div style={{ background: "rgba(230, 0, 36, 0.1)", padding: "10px", borderRadius: "5px" }}>
-                <TextParagraph text="Element after (40px horizontal space added)" />
-              </div>
-            </div>
-
-            <SizedBox height={40} />
-          </>
-        }
-      />
-
       {/* GoFundMe Section Example */}
       <ContentSection
         title={"GoFundMe Component"}
@@ -447,6 +378,163 @@ export default function TestingPage() {
         }
       />
 
+      {/* CopyOutputBox Component */}
+      <ContentSection
+        title={"CopyOutputBox Component"}
+        subtitle={"Display text with a copy button"}
+        content={
+          <>
+            <TextParagraph text="CopyOutputBox displays text with a copy button, useful for showing commands or outputs that users might want to copy." />
+            <CopyOutputBox
+              text="npm install @robotomies/components"
+              label="Installation Command"
+              copiedMessage="Command copied to clipboard!"
+            />
+            <SizedBox height={20} />
+            <CopyOutputBox text="https://github.com/FRCTeam1277/Team-1277-Website" label="Repository URL" />
+          </>
+        }
+      />
+
+      {/* CodeView Component */}
+      <ContentSection
+        title={"CodeView Component"}
+        subtitle={"Display formatted code snippets"}
+        content={
+          <>
+            <TextParagraph text="CodeView displays formatted code snippets with optional syntax highlighting and copy functionality." />
+            <CodeView
+              code={`function helloRobotomies() {
+  console.log("Hello from Team 1277!");
+  return "Robotomies rock!";
+}`}
+              title="JavaScript Example"
+              allowCopy={true}
+              language="javascript"
+              copiedMessage="Code copied!"
+            />
+            <SizedBox height={20} />
+            <CodeView
+              code={`.robot-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f5f5f5;
+}`}
+              title="CSS Example"
+              language="css"
+            />
+          </>
+        }
+      />
+
+      {/* Button Component */}
+      <ContentSection
+        title={"Button Component"}
+        subtitle={"Various button styles and variants"}
+        content={
+          <>
+            <TextParagraph text="The Button component provides various styles and variants for actions within the application." />
+
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "15px", marginBottom: "20px" }}>
+              <Button variant="primary" style="solid">
+                Primary Solid
+              </Button>
+              <Button variant="secondary" style="solid">
+                Secondary Solid
+              </Button>
+              <Button variant="positive" style="solid">
+                Positive Solid
+              </Button>
+              <Button variant="warning" style="solid">
+                Warning Solid
+              </Button>
+              <Button variant="negative" style="solid">
+                Negative Solid
+              </Button>
+            </div>
+
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "15px", marginBottom: "20px" }}>
+              <Button variant="primary" style="translucent">
+                Primary Translucent
+              </Button>
+              <Button variant="secondary" style="translucent">
+                Secondary Translucent
+              </Button>
+              <Button variant="positive" style="translucent">
+                Positive Translucent
+              </Button>
+              <Button variant="warning" style="translucent">
+                Warning Translucent
+              </Button>
+              <Button variant="negative" style="translucent">
+                Negative Translucent
+              </Button>
+            </div>
+
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "15px" }}>
+              <Button variant="primary" disabled={true}>
+                Disabled Button
+              </Button>
+              <Button variant="primary" onClick={() => alert("Button clicked!")}>
+                Click Event Button
+              </Button>
+              <Button type="submit">Submit Button</Button>
+            </div>
+          </>
+        }
+      />
+
+      {/* Checkbox Component */}
+      <ContentSection
+        title={"Checkbox Component"}
+        subtitle={"Interactive checkbox input with label"}
+        content={
+          <>
+            <TextParagraph text="The Checkbox component provides a styled checkbox input with a label." />
+
+            <div style={{ display: "flex", flexDirection: "column", gap: "15px", marginBottom: "20px" }}>
+              <Checkbox
+                label="Basic checkbox"
+                name="basic"
+                checked={checkboxStates.basic}
+                onChange={handleCheckboxChange("basic")}
+              />
+
+              <Checkbox
+                label="Required checkbox"
+                name="required"
+                checked={checkboxStates.required}
+                onChange={handleCheckboxChange("required")}
+                required={true}
+              />
+
+              <Checkbox
+                label="Disabled checkbox"
+                name="disabled"
+                checked={checkboxStates.disabled}
+                onChange={handleCheckboxChange("disabled")}
+                disabled={true}
+              />
+
+              <div
+                style={{
+                  marginTop: "10px",
+                  padding: "15px",
+                  border: "1px solid var(--shadow-dark)",
+                  borderRadius: "8px",
+                }}
+              >
+                <TextParagraph text="Selected checkboxes:" />
+                <pre style={{ fontFamily: "monospace", margin: "10px 0" }}>
+                  {JSON.stringify(checkboxStates, null, 2)}
+                </pre>
+              </div>
+            </div>
+          </>
+        }
+      />
+
       {/* Final Section with links */}
       <ContentSection
         title={"Useful Resources"}
@@ -454,18 +542,8 @@ export default function TestingPage() {
         content={
           <>
             <TextParagraph text="For more information about how to use these components, refer to the following resources:" />
-
             <TextParagraph text="• View the [DOCS.md](https://github.com/FRCTeam1277/Team-1277-Website/blob/main/DOCS.md) file for detailed documentation." />
-
             <TextParagraph text="• Check out the [FIRST Robotics Competition website](https://www.firstinspires.org/robotics/frc) for more information about FRC." />
-
-            <TextParagraph text="• Visit the [Groton-Dunstable Regional High School website](https://www.gdrsd.org/o/gdrhs) to learn about our school." />
-
-            <TextParagraph
-              text="This testing page demonstrates all components available in the Robotomies website. Use it as a reference when building new pages."
-              primary={true}
-            />
-
             <SizedBox height={40} />
           </>
         }
