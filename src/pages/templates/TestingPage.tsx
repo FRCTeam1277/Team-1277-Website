@@ -35,7 +35,8 @@ export default function TestingPage() {
 
   return (
     <>
-      <BannerImage imagePath={"/graphics/CenterBanner.png"} />
+      {/* <BannerImage imagePath={"/graphics/CenterBanner.png"} /> */}
+
       <SizedBox height={40} />
 
       {/* Introduction Section */}
