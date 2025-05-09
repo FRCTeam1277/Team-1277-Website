@@ -13,13 +13,13 @@ export default function MembersPage() {
             <TextParagraph text="Welcome to the members area. Some content requires a password to access." />
 
             <PasswordProtectedContent
-              contentId="slack-info"
+              contentId="team-strategy"
               passwordHash="sha256:a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
-              title="Team Communication"
-              description="Enter the team password to access our Slack information."
+              title="Team Strategy"
+              description="Enter the team password to access our secret strategy documents."
             >
-              <TextParagraph text="Our Slack workspace address is robotomies.slack.com" />
               {/* Protected content goes here */}
+              <TextParagraph text="the robotomies bank account number is 123456." />
             </PasswordProtectedContent>
           </>
         }

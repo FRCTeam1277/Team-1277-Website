@@ -256,150 +256,114 @@ Use this component to create a slideshow of images with navigation arrows, capti
 - Autoscroll capability that stops when manual navigation is used
 - Maintains aspect ratio and properly fits images with black bars if needed
 
-## Building Content Sections
+### PasswordProtectedContent
 
-Most content uses the `ContentSection` component, which provides consistent layout.
+Use this component to create sections that require a password to access. This provides client-side protection for content that should have limited access.
 
-```tsx
-<ContentSection
-  title={"About Our Team"}
-  subtitle={"Celebrating 20 years of competition!"}
-  content={
-    <>
-      <TextParagraph text="Team 1277: The Robotomies is the FIRST Robotics Competition (FRC) Team out of Groton, MA." />
-
-      <SectionImage imagePath="/pictures/2025/2025_Team-Picture.jpg" caption="Team picture from WPI" />
-
-      <DecoratedList
-        items={
-          [
-            /* list items here */
-          ]
-        }
-      />
-    </>
-  }
-/>
-```
-
-## Adding Pages
-
-### Page Structure
-
-Each page follows this structure:
+It is good to cycle the passwords regularly.
 
 ```tsx
-import BannerImage from "../components/BannerImage";
-import ContentSection from "../components/content/ContentSection";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
-import TextParagraph from "../components/content/TextParagraph";
-// Other imports as needed
-
-export default function PageName() {
-  return (
-    <>
-      <Navbar />
-      <BannerImage imagePath={"/pictures/BannerImage.png"} />
-
-      {/* Content Sections */}
-      <ContentSection
-        title={"Section Title"}
-        content={
-          <>
-            <TextParagraph text="Your content here" />
-            {/* More content components */}
-          </>
-        }
-      />
-
-      <Footer />
-    </>
-  );
-}
+<PasswordProtectedContent
+  contentId="team-strategy"
+  passwordHash="sha256:a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
+  title="Team Strategy"
+  description="Enter the team password to access our strategy documents."
+>
+  {/* Protected content goes here */}
+  <TextParagraph text="This is protected content that only appears after entering the correct password." />
+  <SectionImage imagePath="/pictures/protected-image.jpg" />
+</PasswordProtectedContent>
 ```
 
-### Creating A New Page
+**Props:**
 
-1. Create a new file in `src/pages/` with a `.tsx` extension (e.g., `NewPage.tsx`)
-2. Copy the structure from an existing page like `AboutPage.tsx`
-3. Modify the content sections as needed
-4. Add the page to routes configuration (see next section)
-5. Add the page to navigation (see "Updating Navigation")
+- `contentId`: String - Unique identifier for this protected content section (required)
+- `passwordHash`: String - SHA-256 hash of the password in format "sha256:hash" (required)
+- `title`: String - Title to display on the password form (default: "Protected Content")
+- `description`: String - Description text on the password form (default: "This content requires a password to view.")
+- `authValidityMs`: Number - How long the authentication remains valid in milliseconds (default: 3600000, or 1 hour)
+- `errorMessage`: String - Message to display when incorrect password is entered (default: "Incorrect password. Please try again.")
+- `children`: ReactNode - Content to be protected (required)
 
-### Season Pages
+**Security Considerations:**
 
-Create season pages in `src/pages/seasons/` directory (e.g., `Season2026.tsx`)
+- This provides only client-side protection suitable for non-critical information
+- Password verification happens in the browser and can potentially be bypassed
+- For truly sensitive information, use a server-side authentication system
+- Never store sensitive information in the protected content
+- It is good to cycle the passwords regularly.
 
-## Creating Routes
+**Generating Password Hashes:**
 
-Routes connect URLs to pages in the `src/routes/routesConfig.tsx` file.
+To generate a secure hash for the `passwordHash` property:
 
-### Adding a New Route
+1. Visit the admin hash generator at `/admin/hash`
+2. Enter your desired password and click "Generate Hash"
+3. Copy the "Formatted for Component" hash value
+4. Paste into your component where indicated
 
-1. Import your new page at the top of the file:
+Alternatively, you can use the command line tool:
 
-   ```tsx
-   import NewPage from "../pages/NewPage";
-   ```
-
-2. Add a route to the `routes` array:
-   ```tsx
-   {
-     path: "/new-page",
-     element: <NewPage />,
-     label: "New Page",
-     description: "Description of the page"
-   }
-   ```
-
-**Important**: Always add new routes **above** the catch-all 404 route (path "\*").
-
-## Updating Navigation
-
-The navigation menu is defined in `public/navConfig.json`.
-
-### Basic Navigation Items
-
-```json
-{
-  "navItems": [
-    {
-      "linkName": "Home",
-      "path": "/",
-      "linkIcon": "/icons/home.png"
-    },
-    {
-      "linkName": "Support",
-      "path": "/support"
-    }
-  ]
-}
+```
+cd utils
+node generate-password-hash.js your-password
 ```
 
-### Dropdown Menus
+You can also use a command:
 
-For dropdown menus, add a `subPages` array:
-
-```json
-{
-  "linkName": "Past Seasons",
-  "path": "/seasons",
-  "linkIcon": "/icons/collapse.png",
-  "subPages": [
-    {
-      "linkName": "2024: Crescendo",
-      "path": "/seasons/2024"
-    },
-    {
-      "linkName": "2023: Charged Up",
-      "path": "/seasons/2023"
-    }
-  ]
-}
+```
+cd utils
+PasswordHash
 ```
 
-### Adding Icons
+## Button
 
-1. Place icon images in `public/icons/` directory
-2. Add `"linkIcon": "/icons/icon-name.png"` to the navigation item
+A customizable button component with various style options:
+
+```tsx
+<Button variant="primary" style="solid" onClick={handleClick} type="button">
+  Click Me
+</Button>
+```
+
+**Props:**
+
+- `variant`: ButtonVariant - Color style: "primary" | "secondary" | "positive" | "warning" | "negative" (default: "primary")
+- `style`: ButtonStyle - Visual style: "solid" | "translucent" (default: "solid")
+- `type`: React.ButtonHTMLAttributes["type"] - HTML button type (default: "button")
+- `onClick`: Function - Click handler
+- `className`: String - Additional CSS classes
+- `disabled`: Boolean - Disables the button when true
+- `children`: ReactNode - Button content
+
+## Other Utility Components
+
+### CopyOutputBox
+
+Displays output text with a copy button for easy copying to clipboard:
+
+```tsx
+<CopyOutputBox label="API Key:" text="abc123xyz456" />
+```
+
+**Props:**
+
+- `text`: String - The text to display and copy (required)
+- `label`: String - Label for the output box (required)
+- `copiedMessage`: String - Text shown when copied successfully (default: "Copied to clipboard!")
+
+### CodeView
+
+Displays formatted code with syntax highlighting and copy functionality:
+
+```tsx
+<CodeView code={`function example() {\n  return "Hello world!";\n}`} title="Example Function" language="js" />
+```
+
+**Props:**
+
+- `code`: String - The code to display (required)
+- `title`: String - Optional title for the code block
+- `allowCopy`: Boolean - Whether to show copy button (default: true)
+- `language`: String - Language for syntax highlighting (e.g., "js", "tsx")
+- `copiedMessage`: String - Text shown when copied successfully (default: "Copied to clipboard!")

@@ -1,0 +1,42 @@
+.hash-generator-form {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.hash-generator-submit {
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.hash-generator-results {
+  margin-top: 2.5rem;
+}
+
+.hash-result-heading {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.hash-generator-example {
+  margin-top: 2rem;
+}
+
+.hash-generator-example h4 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+@media (max-width: 768px) {
+  .hash-generator-form {
+    padding: 0 1rem;
+  }
+
+  .hash-result-heading {
+    font-size: 1.2rem;
+  }
+}

@@ -1,6 +1,7 @@
 import React, { ReactNode, useEffect, useState } from "react";
 import { SHA256 } from "crypto-js";
 import InputField from "../common/InputField";
+import Button from "../common/Button";
 import "./PasswordProtectedContent.css";
 
 interface PasswordProtectedContentProps {
@@ -131,9 +132,9 @@ export default function PasswordProtectedContent({
 
           {showError && <div className="password-error">{errorMessage}</div>}
 
-          <button type="submit" className="password-submit-button">
+          <Button type="submit" variant="positive" style="translucent" className="password-submit-button">
             Unlock Content
-          </button>
+          </Button>
         </form>
       </div>
     </div>
