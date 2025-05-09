@@ -52,8 +52,9 @@
   font-size: 0.9rem;
   color: var(--text);
   background-color: var(--page-background);
-  white-space: pre-wrap;
-  word-break: break-word;
+  box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+  /* white-space: pre-wrap;
+  word-break: break-word; */
 }
 
 .code-view-copied-message {
