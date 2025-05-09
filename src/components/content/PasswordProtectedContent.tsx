@@ -1,7 +1,7 @@
 import React, { ReactNode, useEffect, useState } from "react";
 import { SHA256 } from "crypto-js";
-import InputField from "../common/InputField";
-import Button from "../common/Button";
+import InputField from "../ui/InputField";
+import Button from "../ui/Button";
 import "./PasswordProtectedContent.css";
 
 interface PasswordProtectedContentProps {

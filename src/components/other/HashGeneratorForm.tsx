@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { generatePasswordHash } from "../../utils/hashGenerator";
-import InputField from "../common/InputField";
-import Button from "../common/Button";
-import CopyOutputBox from "./CopyOutputBox";
-import CodeView from "./CodeView";
+import InputField from "../ui/InputField";
+import Button from "../ui/Button";
+import CopyOutputBox from "../ui/CopyOutputBox";
+import CodeView from "../ui/CodeView";
 import "./HashGeneratorForm.css";
 
 const HashGeneratorForm: React.FC = () => {
