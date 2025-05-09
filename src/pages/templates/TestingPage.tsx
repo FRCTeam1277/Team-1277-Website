@@ -1,4 +1,3 @@
-import BannerImage from "../../components/common/BannerImage";
 import ContentSection from "../../components/content/ContentSection";
 import DecoratedList from "../../components/content/DecoratedList";
 import HighlightSection from "../../components/content/HighlightSection";
@@ -35,8 +34,6 @@ export default function TestingPage() {
 
   return (
     <>
-      {/* <BannerImage imagePath={"/graphics/CenterBanner.png"} /> */}
-
       <SizedBox height={40} />
 
       {/* Introduction Section */}
