@@ -1,0 +1,107 @@
+.code-view {
+  margin: 1.5rem 0;
+  width: 100%;
+  background: var(--page-background);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.code-view-header {
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--background);
+  border-bottom: 1px solid var(--shadow-dark);
+}
+
+.code-view-title {
+  font-weight: 600;
+  font-family: "Rubik", sans-serif;
+  color: var(--text);
+}
+
+.code-view-copy-button {
+  background-color: var(--positive-translucent);
+  border: 1px solid var(--positive);
+  color: var(--positive);
+  border-radius: 5px;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.code-view-copy-button:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.code-view-copy-button:active {
+  filter: brightness(0.9);
+  transform: translateY(0);
+}
+
+.code-view-code {
+  padding: 1rem;
+  margin: 0;
+  overflow-x: auto;
+  line-height: 1.5;
+  font-family: "Consolas", "Monaco", monospace;
+  font-size: 0.9rem;
+  color: var(--text);
+  background-color: var(--page-background);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.code-view-copied-message {
+  padding: 0.5rem 1rem;
+  text-align: right;
+  color: var(--positive);
+  font-size: 0.85rem;
+  font-weight: 600;
+  background-color: var(--background);
+  border-top: 1px solid var(--shadow-dark);
+}
+
+/* Basic syntax highlighting */
+.code-view-code.tsx .keyword,
+.code-view-code.jsx .keyword,
+.code-view-code.js .keyword,
+.code-view-code.ts .keyword {
+  color: var(--primary);
+}
+
+.code-view-code.tsx .string,
+.code-view-code.jsx .string,
+.code-view-code.js .string,
+.code-view-code.ts .string {
+  color: var(--positive);
+}
+
+.code-view-code.tsx .comment,
+.code-view-code.jsx .comment,
+.code-view-code.js .comment,
+.code-view-code.ts .comment {
+  color: var(--accent);
+  opacity: 0.7;
+}
+
+@media (max-width: 600px) {
+  .code-view-header {
+    padding: 0.5rem 0.75rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .code-view-copy-button {
+    margin-top: 0.5rem;
+  }
+
+  .code-view-code {
+    padding: 0.75rem;
+    font-size: 0.8rem;
+  }
+}

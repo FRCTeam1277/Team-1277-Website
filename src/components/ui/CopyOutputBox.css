@@ -1,0 +1,76 @@
+.copy-output-box {
+  margin-bottom: 1.5rem;
+}
+
+.copy-output-label {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.copy-output-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-radius: 8px;
+  background: var(--background-secondary, var(--background));
+}
+
+.copy-output-text {
+  flex-grow: 1;
+  padding: 0.75rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  word-break: break-all;
+  line-height: 1.5;
+  font-family: monospace;
+  white-space: nowrap;
+  border-radius: 8px 0 0 8px;
+  background-color: var(--page-background);
+  box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+}
+
+.copy-button {
+  padding: 0.5rem 1rem;
+  height: 100%;
+  min-height: 2.5rem;
+  border-radius: 0 8px 8px 0;
+  border: none;
+  background-color: var(--positive-translucent);
+  border: 1px solid var(--positive);
+  color: var(--positive);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copy-button:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.copy-button:active {
+  filter: brightness(0.9);
+  transform: translateY(0);
+}
+
+.copy-output-success {
+  margin-top: 0.5rem;
+  color: var(--positive);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+@media (max-width: 600px) {
+  .copy-output-text {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+
+  .copy-button {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+}

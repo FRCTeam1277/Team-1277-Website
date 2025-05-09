@@ -15,6 +15,15 @@
 }
 
 /* Define Theme Colors */
+:root {
+  --positive: #00b35c;
+  --positive-translucent: #00b35c24;
+  --warning: #ffb300;
+  --warning-translucent: #ffb30024;
+  --negative: #fb3250;
+  --negative-translucent: #fb325024;
+}
+
 :root[data-theme="light"] {
   --text: #1d070d;
   --background: #fbeff2;
