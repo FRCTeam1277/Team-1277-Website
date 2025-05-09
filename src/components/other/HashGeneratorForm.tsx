@@ -5,6 +5,7 @@ import Button from "../ui/Button";
 import CopyOutputBox from "../ui/CopyOutputBox";
 import CodeView from "../ui/CodeView";
 import "./HashGeneratorForm.css";
+import SizedBox from "../utils/SizedBox";
 
 const HashGeneratorForm: React.FC = () => {
   const [password, setPassword] = useState("");
@@ -58,8 +59,6 @@ const HashGeneratorForm: React.FC = () => {
 
       {showResults && (
         <div className="hash-generator-results">
-          <h3 className="hash-result-heading">Generated Hash:</h3>
-
           <CopyOutputBox label="Plain Hash:" text={generatedHash} />
 
           <CopyOutputBox label="Formatted for Component:" text={formattedHash} />
@@ -70,6 +69,8 @@ const HashGeneratorForm: React.FC = () => {
           </div>
         </div>
       )}
+
+      <SizedBox height={40} />
     </div>
   );
 };
