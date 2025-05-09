@@ -17,6 +17,7 @@ export default function MembersPage() {
               passwordHash="sha256:a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
               title="Team Strategy"
               description="Enter the team password to access our secret strategy documents."
+              authValidityMs={60000} // 1 minute
             >
               {/* Protected content goes here */}
               <TextParagraph text="the robotomies bank account number is 123456." />
