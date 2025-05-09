@@ -1,0 +1,1 @@
+node generate-password-hash.js %1 %2

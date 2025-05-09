@@ -16,6 +16,7 @@ import RobotCodingGuide from "../pages/members/RobotCodingGuide";
 import JavaResources from "../pages/members/JavaResources";
 import SoftwareTools from "../pages/members/SoftwareTools";
 import HomePage from "../pages/HomePage";
+import HashGeneratorPage from "../pages/templates/HashGeneratorPage";
 
 // Route configuration interface - this makes it easy to understand what properties each route should have
 export interface RouteConfig {
@@ -159,6 +160,12 @@ export const routes: RouteConfig[] = [
     element: <TestingPage />,
     label: "Testing Page",
     description: "This is a placeholder for testing purposes",
+  },
+  {
+    path: "/admin/hash",
+    element: <HashGeneratorPage />,
+    label: "Hash Generator",
+    description: "Generate password hashes for client-side use with obfuscation.",
   },
 
   // This must be the last route - it catches all unmatched paths
