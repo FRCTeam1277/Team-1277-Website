@@ -16,7 +16,7 @@ import RobotCodingGuide from "../pages/members/RobotCodingGuide";
 import JavaResources from "../pages/members/JavaResources";
 import SoftwareTools from "../pages/members/SoftwareTools";
 import HomePage from "../pages/HomePage";
-import HashGeneratorPage from "../pages/templates/HashGeneratorPage";
+import HashGeneratorPage from "../pages/admin/HashGeneratorPage";
 
 // Route configuration interface - this makes it easy to understand what properties each route should have
 export interface RouteConfig {
