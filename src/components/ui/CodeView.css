@@ -52,12 +52,13 @@
   font-size: 0.9rem;
   color: var(--text);
   background-color: var(--page-background);
+  box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
   white-space: pre-wrap;
   word-break: break-word;
 }
 
 .code-view-copied-message {
-  padding: 0.5rem 1rem;
+  padding: 1rem;
   text-align: right;
   color: var(--positive);
   font-size: 0.85rem;

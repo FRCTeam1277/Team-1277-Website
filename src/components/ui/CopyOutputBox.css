@@ -27,6 +27,7 @@
   font-family: monospace;
   white-space: nowrap;
   border-radius: 8px 0 0 8px;
+  color: var(--text);
   background-color: var(--page-background);
   box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
 }
