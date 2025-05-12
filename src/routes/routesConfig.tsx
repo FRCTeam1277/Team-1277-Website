@@ -16,6 +16,8 @@ import RobotCodingGuide from "../pages/members/RobotCodingGuide";
 import JavaResources from "../pages/members/JavaResources";
 import SoftwareTools from "../pages/members/SoftwareTools";
 import HomePage from "../pages/HomePage";
+import Season2023Page from "../pages/seasons/Season2023";
+import Season2024Page from "../pages/seasons/Season2024";
 
 // Route configuration interface - this makes it easy to understand what properties each route should have
 export interface RouteConfig {
@@ -50,6 +52,18 @@ export const routes: RouteConfig[] = [
     element: <Season2025Page />,
     label: "2025 Season",
     description: "Details about the 2025 competition season",
+  },
+  {
+    path: "/seasons/2024",
+    element: <Season2024Page />,
+    label: "2024 Season",
+    description: "Details about the 2024 competition season",
+  },
+  {
+    path: "/seasons/2023",
+    element: <Season2023Page />,
+    label: "2023 Season",
+    description: "Details about the 2023 competition season",
   },
 
   // ========================================================
