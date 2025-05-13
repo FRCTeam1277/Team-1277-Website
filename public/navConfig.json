@@ -23,6 +23,7 @@
     {
       "linkName": "Seasons",
       "linkIcon": "/icons/flag.png",
+      "path": "/seasons",
       "subPages": [
         {
           "linkName": "2024: Crescendo",

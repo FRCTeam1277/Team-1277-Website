@@ -490,44 +490,35 @@ export default function TestingPage() {
           <>
             <TextParagraph text="The Checkbox component provides a styled checkbox input with a label." />
 
-            <div style={{ display: "flex", flexDirection: "column", gap: "15px", marginBottom: "20px" }}>
-              <Checkbox
-                label="Basic checkbox"
-                name="basic"
-                checked={checkboxStates.basic}
-                onChange={handleCheckboxChange("basic")}
-              />
+            <Checkbox
+              label="Basic checkbox"
+              name="basic"
+              checked={checkboxStates.basic}
+              onChange={handleCheckboxChange("basic")}
+            />
 
-              <Checkbox
-                label="Required checkbox"
-                name="required"
-                checked={checkboxStates.required}
-                onChange={handleCheckboxChange("required")}
-                required={true}
-              />
+            <Checkbox
+              label="Required checkbox"
+              name="required"
+              checked={checkboxStates.required}
+              onChange={handleCheckboxChange("required")}
+              required={true}
+            />
 
-              <Checkbox
-                label="Disabled checkbox"
-                name="disabled"
-                checked={checkboxStates.disabled}
-                onChange={handleCheckboxChange("disabled")}
-                disabled={true}
-              />
+            <Checkbox
+              label="Disabled checkbox"
+              name="disabled"
+              checked={checkboxStates.disabled}
+              onChange={handleCheckboxChange("disabled")}
+              disabled={true}
+            />
 
-              <div
-                style={{
-                  marginTop: "10px",
-                  padding: "15px",
-                  border: "1px solid var(--shadow-dark)",
-                  borderRadius: "8px",
-                }}
-              >
-                <TextParagraph text="Selected checkboxes:" />
-                <pre style={{ fontFamily: "monospace", margin: "10px 0" }}>
-                  {JSON.stringify(checkboxStates, null, 2)}
-                </pre>
-              </div>
-            </div>
+            <CodeView
+              code={JSON.stringify(checkboxStates, null, 2)}
+              title="Checkbox States"
+              language="json"
+              allowCopy={true}
+            />
           </>
         }
       />

@@ -9,7 +9,13 @@
   font-size: 13pt;
   color: var(--text);
   width: 100%;
-  max-width: 70%;
+}
+
+.content-section > p,
+.content-section > em,
+.content-section > text-paragraph > p,
+.content-section > text-paragraph > em {
+  max-width: 90%;
 }
 
 .content-section p.primary,

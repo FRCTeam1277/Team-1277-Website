@@ -45,37 +45,48 @@ export default function Season2024Page() {
             <SizedBox height={40} />
           </>
         }
-      />
-      <ContentSection
-        title={"Events"}
-        subtitle={"Competitions and Events that we attended in the 2024 season"}
-        centerText={true}
-        content={
-          <>
-            <TextParagraph text="NE District Granite State Event" primary={true} removeMargin />
-            <TextParagraph text="February 29 – March 2, 2024" bold={true} removeMargin />
-            <TextParagraph text="Salem High School, 44 Geremonty Drive, Salem, NH 03079" />
+      />{" "}
+      <SideBySideSection
+        leftContent={
+          <ContentSection
+            title={"Events"}
+            subtitle={"Competitions and Events that we attended in the 2024 season"}
+            centerText={true}
+            content={
+              <>
+                <TextParagraph text="NE District Granite State Event" primary={true} removeMargin />
+                <TextParagraph text="February 29 – March 2, 2024" bold={true} removeMargin />
+                <TextParagraph text="Salem High School, 44 Geremonty Drive, Salem, NH 03079" />
 
-            <SizedBox height={20} />
+                <SizedBox height={20} />
 
-            <TextParagraph text="NE District North Shore Event" primary={true} removeMargin />
-            <TextParagraph text="March 15 – March 17, 2024" bold={true} removeMargin />
-            <TextParagraph text="Reading Memorial High School, 62 Oakland Road, Reading, MA 01867" />
+                <TextParagraph text="NE District North Shore Event" primary={true} removeMargin />
+                <TextParagraph text="March 15 – March 17, 2024" bold={true} removeMargin />
+                <TextParagraph text="Reading Memorial High School, 62 Oakland Road, Reading, MA 01867" />
 
-            <SizedBox height={20} />
+                <SizedBox height={20} />
 
-            <TextParagraph
-              text="NE FIRST streamed match play to [nefirst.org/livestream](http://nefirst.org/livestream). 
-              Northern events streamed to BLUE links. Southern events streamed to RED links. 
-              Third events for a week streamed to PURPLE links."
-            />
-
-            <SectionImage
-              imagePath="/pictures/2024/2024_Industrial-Design-Award.jpg"
-              caption="Our team proudly receiving the Industrial Design Award at the 2024 North Shore Event."
-            />
-            <SizedBox height={40} />
-          </>
+                <TextParagraph
+                  text="NE FIRST streamed match play to [nefirst.org/livestream](http://nefirst.org/livestream). 
+                  Northern events streamed to BLUE links. Southern events streamed to RED links. 
+                  Third events for a week streamed to PURPLE links."
+                />
+              </>
+            }
+          />
+        }
+        rightContent={
+          <ContentSection
+            title={"Event Highlights"}
+            content={
+              <>
+                <SectionImage
+                  imagePath="/pictures/2024/2024_Industrial-Design-Award.jpg"
+                  caption="Our team proudly receiving the Industrial Design Award at the 2024 North Shore Event."
+                />
+              </>
+            }
+          />
         }
       />{" "}
       <SideBySideSection
