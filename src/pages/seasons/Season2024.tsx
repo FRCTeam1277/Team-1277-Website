@@ -5,12 +5,12 @@ import TextParagraph from "../../components/content/TextParagraph";
 import SectionImage from "../../components/content/SectionImage";
 import SponsorGrid from "../../components/content/SponsorGrid";
 import DecoratedList from "../../components/content/DecoratedList";
+import SideBySideSection from "../../components/content/SideBySideSection";
 
 export default function Season2024Page() {
   return (
     <>
       <BannerImage imagePath={"/pictures/2024/2024_Team-Picture-Edited.jpg"} />
-
       <ContentSection
         title={"2024 Competition Season"}
         subtitle={"Crescendo presented by Haas"}
@@ -46,7 +46,6 @@ export default function Season2024Page() {
           </>
         }
       />
-
       <ContentSection
         title={"Events"}
         subtitle={"Competitions and Events that we attended in the 2024 season"}
@@ -78,72 +77,71 @@ export default function Season2024Page() {
             <SizedBox height={40} />
           </>
         }
-      />
+      />{" "}
+      <SideBySideSection
+        leftContent={
+          <ContentSection
+            title={"2024 Team Support"}
+            subtitle={"We are grateful for the support making this season possible!"}
+            centerText={true}
+            content={
+              <>
+                <TextParagraph text="Thank you to our sponsors!" primary={true} />
+                <TextParagraph text="If you wish to support us in the upcoming season, please contact Mark Rocheleau through the [contact-us](/contact) page." />
 
-      <ContentSection
-        title={"2024 Team Support"}
-        subtitle={"We are grateful for the support making this season possible!"}
-        centerText={true}
-        content={
-          <>
-            <TextParagraph text="Thank you to our sponsors!" primary={true} />
-            <TextParagraph text="If you wish to support us in the upcoming season, please contact Mark Rocheleau through the [contact us](/contact) page." />
-
-            <SponsorGrid
-              items={[
-                { imagePath: "/sponsors/BAE_Logo.png", link: "https://www.baesystems.com/en-us/home" },
-                { imagePath: "/sponsors/RTX_Raytheon_Technologies_logo.webp", link: "https://www.rtx.com/" },
-                { imagePath: "/sponsors/GDEF_Logo.png", link: "https://www.gdefinc.org/" },
-                { imagePath: "/sponsors/HPE_Logo.png", link: "https://www.hpe.com/us/en/home.html" },
-                {
-                  imagePath:
-                    "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/AMD_LOGO.svg/2560px-AMD_LOGO.svg.png",
-                  link: "https://www.amd.com/",
-                },
-                {
-                  imagePath:
-                    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/2560px-Microsoft_logo_%282012%29.svg.png",
-                  link: "https://www.microsoft.com/",
-                },
-              ]}
-            />
-
-            <SizedBox height={40} />
-          </>
+                <SponsorGrid
+                  items={[
+                    { imagePath: "/sponsors/BAE_Logo.png", link: "https://www.baesystems.com/en-us/home" },
+                    { imagePath: "/sponsors/RTX_Raytheon_Technologies_logo.webp", link: "https://www.rtx.com/" },
+                    { imagePath: "/sponsors/GDEF_Logo.png", link: "https://www.gdefinc.org/" },
+                    { imagePath: "/sponsors/HPE_Logo.png", link: "https://www.hpe.com/us/en/home.html" },
+                    {
+                      imagePath: "https://svgmix.com/uploads/908082-amd-advanced-micro-devices-white.svg",
+                      link: "https://www.amd.com/",
+                    },
+                    {
+                      imagePath:
+                        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/2560px-Microsoft_logo_%282012%29.svg.png",
+                      link: "https://www.microsoft.com/",
+                    },
+                  ]}
+                />
+              </>
+            }
+          />
         }
-      />
+        rightContent={
+          <ContentSection
+            title="Our Fundraising Tiers"
+            content={
+              <>
+                <DecoratedList
+                  items={[
+                    { title: "Stone Age: $1-99", description: "Thank you!" },
+                    { title: "Bronze Age: $100-499", description: "Company name on website + social media shoutout" },
+                    { title: "Iron Age: $500-999", description: "What's above + name on tee shirt" },
+                    {
+                      title: "Industrial Revolution: $1000-1999",
+                      description: "What's above + name on banner and small name on robot",
+                    },
+                    { title: "Machine Age: $2000-3999", description: "What's above + large name on robot" },
+                    {
+                      title: "Digital Revolution: $4000+",
+                      description:
+                        "What's above + preferred location of large name on robot and end of year robot demo at company",
+                    },
+                  ]}
+                />
 
-      <ContentSection
-        title="Our Fundraising Tiers"
-        content={
-          <>
-            <DecoratedList
-              items={[
-                { title: "Stone Age: $1-99", description: "Thank you!" },
-                { title: "Bronze Age: $100-499", description: "Company name on website + social media shoutout" },
-                { title: "Iron Age: $500-999", description: "What's above + name on tee shirt" },
-                {
-                  title: "Industrial Revolution: $1000-1999",
-                  description: "What's above + name on banner and small name on robot",
-                },
-                { title: "Machine Age: $2000-3999", description: "What's above + large name on robot" },
-                {
-                  title: "Digital Revolution: $4000+",
-                  description:
-                    "What's above + preferred location of large name on robot and end of year robot demo at company",
-                },
-              ]}
-            />
+                <SizedBox height={20} />
 
-            <SizedBox height={20} />
-
-            <TextParagraph
-              text="*Donations must be made by December 31 to be included in any printed materials."
-              centered={true}
-            />
-
-            <SizedBox height={40} />
-          </>
+                <TextParagraph
+                  text="*Donations must be made by December 31 to be included in any printed materials."
+                  centered={true}
+                />
+              </>
+            }
+          />
         }
       />
     </>
