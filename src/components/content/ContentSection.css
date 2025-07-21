@@ -12,7 +12,7 @@
   overflow-wrap: break-word; /* Wrap long text */
 
   box-shadow: 5px 5px 10px var(--page-shadow-dark), -5px -5px 10px var(--page-shadow-light);
-  border-radius: 10px;
+  border: 1px solid var(--outline);
   background: var(--page-background);
   border-radius: 12px;
   margin: 40px;

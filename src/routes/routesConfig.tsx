@@ -101,6 +101,13 @@ export const routes: RouteConfig[] = [
     label: "Member Shop Page",
     description: "Shop page for team members to order merchandise",
   },
+  {
+    path: "/seasons/",
+    element: <>SEASONS PAGE</>,
+    label: "Seasons",
+    description: "List of all seasons and competition years",
+    exact: true,
+  },
 
   // ========================================================
   // Members routes

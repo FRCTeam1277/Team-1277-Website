@@ -32,6 +32,7 @@
   --page-background: #e2d9db;
   --page-shadow-light: #f3eaec;
   --page-shadow-dark: #cec7c8;
+  --outline: #fffffff1;
   --primary: #e60024;
   --secondary: #881c2c;
   --accent: #da3e3e;
@@ -48,6 +49,7 @@
   --page-background: #0c1019;
   --page-shadow-light: #101521;
   --page-shadow-dark: #080b12;
+  --outline: #171c2a;
   --primary: #e60024;
   --secondary: #881c2c;
   --accent: #da3e3e;
