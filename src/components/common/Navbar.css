@@ -60,6 +60,53 @@
   cursor: pointer;
 }
 
+/* Right side controls container */
+.nav-right-ui {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.navbar__controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 7px solid transparent;
+  width: fit-content;
+}
+
+/* Theme toggle button */
+.navbar__theme-toggle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--navbar-background);
+  border: 1px solid var(--outline);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar__theme-toggle:hover {
+  transform: rotate(180deg);
+  background: var(--shadow-light);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.navbar__theme-icon {
+  width: 20px;
+  height: 20px;
+  transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .navbar__theme-icon {
+  filter: invert(1);
+}
+
 .navbar__sidebar {
   position: fixed;
   top: 0;
@@ -73,11 +120,16 @@
   z-index: 1001; /* Ensure sidebar is above other elements */
 
   background-color: var(--sidebar-background); /* Use theme variable */
-  box-shadow: -3px 0px 18px 4px rgba(0, 0, 0, 0.7);
+  box-shadow: -3px 0px 18px 4px rgba(0, 0, 0, 0.2);
+  border-left: 1px solid var(--navbar-background);
   backdrop-filter: blur(10px);
   color: var(--text);
 
   transition: right 0.3s ease; /* Smooth slide-in effect for sidebar */
+}
+
+[data-theme="dark"] .navbar__sidebar {
+  box-shadow: -3px 0px 18px 4px rgba(0, 0, 0, 0.7);
 }
 
 .navbar__sidebar.open {
@@ -108,6 +160,10 @@
     transform: translateY(-2px);
     background-color: var(--shadow-light);
   }
+}
+
+ul.navbar__sidebar-links li a {
+  border: none;
 }
 
 .navbar__link-icon {
@@ -303,5 +359,10 @@
 
   .navbar__hamburger {
     display: block;
+  }
+
+  /* Ensure controls container is still visible on mobile */
+  .navbar__controls {
+    display: flex;
   }
 }

@@ -1,5 +1,6 @@
 import { JSX, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useTheme } from "../../hooks/useTheme";
 import { assetPathFixer } from "../../utils/assetPath";
 
 import "./Navbar.css";
@@ -38,6 +39,9 @@ export default function Navbar(): JSX.Element {
   const [isScrollingDown, setIsScrollingDown] = useState(false);
   const [navItems, setNavItems] = useState<NavItem[]>([]);
   const [openDropdowns, setOpenDropdowns] = useState<Record<string, boolean>>({});
+
+  // Theme management
+  const { theme, toggleTheme } = useTheme();
 
   // Function to check if a link is active
   const isActive = (path: string) => {
@@ -202,11 +206,24 @@ export default function Navbar(): JSX.Element {
             <img src={assetPathFixer("/RobotomiesLogo.png")} alt="Logo" />
           </Link>
         </div>
-        {/* Navigation Links */}
-        <ul className="navbar__links">{renderNavLinks()}</ul>
-        {/* Hamburger Icon for Mobile */}
-        <div className="navbar__hamburger" onClick={toggleSidebar}>
-          <img src={assetPathFixer("/icons/MenuIcon.png")} alt="Menu" />
+        <div className="nav-right-ui">
+          {/* Navigation Links */}
+          <ul className="navbar__links">{renderNavLinks()}</ul>
+          {/* Right side controls */}
+          <div className="navbar__controls">
+            {/* Theme Toggle Button */}
+            <button className="navbar__theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
+              <img
+                src={assetPathFixer(theme === "light" ? "/icons/dark-mode.png" : "/icons/light-mode.png")}
+                alt={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
+                className="navbar__theme-icon"
+              />
+            </button>
+            {/* Hamburger Icon for Mobile */}
+            <div className="navbar__hamburger" onClick={toggleSidebar}>
+              <img src={assetPathFixer("/icons/MenuIcon.png")} alt="Menu" />
+            </div>
+          </div>
         </div>
       </nav>
 
