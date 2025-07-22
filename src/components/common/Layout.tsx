@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "./Navbar";
 import Footer from "./Footer";
+import Navbar from "./navigation/Navbar";
 
 /**
  * The Layout component serves as a persistent shell around the changing page content.
