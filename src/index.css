@@ -32,6 +32,7 @@
   --page-background: #e2d9db;
   --page-shadow-light: #f3eaec;
   --page-shadow-dark: #cec7c8;
+  --grid-color: #e2d9db;
   --outline: #fffffff1;
   --primary: #e60024;
   --secondary: #881c2c;
@@ -47,8 +48,10 @@
   --shadow-light: #171c2a;
   --shadow-dark: #0d121e;
   --page-background: #0c1019;
+  --page-background-translucent: #0c1019b0;
   --page-shadow-light: #101521;
   --page-shadow-dark: #080b12;
+  --grid-color: #06080c;
   --outline: #171c2a;
   --primary: #e60024;
   --secondary: #881c2c;
@@ -62,7 +65,7 @@
   display: flex;
   justify-content: center;
 
-  background: var(--background);
+  background: var(--page-background);
   /* background: linear-gradient(45deg, var(--secondary), var(--background)); */
 }
 
@@ -76,7 +79,7 @@ body {
   font-family: "Inter";
   font-weight: 400;
 
-  background: var(--page-background);
+  background: transparent;
 
   /* max-width: 1100px; */
   padding-top: 100px;
@@ -102,6 +105,7 @@ h5 {
 }
 html {
   font-size: 12pt;
+  background: var(--page-background);
 }
 h1 {
   font-size: 25.44pt;

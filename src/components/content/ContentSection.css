@@ -13,7 +13,9 @@
 
   box-shadow: 5px 5px 10px var(--page-shadow-dark), -5px -5px 10px var(--page-shadow-light);
   border: 1px solid var(--outline);
-  background: var(--page-background);
+  background: var(--page-background-translucent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: 12px;
   margin: 40px;
   padding-bottom: 20px;

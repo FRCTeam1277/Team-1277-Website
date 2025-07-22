@@ -1,0 +1,57 @@
+/* 
+ * GridBackground.css
+ * Styles for the interactive grid background component
+ */
+
+.grid-background {
+  /* Fixed positioning to cover entire viewport */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  /* Prevent interaction */
+  pointer-events: none;
+
+  /* Ensure crisp rendering */
+  image-rendering: crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: pixelated;
+
+  /* Smooth transitions for theme changes */
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .grid-background {
+    /* Slightly reduce performance impact on mobile */
+    will-change: auto;
+  }
+}
+
+/* High DPI display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .grid-background {
+    /* Ensure sharp rendering on retina displays */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Accessibility - respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .grid-background {
+    /* Disable animations for users who prefer reduced motion */
+    animation: none;
+    transition: none;
+  }
+}
+
+/* Print styles - hide background when printing */
+@media print {
+  .grid-background {
+    display: none;
+  }
+}
