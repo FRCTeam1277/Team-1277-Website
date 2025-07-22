@@ -1,4 +1,8 @@
 .banner__image {
   width: 100%;
   height: auto;
+  max-width: 1400px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  user-select: none;
 }

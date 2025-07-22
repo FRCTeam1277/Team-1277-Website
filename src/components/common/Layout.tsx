@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "./Navbar";
+import GridBackground from "../design/GridBackground";
 import Footer from "./Footer";
+import Navbar from "./Navbar";
 
 /**
  * The Layout component serves as a persistent shell around the changing page content.
@@ -11,6 +12,7 @@ export default function Layout() {
   return (
     <div className="app-container">
       <Navbar />
+      <GridBackground />
       <div className="page-container" style={{ minHeight: "calc(100vh - 400px)" }}>
         <Outlet />
       </div>

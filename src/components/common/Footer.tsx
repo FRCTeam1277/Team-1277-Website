@@ -1,17 +1,12 @@
-import { JSX, useState } from "react";
+import { JSX } from "react";
+import { useTheme } from "../../hooks/useTheme";
 import { assetPathFixer } from "../../utils/assetPath";
 
-import "./Footer.css";
 import SizedBox from "../utils/SizedBox";
+import "./Footer.css";
 
 export default function Footer(): JSX.Element {
-  const [theme, setTheme] = useState(() => document.documentElement.getAttribute("data-theme") || "light");
-
-  const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    document.documentElement.setAttribute("data-theme", newTheme);
-  };
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <footer>
