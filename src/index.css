@@ -30,9 +30,10 @@
   --shadow-light: #f3eaec;
   --shadow-dark: #cec7c8;
   --page-background: #e2d9db;
+  --page-background-translucent: #e2d9dbb0;
   --page-shadow-light: #f3eaec;
   --page-shadow-dark: #cec7c8;
-  --grid-color: #e2d9db;
+  --grid-color: #c0c0c0;
   --outline: #fffffff1;
   --primary: #e60024;
   --secondary: #881c2c;
