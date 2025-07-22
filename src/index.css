@@ -128,7 +128,7 @@ small {
 }
 
 ::selection {
-  background-color: var(--secondary);
+  background-color: #881c2cd8;
   color: var(--inverse-primary);
 }
 
