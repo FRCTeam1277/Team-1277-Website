@@ -1,11 +1,11 @@
 import BannerImage from "../../components/common/BannerImage";
 import ContentSection from "../../components/content/ContentSection";
-import SizedBox from "../../components/utils/SizedBox";
-import TextParagraph from "../../components/content/TextParagraph";
-import SectionImage from "../../components/content/SectionImage";
-import SponsorGrid from "../../components/content/SponsorGrid";
 import DecoratedList from "../../components/content/DecoratedList";
+import SectionImage from "../../components/content/SectionImage";
 import SideBySideSection from "../../components/content/SideBySideSection";
+import SponsorGrid from "../../components/content/SponsorGrid";
+import TextParagraph from "../../components/content/TextParagraph";
+import SizedBox from "../../components/utils/SizedBox";
 
 export default function Season2024Page() {
   return (
@@ -16,27 +16,13 @@ export default function Season2024Page() {
         subtitle={"Crescendo presented by Haas"}
         content={
           <>
+            <TextParagraph text="In CRESCENDO presented by Haas, two competing alliances are invited to score notes, amplify their speaker, harmonize onstage, and take the spotlight before time runs out. Alliances earn additional rewards for meeting specific scoring thresholds and for cooperating with their opponents." />
             <TextParagraph
-              text="In CRESCENDO presented by Haas, two competing alliances are invited to score notes, amplify their speaker,
-              harmonize onstage, and take the spotlight before time runs out. Alliances earn additional rewards for meeting
-              specific scoring thresholds and for cooperating with their opponents."
-            />
-            <TextParagraph
-              text="The game is themed around music and involves two alliances consisting of three teams each competing 
-              to perform various tasks, including shooting rings known as Notes into goals, and hanging on chains at the end of the match."
+              text="The game is themed around music and involves two alliances consisting of three teams each competing to perform various tasks, including shooting rings known as Notes into goals, and hanging on chains at the end of the match."
               emphasis={true}
             />
-            <TextParagraph
-              text="During the first 15 seconds of the match, robots are autonomous. Without guidance from their drivers, robots
-              leave their starting zone, score notes in their speaker or amp, and collect and score additional notes.
-              During the remaining 2 minutes and 15 seconds, drivers control their robots. Robots collect notes from human
-              players at their source and score them in their amp and speaker."
-            />
-            <TextParagraph
-              text="As time runs out, robots race to get onstage and deliver notes to their traps. Harmonizing robots, i.e. robots
-              sharing a chain, earn an added bonus. Robots earn even more points if a human player spotlights robots on a
-              chain by scoring a note on the chain's microphone."
-            />
+            <TextParagraph text="During the first 15 seconds of the match, robots are autonomous. Without guidance from their drivers, robots leave their starting zone, score notes in their speaker or amp, and collect and score additional notes. During the remaining 2 minutes and 15 seconds, drivers control their robots. Robots collect notes from human players at their source and score them in their amp and speaker." />
+            <TextParagraph text="As time runs out, robots race to get onstage and deliver notes to their traps. Harmonizing robots, i.e. robots sharing a chain, earn an added bonus. Robots earn even more points if a human player spotlights robots on a chain by scoring a note on the chain's microphone." />
             <SectionImage
               imagePath="https://upload.wikimedia.org/wikipedia/en/thumb/8/88/Crescendo_FRC_Logo.svg/1200px-Crescendo_FRC_Logo.svg.png"
               widthPercent={50}

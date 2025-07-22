@@ -1,12 +1,12 @@
 import BannerImage from "../../components/common/BannerImage";
 import ContentSection from "../../components/content/ContentSection";
-import SizedBox from "../../components/utils/SizedBox";
-import TextParagraph from "../../components/content/TextParagraph";
-import SectionImage from "../../components/content/SectionImage";
-import LinkButton from "../../components/content/LinkButton";
-import SponsorGrid from "../../components/content/SponsorGrid";
 import DecoratedList from "../../components/content/DecoratedList";
+import LinkButton from "../../components/content/LinkButton";
+import SectionImage from "../../components/content/SectionImage";
 import SideBySideSection from "../../components/content/SideBySideSection";
+import SponsorGrid from "../../components/content/SponsorGrid";
+import TextParagraph from "../../components/content/TextParagraph";
+import SizedBox from "../../components/utils/SizedBox";
 
 export default function Season2025Page() {
   return (
@@ -18,21 +18,12 @@ export default function Season2025Page() {
         subtitle={"Making Waves on the Reefscape"}
         content={
           <>
+            <TextParagraph text="Beneath the ocean's surface lies our planet's most complex ecosystems, full of life and potential for exploration and learning, where each inhabitant has a role to play in building a thriving environment. Teams use their STEM and collaboration skills to explore life beneath the surface of the ocean." />
             <TextParagraph
-              text="Beneath the ocean's surface lies our planet's most complex ecosystems, full of life and potential for
-              exploration and learning, where each inhabitant has a role to play in building a thriving environment.
-              Teams use their STEM and collaboration skills to explore life beneath the surface of the ocean."
-            />
-            <TextParagraph
-              text="Along the way, we uncover the potential in each of us to strengthen our community and innovate for a
-              better world with healthy oceans."
+              text="Along the way, we uncover the potential in each of us to strengthen our community and innovate for a better world with healthy oceans."
               emphasis={true}
             />
-            <TextParagraph
-              text="Two alliances of three robots each work to score PVC pipes (called Coral) and playground balls (called
-              Algae) into goals. At the end of the match, robots move to a truss structure called the Barge and climb
-              metal Cages to earn additional points."
-            />
+            <TextParagraph text="Two alliances of three robots each work to score PVC pipes (called Coral) and playground balls (called Algae) into goals. At the end of the match, robots move to a truss structure called the Barge and climb metal Cages to earn additional points." />
             <SectionImage imagePath="/pictures/2025/2025_Dive_Banner.jpg" widthPercent={50} disableClick={true} />
             <SizedBox height={40} />
           </>

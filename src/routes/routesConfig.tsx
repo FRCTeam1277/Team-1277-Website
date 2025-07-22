@@ -1,23 +1,24 @@
 import { ReactNode } from "react";
 import AboutPage from "../pages/AboutPage";
-import NotFoundPage from "../pages/NotFoundPage";
-import SupportPage from "../pages/SupportPage";
-import Season2025Page from "../pages/seasons/Season2025";
-import TestingPage from "../pages/templates/TestingPage";
 import ContactPage from "../pages/ContactPage";
-import MembersPage from "../pages/members/MembersPage";
-import SafetyPage from "../pages/members/SafetyPage";
-import CalendarPage from "../pages/members/CalendarPage";
-import MentorSignup from "../pages/members/MentorSignup";
-import StudentSignup from "../pages/members/StudentSignup";
-import ProgrammingPage from "../pages/members/ProgrammingPage";
-import MemberShopPage from "../pages/shop/MemberShop";
-import RobotCodingGuide from "../pages/members/RobotCodingGuide";
-import JavaResources from "../pages/members/JavaResources";
-import SoftwareTools from "../pages/members/SoftwareTools";
 import HomePage from "../pages/HomePage";
+import NotFoundPage from "../pages/NotFoundPage";
+import SeasonsPage from "../pages/SeasonsPage";
+import SupportPage from "../pages/SupportPage";
+import CalendarPage from "../pages/members/CalendarPage";
+import JavaResources from "../pages/members/JavaResources";
+import MembersPage from "../pages/members/MembersPage";
+import MentorSignup from "../pages/members/MentorSignup";
+import ProgrammingPage from "../pages/members/ProgrammingPage";
+import RobotCodingGuide from "../pages/members/RobotCodingGuide";
+import SafetyPage from "../pages/members/SafetyPage";
+import SoftwareTools from "../pages/members/SoftwareTools";
+import StudentSignup from "../pages/members/StudentSignup";
 import Season2023Page from "../pages/seasons/Season2023";
 import Season2024Page from "../pages/seasons/Season2024";
+import Season2025Page from "../pages/seasons/Season2025";
+import MemberShopPage from "../pages/shop/MemberShop";
+import TestingPage from "../pages/templates/TestingPage";
 
 // Route configuration interface - this makes it easy to understand what properties each route should have
 export interface RouteConfig {
@@ -103,7 +104,7 @@ export const routes: RouteConfig[] = [
   },
   {
     path: "/seasons/",
-    element: <>SEASONS PAGE</>,
+    element: <SeasonsPage />,
     label: "Seasons",
     description: "List of all seasons and competition years",
     exact: true,

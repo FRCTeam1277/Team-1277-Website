@@ -127,6 +127,11 @@ small {
   font-size: 7.2pt;
 }
 
+::selection {
+  background-color: var(--secondary);
+  color: var(--inverse-primary);
+}
+
 .monospaced {
   font-family: "JetBrains Mono", monospace;
   font-weight: 400;
