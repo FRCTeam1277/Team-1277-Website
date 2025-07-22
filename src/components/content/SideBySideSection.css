@@ -16,6 +16,7 @@
 
 .side-by-side-item .content-section {
   margin: 0;
+  border: none;
 }
 
 /* Make the layout stack on mobile devices */
