@@ -1,0 +1,2 @@
+/programming/docs/* /programming/docs/:splat 200
+/* /index.html 200
