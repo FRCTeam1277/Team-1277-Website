@@ -13,6 +13,7 @@ interface NavItem {
   path: string;
   linkIcon?: string;
   subPages?: NavItem[];
+  external?: boolean;
 }
 
 /**
@@ -130,14 +131,23 @@ export default function Navbar(): JSX.Element {
               <img src={assetPathFixer("/icons/expand.png")} alt="expand" className="navbar__dropdown-icon" />
             </Link>
             <div className="navbar__dropdown-content">
-              {item.subPages.map((subItem, subIndex) => (
-                <Link key={subIndex} to={subItem.path} className={isActive(subItem.path) ? "active" : ""}>
-                  {subItem.linkIcon && (
-                    <img src={assetPathFixer(subItem.linkIcon)} alt="" className="navbar__link-icon" />
-                  )}
-                  {subItem.linkName}
-                </Link>
-              ))}
+              {item.subPages.map((subItem, subIndex) => 
+                subItem.external ? (
+                  <a key={subIndex} href={subItem.path} className={isActive(subItem.path) ? "active" : ""}>
+                    {subItem.linkIcon && (
+                      <img src={assetPathFixer(subItem.linkIcon)} alt="" className="navbar__link-icon" />
+                    )}
+                    {subItem.linkName}
+                  </a>
+                ) : (
+                  <Link key={subIndex} to={subItem.path} className={isActive(subItem.path) ? "active" : ""}>
+                    {subItem.linkIcon && (
+                      <img src={assetPathFixer(subItem.linkIcon)} alt="" className="navbar__link-icon" />
+                    )}
+                    {subItem.linkName}
+                  </Link>
+                )
+              )}
             </div>
           </li>
         );
@@ -172,12 +182,21 @@ export default function Navbar(): JSX.Element {
             <ul className="navbar__sidebar-dropdown-content">
               {item.subPages.map((subItem, subIndex) => (
                 <li key={subIndex}>
-                  <Link to={subItem.path} className={isActive(subItem.path) ? "active" : ""}>
-                    {subItem.linkIcon && (
-                      <img src={assetPathFixer(subItem.linkIcon)} alt="" className="navbar__link-icon" />
-                    )}
-                    {subItem.linkName}
-                  </Link>
+                  {subItem.external ? (
+                    <a href={subItem.path} className={isActive(subItem.path) ? "active" : ""}>
+                      {subItem.linkIcon && (
+                        <img src={assetPathFixer(subItem.linkIcon)} alt="" className="navbar__link-icon" />
+                      )}
+                      {subItem.linkName}
+                    </a>
+                  ) : (
+                    <Link to={subItem.path} className={isActive(subItem.path) ? "active" : ""}>
+                      {subItem.linkIcon && (
+                        <img src={assetPathFixer(subItem.linkIcon)} alt="" className="navbar__link-icon" />
+                      )}
+                      {subItem.linkName}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
