@@ -75,11 +75,18 @@ export default function TextParagraph({
         // Link text
         const linkText = parts[i];
         const linkUrl = parts[i + 1];
-        if (linkUrl.startsWith("/")) {
+        const externalplz = linkUrl.startsWith("/members/docs/") || linkUrl.startsWith("/programming/docs/");
+        if (linkUrl.startsWith("/") && !externalplz) {
           result.push(
             <Link key={i} to={linkUrl}>
               {linkText}
             </Link>
+          );
+        } else if (externalplz || linkUrl.startsWith("/")) {
+          result.push(
+            <a key={i} href={linkUrl}>
+              {linkText}
+            </a>
           );
         } else {
           result.push(
