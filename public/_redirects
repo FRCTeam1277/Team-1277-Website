@@ -1,2 +1,2 @@
-/programming/docs/* /programming/docs/:splat 200!
+/members/docs/programming/* /members/docs/programming/:splat 200!
 /* /index.html 200

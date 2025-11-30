@@ -44,7 +44,7 @@
         { "linkName": "Calendar", "path": "/members/calendar", "linkIcon": "/icons/calendar.png" },
         { "linkName": "Mentor Signup", "path": "/members/mentor-signup", "linkIcon": "/icons/engineer.png" },
         { "linkName": "Student Signup", "path": "/members/student-signup", "linkIcon": "/icons/people.png" },
-        { "linkName": "Programming", "path": "/members/programming", "linkIcon": "/icons/code.png" }
+        { "linkName": "Programming", "path": "/members/docs/programming", "linkIcon": "/icons/code.png" }
       ]
     },
     {

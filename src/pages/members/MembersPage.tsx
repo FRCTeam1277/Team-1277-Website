@@ -27,7 +27,7 @@ export default function MembersPage() {
           />
           <TextParagraph
             removeMargin
-            text="[Programming](/members/programming) Team Programming Resources: Links to coding resources and tutorials."
+            text="[Programming](/members/docs/programming) 1277's accumulated knowledge/resources and tutorials."
           />
 
           <SizedBox height={60} />
