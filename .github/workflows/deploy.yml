@@ -44,6 +44,22 @@ jobs:
         env:
           GITHUB_ACTIONS: true
           CUSTOM_DOMAIN: ${{ env.CUSTOM_DOMAIN }}
+
+      - name: setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: install mkdocs
+        run: |
+          python -m pip install --upgrade pip
+          pip install mkdocs
+          pip install mkdocs-shadcn
+
+      - name: build programming docs
+        working-directory: ./programming_docs
+        run: mkdocs build
+
       - name: upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
