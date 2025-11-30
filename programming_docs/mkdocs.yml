@@ -1,5 +1,5 @@
 site_name: 1277 Software Documentation
-site_url: https://team1277.org/members/programming/docs/
+site_url: https://team1277.org/programming/docs/
 site_dir: ../dist/programming/docs
 
 theme:
