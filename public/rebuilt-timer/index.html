@@ -453,54 +453,6 @@ function vibrate() {
     }
 }
 
-const WinAutoToggle = document.getElementById('WinAutoToggle');
-const WinAutoNo = document.getElementById('WinAutoNo');
-const WinAutoYes = document.getElementById('WinAutoYes');
-let AutoWinner = false;
-WinAutoToggle.addEventListener('click', () => {
-    AutoWinner = !AutoWinner; // toggle state
-    AutoWinner ? (WinAutoYes.style.display = "inline-block", WinAutoNo.style.display = "none" ): (WinAutoNo.style.display = "inline-block", WinAutoYes.style.display = "none"); // update button text
-    AutoWinnerHub();
-});
-
-const flashToggle = document.getElementById('flashToggle');
-const flashOff = document.getElementById('flashOff');
-const flashOn = document.getElementById('flashOn');
-let flashSetting = localStorage.getItem("flashSetting") === "true";
-flashToggle.addEventListener('click', () => {
-    flashSetting = !flashSetting; // toggle state
-    flashSetting ? (flashOn.style.display = "inline-block", flashOff.style.display = "none",  localStorage.setItem("flashSetting", true)) : (flashOff.style.display = "inline-block", flashOn.style.display = "none", localStorage.setItem("flashSetting", "off")); // update localStorage and toggle
-    flashSetting ? flash(brightFlashPerSecond, 2) : killFlash();
-});
-
-let flashInterval;
-const brightFlashPerSecond = 6; // Count visual flash per second; 3 green-black pairs
-const totalFlashDurationSec = 7; // Visual flash for how many seconds; 7 seconds
-function flash(brightFlashPerSecond, totalFlashDurationSec) {
-    if (flashSetting == true) { // Only flash if user enabled
-        const flashDiv = document.getElementById("flashDiv");
-        flashDiv.style.display = "block";
-        flashDiv.style.backgroundColor = "var(--brights)";
-        let flashActive = false;
-
-        flashInterval = setInterval(() => {
-            flashDiv.style.backgroundColor = flashActive ? 'var(--brights)' : 'var(--black)';
-            flashActive = !flashActive;
-        }, 1000/brightFlashPerSecond);
-
-        setTimeout(() => {
-            flashDiv.style.display = "none";
-            clearInterval(flashInterval);
-        }, 1000*totalFlashDurationSec);
-    }
-}
-
-function killFlash() {
-    flashDiv.style.display = "none";
-    clearInterval(flashInterval);
-
-}
-
 function chooseAlliance() {
     switchHub();
     alliance_color = getCookie(ActiveHub);
@@ -615,9 +567,7 @@ function formatTimeMs(ms) {
 
 
 // ----- Render loop -----
-const display = document.getElementById("time");
-const phase = document.getElementById("phase");
-const durationDisplay = document.getElementById("duration");
+let display, phase, durationDisplay;
 
 let prevRemainingSegSec = null;
 let bgIntervalId = null;
@@ -750,6 +700,13 @@ function render() {
     scheduleNextRender();
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    display = document.getElementById("time");
+    phase = document.getElementById("phase");
+    durationDisplay = document.getElementById("duration");
+    render();
+});
+
 // Switch render method when tab visibility changes
 document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'visible') {
@@ -768,9 +725,6 @@ document.addEventListener('visibilitychange', () => {
         }
     }
 });
-
-render();
-
 
 // ----- Controls -----
 function start() {
