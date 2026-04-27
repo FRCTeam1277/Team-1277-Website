@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>Rebuilt Match Timer</title>
+        <meta name="description" content="Match timer for FRC Rebuilt to keep track of match periods" />
+
+        <!-- PWA essentials -->
+        <meta name="theme-color" content="#0d6efd" />
+
+        <!-- iOS support -->
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="My PWA" />
+
+        <!-- Fallback icon -->
+
+        <style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+/* https://github.com/mladenplavsic/css-ripple-effect */
+.ripple {
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.ripple::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #ccc 10%, transparent 10%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform 0.25s, opacity 1s;
+}
+
+.ripple:active::after {
+  transform: scale(0, 0);
+  opacity: 0.2;
+  transition: 0s;
+}
+
+:root {
+    --r-alliance: #ED1C24;
+    --b-alliance: #0066B3;
+    --white: #ffffff;
+    --black: #000000;
+    --brights: #2cff00;
+}
+
+body {
+    color: var(--white);
+    background-color: var(--r-alliance);
+    text-align: center;
+    transition: background-color 0.25s ease;
+    padding: 10px;
+    font-family: Nunito;
+    letter-spacing: 3px;
+}
+
+html, body {
+    overscroll-behavior: none;
+    user-select: none;
+    margin: 0;
+}
+
+button {
+    color: var(--white);
+    background-color: rgb(128, 128, 128);
+    border-width: 0px;
+    border-radius: 5px;
+    opacity: 100%;
+    transition: opacity 150ms ease;
+    font-size: 20px;
+    font-family: Nunito;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 15px;
+}
+
+button:hover {
+    opacity: 75%;
+}
+
+#Reset_btn {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    background-color: transparent;
+}
+
+#Vibrate_btn {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    background-color: transparent;
+}
+
+#WinAutoNo {
+    display: inline-block;
+    position: relative;
+    bottom: -5px;
+}
+
+#WinAutoYes {
+    display: none;
+    position: relative;
+    bottom: -5px;
+}
+
+#Start_btn, #Pause_btn, #WinAutoToggle, #AllianceToggle {
+    height: 100px;
+    aspect-ratio: 2;
+    border: 2px solid white;
+}
+
+#info {
+    margin: -20px 20px;
+}
+
+#info h1 {
+    margin-top: 25px;
+}
+
+#info p {
+    margin-top: -20px;
+}
+
+#flashToggle {
+    position: fixed;
+    bottom: 5px;
+    left: 5px;
+}
+
+#flashOff, #flashOn {
+    background-color: transparent;
+    display: none;
+}
+
+#flashDiv {
+    position: fixed;
+    bottom: 15px;
+    z-index: -1;
+    left: 50%;
+    transform: translate(-50%);
+    width: 60vw;
+    height: 15vh;
+    background-color: var(--brights);
+    display: none;
+}
+
+
+@media (pointer: coarse) and (orientation: portrait) {
+    .controls {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-flow: row;
+        gap: 10px;
+        justify-items: center;
+    }
+
+    button:hover {
+        opacity: 100%;
+    }
+}
+
+@media (300px <= width <= 375px) {
+    .controls {
+        margin-top: 25px;
+    }
+
+    #Start_btn, #Pause_btn, #WinAutoToggle, #AllianceToggle {
+        margin: 5px 0px;
+        height: 80px;
+        aspect-ratio: 5/3;
+        font-size: 16px;
+    }
+}
+
+@media (375px <= width <= 450px) {
+    .controls {
+        margin-top: 25px;
+    }
+
+    #Start_btn, #Pause_btn, #WinAutoToggle, #AllianceToggle {
+        margin: 5px 0px;
+        height: 100px;
+        aspect-ratio: 5/3;
+        font-size: 16px;
+    }
+}
+
+@media (pointer: coarse) and (orientation: landscape) {
+    body {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .controls {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-flow: row;
+        gap: 10px;
+    }
+
+    button:hover {
+        opacity: 100%;
+    }
+}
+
+#warningBox {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100%);
+    background-color: var(--black);
+    color: var(--white);
+    border-radius: 10px;
+    padding: 15px;
+    opacity: 0;
+    font-size: small;
+}
+
+#warningBox.notify {
+    animation: flyIn 2.5s cubic-bezier(0.2,0.9,0.3,1) forwards;
+}
+
+@keyframes flyIn {
+    0% {
+        transform: translateX(-50%) translateY(100%);
+        opacity: 0;
+    }
+    15% {
+        transform: translateX(-50%) translateY(0);
+        opacity: .85;
+    }
+    85% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-50%) translateY(100%);
+        opacity: 0;
+        display: none;
+    }
+}
+
+</style>
+        <script>
+// Web Audio API audio system with preloaded buffers for zero-latency playback
+// Falls back to HTML <audio> elements if Web Audio API is unavailable
+
+let audioCtx = null;
+const audioBuffers = {};
+const activeSources = [];
+let audioReady = false;
+let audioInitAttempted = false;
+
+const AUDIO_FILES = {
+    cavalryCharge: './CavalryCharge.wav',
+    buzzer: './Buzzer.wav',
+    threeBells: './ThreeBells.wav',
+    shift: './Shift.wav',
+    endGame: './EndGame.wav',
+    sonar: './Sonar.wav'
+};
+
+const AUDIO_ELEMENT_IDS = {
+    cavalryCharge: 'audioCavalryCharge',
+    buzzer: 'audioBuzzer',
+    threeBells: 'audioThreeBells',
+    shift: 'audioShift',
+    endGame: 'audioEndGame',
+    sonar: 'audioSonar'
+};
+
+async function initAudio() {
+    if (audioInitAttempted) return;
+    audioInitAttempted = true;
+
+    try {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        const loadPromises = Object.entries(AUDIO_FILES).map(async ([key, url]) => {
+            try {
+                const response = await fetch(url);
+                const arrayBuffer = await response.arrayBuffer();
+                audioBuffers[key] = await audioCtx.decodeAudioData(arrayBuffer);
+            } catch (err) {
+                console.error(`Failed to load audio: ${key}`, err);
+            }
+        });
+
+        await Promise.all(loadPromises);
+
+        const loadedCount = Object.keys(audioBuffers).length;
+        if (loadedCount > 0) {
+            audioReady = true;
+            if (loadedCount < Object.keys(AUDIO_FILES).length) {
+                console.warn(`Only ${loadedCount}/${Object.keys(AUDIO_FILES).length} audio files loaded via Web Audio API`);
+            }
+        }
+    } catch (err) {
+        console.warn('Web Audio API unavailable, using HTML audio fallback', err);
+    }
+}
+
+function resumeAudioContext() {
+    if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+    }
+}
+
+function playAudio(key) {
+    // Primary: Web Audio API (zero-latency, works in background tabs)
+    if (audioReady && audioCtx && audioBuffers[key]) {
+        resumeAudioContext();
+        try {
+            const source = audioCtx.createBufferSource();
+            source.buffer = audioBuffers[key];
+            source.connect(audioCtx.destination);
+            source.start(0);
+            activeSources.push(source);
+            source.onended = () => {
+                const idx = activeSources.indexOf(source);
+                if (idx > -1) activeSources.splice(idx, 1);
+            };
+            return;
+        } catch (err) {
+            console.error(`Web Audio play failed for ${key}, falling back`, err);
+        }
+    }
+
+    // Fallback: HTML <audio> element
+    const el = document.getElementById(AUDIO_ELEMENT_IDS[key]);
+    if (el) {
+        el.currentTime = 0;
+        el.play().catch(err => console.error(`HTML audio play failed for ${key}`, err));
+    }
+}
+
+function matchCavalryCharge() { playAudio('cavalryCharge'); }
+function matchBuzzer() { playAudio('buzzer'); }
+function matchThreeBells() { playAudio('threeBells'); }
+function matchShift() { playAudio('shift'); }
+function matchSonar() { playAudio('sonar'); }
+function matchEndGame() { playAudio('endGame'); }
+
+function killAudio() {
+    // Stop all Web Audio source nodes
+    activeSources.forEach(source => {
+        try { source.stop(0); } catch(e) {}
+    });
+    activeSources.length = 0;
+
+    // Stop all HTML audio elements
+    document.querySelectorAll("audio").forEach(audio => {
+        audio.pause();
+        audio.currentTime = 0;
+    });
+}
+
+// Start preloading audio immediately (defer script runs after DOM parse)
+initAudio();
+</script>
+        <script>
+const ActiveHub = "ActiveHub";
+const cookieDomain = "rbgk.github.io/frc-rebuilt-timer";
+const expireTime = 365;
+let supportVibrate = false;
+
+function getCookie(key) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${key}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+// Setting a cookie
+function setCookie(key, value, days, domain) {
+    let expires = "";
+    if (days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    const domainStr = domain ? "; domain=" + domain : "";
+    document.cookie = `${key}=${value || ""}${expires}; path=/${domainStr}`;
+}
+
+function init() {
+    setCookie(ActiveHub, "red");
+    alliance_color = getCookie(ActiveHub);
+    document.getElementById("body").style.backgroundColor = "var(--r-alliance)";
+
+    let flashSetting = localStorage.getItem("flashSetting");
+    if (flashSetting === null) {
+        localStorage.setItem("flashSetting", "off");
+        flashOff.style.display = "inline-block";
+        flashOn.style.display = "none";
+
+    } else if (flashSetting == "true") {
+        flashOff.style.display = "none";
+        flashOn.style.display = "inline-block";
+
+    } else if (flashSetting == "off") {
+        flashOff.style.display = "inline-block";
+        flashOn.style.display = "none";
+
+    }
+
+    // check vibration feature
+    if ("vibrate" in navigator || navigator.vibrate) {
+        supportVibrate = true;
+    } else {
+        document.getElementById("Vibrate_btn").style.opacity = ".2";
+    }
+}
+
+function switchHub() {
+    getCookie(ActiveHub) === "red" ? setCookie(ActiveHub, "blue") : setCookie(ActiveHub, "red");
+
+    switch (getCookie(ActiveHub)) {
+        case "red":
+            document.getElementById("body").style.backgroundColor = "var(--r-alliance)";
+            break;
+
+        case "blue":
+            document.getElementById("body").style.backgroundColor = "var(--b-alliance)";
+            break;
+    }
+}
+
+function vibrate() {
+    if (supportVibrate) {
+        let pause = 50;
+        let pulse = 250;
+        let one = 1000;
+        window.navigator.vibrate([one, pause, one, pause, pulse, pause, pulse, pause, pulse, pause, pulse]);
+    } else {
+        // for unsupported devices, this will only execute if triggered manually
+        warnUser("Vibrate not supported by device");
+    }
+}
+
+const WinAutoToggle = document.getElementById('WinAutoToggle');
+const WinAutoNo = document.getElementById('WinAutoNo');
+const WinAutoYes = document.getElementById('WinAutoYes');
+let AutoWinner = false;
+WinAutoToggle.addEventListener('click', () => {
+    AutoWinner = !AutoWinner; // toggle state
+    AutoWinner ? (WinAutoYes.style.display = "inline-block", WinAutoNo.style.display = "none" ): (WinAutoNo.style.display = "inline-block", WinAutoYes.style.display = "none"); // update button text
+    AutoWinnerHub();
+});
+
+const flashToggle = document.getElementById('flashToggle');
+const flashOff = document.getElementById('flashOff');
+const flashOn = document.getElementById('flashOn');
+let flashSetting = localStorage.getItem("flashSetting") === "true";
+flashToggle.addEventListener('click', () => {
+    flashSetting = !flashSetting; // toggle state
+    flashSetting ? (flashOn.style.display = "inline-block", flashOff.style.display = "none",  localStorage.setItem("flashSetting", true)) : (flashOff.style.display = "inline-block", flashOn.style.display = "none", localStorage.setItem("flashSetting", "off")); // update localStorage and toggle
+    flashSetting ? flash(brightFlashPerSecond, 2) : killFlash();
+});
+
+let flashInterval;
+const brightFlashPerSecond = 6; // Count visual flash per second; 3 green-black pairs
+const totalFlashDurationSec = 7; // Visual flash for how many seconds; 7 seconds
+function flash(brightFlashPerSecond, totalFlashDurationSec) {
+    if (flashSetting == true) { // Only flash if user enabled
+        const flashDiv = document.getElementById("flashDiv");
+        flashDiv.style.display = "block";
+        flashDiv.style.backgroundColor = "var(--brights)";
+        let flashActive = false;
+
+        flashInterval = setInterval(() => {
+            flashDiv.style.backgroundColor = flashActive ? 'var(--brights)' : 'var(--black)';
+            flashActive = !flashActive;
+        }, 1000/brightFlashPerSecond);
+
+        setTimeout(() => {
+            flashDiv.style.display = "none";
+            clearInterval(flashInterval);
+        }, 1000*totalFlashDurationSec);
+    }
+}
+
+function killFlash() {
+    flashDiv.style.display = "none";
+    clearInterval(flashInterval);
+
+}
+
+function chooseAlliance() {
+    switchHub();
+    alliance_color = getCookie(ActiveHub);
+
+    switch (alliance_color) {
+        case "red":
+            document.getElementById("alliance_color").textContent = "red";
+            break;
+
+        case "blue":
+            document.getElementById("alliance_color").textContent = "blue";
+            break;
+    }
+}
+
+function AutoWinnerHub() {
+    switch (phase.textContent) {
+        case "Shift 1":
+        case "Shift 2":
+        case "Shift 3":
+        case "Shift 4":
+            switchHub();
+            break;
+
+        default:
+            // do nothing
+            break;
+    }
+}
+
+</script>
+        <script>
+const rawSegments = [
+    { name: "Auto",               start: "0:20", end: "0:00" },
+    { name: "Delay",              start: "0:05", end: "0:00" },
+    { name: "Transition Shift",   start: "2:20", end: "2:10" },
+    { name: "Shift 1",            start: "2:10", end: "1:45" },
+    { name: "Shift 2",            start: "1:45", end: "1:20" },
+    { name: "Shift 3",            start: "1:20", end: "0:55" },
+    { name: "Shift 4",            start: "0:55", end: "0:30" },
+    { name: "End Game",           start: "0:30", end: "0:00" }
+];
+
+const parseTime = str => {
+    const [m, s] = str.split(":").map(Number);
+    return (m * 60 + s) * 1000;
+};
+
+
+// ----- Preprocess segments with durations + cumulative start -----
+let cumulative = 0;
+const segments = rawSegments.map(seg => {
+    const startMs = parseTime(seg.start);
+    const endMs = parseTime(seg.end);
+    const duration = startMs - endMs;
+    const segObj = {
+        name: seg.name,
+        startMs,
+        endMs,
+        duration,
+        cumulativeStart: cumulative
+    };
+    cumulative += duration;
+    return segObj;
+});
+
+
+// ----- Timer state -----
+let state = {
+    running: false,
+    startTimestamp: null,
+    accumulatedTime: 0
+};
+
+// restore previous state (optional)
+const saved = localStorage.getItem("seq-timer");
+if (saved) state = JSON.parse(saved);
+
+function saveState() {
+    localStorage.setItem("seq-timer", JSON.stringify(state));
+}
+
+function totalElapsed() {
+    if (!state.running) return state.accumulatedTime;
+    return state.accumulatedTime + (Date.now() - state.startTimestamp);
+}
+
+
+// ----- Find current segment -----
+function getCurrentSegment(elapsed) {
+    for (let i = 0; i < segments.length; i++) {
+        const seg = segments[i];
+        if (elapsed < seg.cumulativeStart + seg.duration) {
+            const elapsedInSegment = elapsed - seg.cumulativeStart;
+            const displayMs = seg.startMs - elapsedInSegment;
+            return {
+                name: seg.name,
+                displayMs
+            };
+        }
+    }
+    return null; // finished
+}
+
+
+// ----- Format milliseconds -----
+function formatTimeMs(ms) {
+    const m = Math.floor(ms / 60000);
+    const s = Math.floor((ms % 60000) / 1000);
+    return `${m}:${String(s).padStart(2,"0")}`;
+}
+
+
+// ----- Render loop -----
+const display = document.getElementById("time");
+const phase = document.getElementById("phase");
+const durationDisplay = document.getElementById("duration");
+
+let prevRemainingSegSec = null;
+let bgIntervalId = null;
+
+function scheduleNextRender() {
+    if (document.hidden) {
+        // Background: use setInterval (survives tab throttling, min ~1s but sufficient for audio triggers)
+        if (!bgIntervalId) {
+            bgIntervalId = setInterval(render, 200);
+        }
+    } else {
+        // Foreground: use rAF for smooth display updates
+        if (bgIntervalId) {
+            clearInterval(bgIntervalId);
+            bgIntervalId = null;
+        }
+        requestAnimationFrame(render);
+    }
+}
+
+function render() {
+    const elapsed = totalElapsed();
+    const current = getCurrentSegment(elapsed);
+
+    if (!current) {
+        matchBuzzer();
+        display.textContent = "0:00";
+        phase.textContent = "Match Over";
+        durationDisplay.textContent = "0";
+        // Stop background interval to prevent re-triggering buzzer
+        if (bgIntervalId) {
+            clearInterval(bgIntervalId);
+            bgIntervalId = null;
+        }
+        // Delay reset so match-end buzzer is not killed immediately
+        setTimeout(() => reset(), 500);
+        return;
+    }
+
+    display.textContent = formatTimeMs(current.displayMs);
+    const seg = segments.find(s => s.name === current.name);
+    const elapsedInSegment = elapsed - seg.cumulativeStart;
+    const remainingSegSec = Math.floor((seg.duration - elapsedInSegment) / 1000);
+    durationDisplay.textContent = remainingSegSec;
+
+    if (remainingSegSec !== prevRemainingSegSec) {
+        if (remainingSegSec == totalFlashDurationSec) { // heads-up alert
+            if (elapsed > 20000-totalFlashDurationSec*1000) {
+                matchSonar();
+                if (supportVibrate) {
+                    vibrate();
+                }
+                flash(brightFlashPerSecond, totalFlashDurationSec);
+            }
+        }
+
+        if (remainingSegSec == 0) {
+            switch (phase.textContent) {
+                // force inject the upcoming phase even though technically not there yet (deviation of 1 second, the 0th second)
+                // this is for a visual seamless transition, as the colors already change
+                case "Auto":
+                    matchBuzzer();
+                    phase.textContent = "Delay";
+                    break;
+                case "Delay":
+                    matchThreeBells();
+                    phase.textContent = "Transition Shift";
+                    break;
+                case "End Game":
+                    break;
+
+                case "Transition Shift":
+                    matchShift();
+                    if (!AutoWinner) {
+                        // if we are red and blue won auto, then we do not change colors
+                        // if we are blue and red won auto, then we do not change colors
+                        phase.textContent = "Shift 1";
+                        break;
+                    } else if (AutoWinner) {
+                        // if we are red and won auto, we change color
+                        // if we are blue and won auto, we change color
+                        switchHub();
+                        phase.textContent = "Shift 1";
+                        break;
+                    }
+
+                case "Shift 1":
+                    matchShift();
+                    switchHub();
+                    phase.textContent = "Shift 2";
+                    break;
+
+                case "Shift 2":
+                    matchShift();
+                    switchHub();
+                    phase.textContent = "Shift 3";
+                    break;
+
+                case "Shift 3":
+                    matchShift();
+                    switchHub();
+                    phase.textContent = "Shift 4";
+                    break;
+
+                case "Shift 4":
+                    matchEndGame();
+                    if (!AutoWinner) {
+                        // if we are red and blue won auto, we change color
+                        // if we are blue and red won auto, we change color
+                        switchHub();
+                        phase.textContent = "End Game";
+                        break;
+                    } else if (AutoWinner) {
+                        // if we are red and won auto, then we do not change colors
+                        // if we are blue and won auto, then we do not change colors
+                        phase.textContent = "End Game";
+                        break;
+                    }
+
+                default:
+                    // extensive testing says we never hit this... good luck with debug if we ever get here
+                    alert("Something broke:\nEither you borked something or this is an unknown edge case");
+                    break;
+            }
+        }
+
+        prevRemainingSegSec = remainingSegSec; // store new value
+    }
+
+    scheduleNextRender();
+}
+
+// Switch render method when tab visibility changes
+document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') {
+        // Tab visible: stop background interval, kick off rAF
+        if (bgIntervalId) {
+            clearInterval(bgIntervalId);
+            bgIntervalId = null;
+        }
+        requestAnimationFrame(render);
+        // Resume AudioContext if it was suspended while backgrounded
+        resumeAudioContext();
+    } else if (state.running) {
+        // Tab hidden while timer running: start background interval
+        if (!bgIntervalId) {
+            bgIntervalId = setInterval(render, 200);
+        }
+    }
+});
+
+render();
+
+
+// ----- Controls -----
+function start() {
+    if (state.running) return;
+    // Ensure AudioContext is resumed (requires user gesture)
+    resumeAudioContext();
+    if (!audioReady) initAudio();
+    if (totalElapsed() == 0) matchCavalryCharge();
+    state.running = true;
+    state.startTimestamp = Date.now();
+    saveState();
+}
+
+function pause() {
+    if (!state.running) return;
+    state.accumulatedTime = totalElapsed();
+    state.running = false;
+    state.startTimestamp = null;
+    saveState();
+}
+
+function reset() {
+    state = {
+        running: false,
+        startTimestamp: null,
+        accumulatedTime: 0
+    };
+    saveState();
+    
+    // Update display immediately to first segment
+    const first = segments[0];
+    display.textContent = formatTimeMs(first.startMs);
+    phase.textContent = first.name;
+
+    // Segment duration countdown
+    durationDisplay.textContent = Math.ceil(first.duration / 1000);
+
+    requestAnimationFrame(render);
+
+    // reset UI
+    AutoWinner = false;
+    WinAutoNo.style.display = "inline-block", WinAutoYes.style.display = "none";
+    killFlash();
+    chooseAlliance(); // edge case: resyncs colors if user reset during a match period that already ran switchHub(); also flips between alliances for JIC compulsion
+    killAudio();
+}
+
+</script>
+        <script>
+// https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API
+
+// Request wake lock
+async function requestWakeLock() {
+    if ('wakeLock' in navigator) {
+        try {
+            // not tracking wakeLock release, just request it each time
+            await navigator.wakeLock.request('screen');
+        } catch (err) {
+            warnUser(`Wake lock request failed: ${err.name}, ${err.message}`);
+        }
+    } else {
+        warnUser('Prevent Screen Dim is not supported by this browser');
+    }
+}
+
+// Detect first user interaction
+document.addEventListener('pointerdown', async () => {
+    await requestWakeLock();
+}, { once: true });
+
+// Re-request wake lock when the page becomes visible again; if app became inactive
+document.addEventListener('visibilitychange', async () => {
+    if (document.visibilityState === 'visible') {
+        await requestWakeLock();
+    }
+});
+
+function warnUser(msg) {
+    const warningBox = document.getElementById("warningBox");
+    warningBox.innerText = msg;
+    warningBox.classList.remove("notify");
+    void warningBox.offsetWidth;
+    warningBox.classList.add("notify");
+}
+
+</script>
+    </head>
+    <body id="body" onload="init()">
+
+        <div id="info">
+            <h1 id="time"></h1>
+            <p>Match Time</p>
+            <h1 id="duration"></h1>
+            <p>Seconds Remaining</p>
+            <h1 id="phase">Auto</h1>
+            <p>Match Period</p>
+        </div>
+
+        <div class="controls">
+            <button id="Start_btn" class="ripple" onclick="start()">Start <br><span style="text-transform: lowercase; font-size: smaller;">timer</span></button>
+            <button id="Pause_btn" class="ripple" onclick="pause()">Pause <br><span style="text-transform: lowercase; font-size: smaller;">timer</span></button>
+
+            <button id="WinAutoToggle" class="ripple">
+                Win Auto?
+                <br>
+                <span id="WinAuto">
+                    <svg id="WinAutoNo" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#ff0000"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                    <svg id="WinAutoYes" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#00ff00"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                </span>
+            </button>
+
+            <button id="AllianceToggle" class="ripple" onclick="chooseAlliance()">
+                Alliance:
+                <br>
+                <span id="alliance_color">red</span>
+            </button>
+        </div>
+
+        <button id="Reset_btn" class="ripple" onclick="reset()">
+            <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e3e3e3"><path d="M480-80q-75 0-140.5-28T225-185q-49-49-77-114.5T120-440h60q0 125 87.5 212.5T480-140q125 0 212.5-87.5T780-440q0-125-85-212.5T485-740h-23l73 73-41 42-147-147 147-147 41 41-78 78h23q75 0 140.5 28T735-695q49 49 77 114.5T840-440q0 75-28 140.5T735-185q-49 49-114.5 77T480-80Z"/></svg>
+        </button>
+
+        <button id="Vibrate_btn" class="ripple" onclick="vibrate()">
+            <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#ffffff"><path d="M320-120q-33 0-56.5-23.5T240-200v-560q0-33 23.5-56.5T320-840h320q33 0 56.5 23.5T720-760v560q0 33-23.5 56.5T640-120H320Zm320-80v-560H320v560h320ZM480-640q17 0 28.5-11.5T520-680q0-17-11.5-28.5T480-720q-17 0-28.5 11.5T440-680q0 17 11.5 28.5T480-640ZM0-360v-240h80v240H0Zm120 80v-400h80v400h-80Zm760-80v-240h80v240h-80Zm-120 80v-400h80v400h-80Zm-440 80v-560 560Z"/></svg>
+        </button>
+
+        <div id="flashDiv"></div>
+        <span id="flashToggle">
+            <button id="flashOff" class="ripple">
+                <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#ffffff"><path d="M280-880h400l-80 280h160L643-431l-57-57 22-32h-54l-47-47 67-233H360v86l-80-80v-86ZM400-80v-320H280v-166L55-791l57-57 736 736-57 57-241-241L400-80Zm73-521Z"/></svg>
+            </button>
+            <button id="flashOn" class="ripple">
+                <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#ffffff"><path d="m460-272 186-268H520l81-280H340v360h120v188ZM400-80v-320H280v-480h400l-80 280h160L400-80Zm60-380H340h120Z"/></svg>
+            </button>
+        </span>
+
+        <span style="position: fixed; bottom: 15px; left: 50%; transform: translate(-50%); color: #fffff424;">
+            v3.0.1
+        </span>
+
+        <span id="warningBox"></span>
+
+        <audio id="audioCavalryCharge" src="./CavalryCharge.wav" preload="auto"></audio>
+        <audio id="audioBuzzer" src="./Buzzer.wav" preload="auto"></audio> 
+        <audio id="audioThreeBells" src="./ThreeBells.wav" preload="auto"></audio>
+        <audio id="audioShift" src="./Shift.wav" preload="auto"></audio>
+        <audio id="audioEndGame" src="./EndGame.wav" preload="auto"></audio>
+        <audio id="audioSonar" src="./Sonar.wav" preload="auto"></audio>
+
+        <script>
+            window.addEventListener("beforeunload", (e) => {
+                e.preventDefault();
+                e.returnValue = ""; // required for Chrome
+            });
+
+            document.addEventListener("touchmove", e => {
+                e.preventDefault();
+            }, { passive: false });
+
+            
+        </script>
+    </body>
+</html>
