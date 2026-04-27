@@ -1,4 +1,5 @@
 /members/docs/programming/* /members/docs/programming/:splat 200!
 /ChooseYourCharacter /ChooseYourCharacter/index.html 200!
-/rebuilt-timer /rebuilt-timer/index.html 200!
+/rebuilt-timer /rebuilt-timer/dist/index.html 200!
+/rebuilt-timer/* /rebuilt-timer/dist/:splat 200!
 /* /index.html 200
